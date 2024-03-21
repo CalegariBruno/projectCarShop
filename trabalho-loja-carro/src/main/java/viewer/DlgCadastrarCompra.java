@@ -99,7 +99,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setBorder(null);
+        jTextField1.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -107,7 +107,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jLabel3.setText("Telefone:");
 
         jFormattedTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jFormattedTextField1.setBorder(null);
+        jFormattedTextField1.setBorder(new javax.swing.border.MatteBorder(null));
         jFormattedTextField1.setForeground(new java.awt.Color(0, 0, 0));
         try {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
@@ -122,7 +122,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jLabel4.setText("Nº:");
 
         jFormattedTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jFormattedTextField2.setBorder(null);
+        jFormattedTextField2.setBorder(new javax.swing.border.MatteBorder(null));
         jFormattedTextField2.setForeground(new java.awt.Color(0, 0, 0));
         try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -139,7 +139,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField2.setBackground(new java.awt.Color(204, 204, 204));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setBorder(null);
+        jTextField2.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -159,17 +159,17 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setBorder(null);
+        jTextField3.setBorder(new javax.swing.border.MatteBorder(null));
 
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setBorder(null);
+        jTextField4.setBorder(new javax.swing.border.MatteBorder(null));
 
         jTextField5.setBackground(new java.awt.Color(204, 204, 204));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setBorder(null);
+        jTextField5.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -179,7 +179,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField6.setBackground(new java.awt.Color(204, 204, 204));
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField6.setBorder(null);
+        jTextField6.setBorder(new javax.swing.border.MatteBorder(null));
 
         javax.swing.GroupLayout jpVendedorLayout = new javax.swing.GroupLayout(jpVendedor);
         jpVendedor.setLayout(jpVendedorLayout);
@@ -215,7 +215,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jpVendedorLayout.setVerticalGroup(
             jpVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpVendedorLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(jpVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,7 +245,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
                 .addGroup(jpVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         jpVeiculo.setBackground(new java.awt.Color(255, 255, 102));
@@ -258,7 +258,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField7.setBackground(new java.awt.Color(204, 204, 204));
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField7.setBorder(null);
+        jTextField7.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -268,7 +268,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField8.setBackground(new java.awt.Color(204, 204, 204));
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField8.setBorder(null);
+        jTextField8.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel14.setBackground(new java.awt.Color(0, 0, 0));
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -283,12 +283,12 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField9.setBackground(new java.awt.Color(204, 204, 204));
         jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField9.setBorder(null);
+        jTextField9.setBorder(new javax.swing.border.MatteBorder(null));
 
         jTextField10.setBackground(new java.awt.Color(204, 204, 204));
         jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField10.setBorder(null);
+        jTextField10.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -298,7 +298,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jTextField11.setBackground(new java.awt.Color(204, 204, 204));
         jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField11.setBorder(null);
+        jTextField11.setBorder(new javax.swing.border.MatteBorder(null));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 102));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -343,7 +343,7 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jLabel19.setText("Valor de compra:");
 
         jFormattedTextField3.setBackground(new java.awt.Color(204, 204, 204));
-        jFormattedTextField3.setBorder(null);
+        jFormattedTextField3.setBorder(new javax.swing.border.MatteBorder(null));
         jFormattedTextField3.setForeground(new java.awt.Color(0, 0, 0));
         try {
             jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("R$ ###################################")));
@@ -515,12 +515,11 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jpVeiculoLayout.setVerticalGroup(
             jpVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpVeiculoLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jpVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpVeiculoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpVeiculoLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(9, 9, 9)
                         .addGroup(jpVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -547,18 +546,19 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("____Vendedor____");
+        jLabel12.setText("Vendedor");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("____Veículo____");
+        jLabel13.setText("Veículo");
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
@@ -598,11 +598,11 @@ public class DlgCadastrarCompra extends javax.swing.JDialog {
         jpPrincipalCompraLayout.setHorizontalGroup(
             jpPrincipalCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPrincipalCompraLayout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addGap(179, 179, 179)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
-                .addGap(148, 148, 148))
+                .addGap(195, 195, 195))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalCompraLayout.createSequentialGroup()
                 .addGap(0, 12, Short.MAX_VALUE)
                 .addComponent(jpVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
