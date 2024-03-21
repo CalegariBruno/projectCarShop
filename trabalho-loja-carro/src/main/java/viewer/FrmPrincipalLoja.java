@@ -31,18 +31,19 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
         jpImagem = new javax.swing.JPanel();
         imagem = new javax.swing.JLabel();
         jpBotoes = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbCompra = new javax.swing.JButton();
+        jbVenda = new javax.swing.JButton();
+        jbDespesas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Janela Principal");
         setResizable(false);
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 102));
 
         jpImagem.setBackground(new java.awt.Color(255, 255, 102));
 
-        imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewer/nova.png"))); // NOI18N
+        imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/nova.png"))); // NOI18N
 
         javax.swing.GroupLayout jpImagemLayout = new javax.swing.GroupLayout(jpImagem);
         jpImagem.setLayout(jpImagemLayout);
@@ -63,23 +64,23 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
 
         jpBotoes.setBackground(new java.awt.Color(255, 255, 102));
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Registrar Venda");
-        jButton1.setBorder(null);
+        jbCompra.setBackground(new java.awt.Color(51, 51, 51));
+        jbCompra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jbCompra.setForeground(new java.awt.Color(255, 255, 255));
+        jbCompra.setText("Compra");
+        jbCompra.setBorder(null);
 
-        jButton2.setBackground(new java.awt.Color(51, 51, 51));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Consultar");
-        jButton2.setBorder(null);
+        jbVenda.setBackground(new java.awt.Color(51, 51, 51));
+        jbVenda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jbVenda.setForeground(new java.awt.Color(255, 255, 255));
+        jbVenda.setText("Venda");
+        jbVenda.setBorder(null);
 
-        jButton3.setBackground(new java.awt.Color(51, 51, 51));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Vendas");
-        jButton3.setBorder(null);
+        jbDespesas.setBackground(new java.awt.Color(51, 51, 51));
+        jbDespesas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jbDespesas.setForeground(new java.awt.Color(255, 255, 255));
+        jbDespesas.setText("Despesas");
+        jbDespesas.setBorder(null);
 
         javax.swing.GroupLayout jpBotoesLayout = new javax.swing.GroupLayout(jpBotoes);
         jpBotoes.setLayout(jpBotoesLayout);
@@ -87,11 +88,11 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
             jpBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBotoesLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addComponent(jbCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(113, 113, 113))
         );
         jpBotoesLayout.setVerticalGroup(
@@ -99,9 +100,9 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBotoesLayout.createSequentialGroup()
                 .addContainerGap(83, Short.MAX_VALUE)
                 .addGroup(jpBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45))
         );
 
@@ -112,7 +113,7 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
             .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addGap(184, 184, 184)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
@@ -168,9 +169,9 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imagem;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jbCompra;
+    private javax.swing.JButton jbDespesas;
+    private javax.swing.JButton jbVenda;
     private javax.swing.JPanel jpBotoes;
     private javax.swing.JPanel jpImagem;
     private javax.swing.JPanel jpPrincipal;

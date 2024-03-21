@@ -74,7 +74,7 @@ public class DlgCompraVenda extends javax.swing.JDialog {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 102));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewer/nv2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/nv2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -90,7 +90,7 @@ public class DlgCompraVenda extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

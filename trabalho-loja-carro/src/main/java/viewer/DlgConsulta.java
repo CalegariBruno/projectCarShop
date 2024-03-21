@@ -48,11 +48,12 @@ public class DlgConsulta extends javax.swing.JDialog {
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Pesquisar");
 
+        jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Listar");
@@ -60,7 +61,7 @@ public class DlgConsulta extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 102));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setBackground(new java.awt.Color(204, 204, 204));
         jTable1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,13 +134,13 @@ public class DlgConsulta extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addContainerGap(318, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jLabel1)
                     .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
