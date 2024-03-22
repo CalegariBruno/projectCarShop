@@ -62,6 +62,7 @@ public class DlgVenda extends javax.swing.JDialog {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("REGISTRO DE VENDA");
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
@@ -81,6 +82,7 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nome Completo:");
 
         jTextField6.setBackground(new java.awt.Color(204, 204, 204));
@@ -90,14 +92,17 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Telefone:");
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Financeira:");
 
         jFormattedTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jFormattedTextField1.setBorder(new javax.swing.border.MatteBorder(null));
+        jFormattedTextField1.setForeground(new java.awt.Color(0, 0, 0));
         try {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
@@ -110,7 +115,8 @@ public class DlgVenda extends javax.swing.JDialog {
         jTextField7.setBorder(new javax.swing.border.MatteBorder(null));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 102));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -119,6 +125,7 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jFormattedTextField4.setBackground(new java.awt.Color(204, 204, 204));
         jFormattedTextField4.setBorder(new javax.swing.border.MatteBorder(null));
+        jFormattedTextField4.setForeground(new java.awt.Color(0, 0, 0));
         try {
             jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -211,6 +218,7 @@ public class DlgVenda extends javax.swing.JDialog {
         );
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Comprador");
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -247,6 +255,7 @@ public class DlgVenda extends javax.swing.JDialog {
         );
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Veículo");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
