@@ -1,5 +1,7 @@
 package viewer;
 
+import control.GerenciadorInterface;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -69,18 +71,33 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
         jbCompra.setForeground(new java.awt.Color(255, 255, 255));
         jbCompra.setText("Compra");
         jbCompra.setBorder(null);
+        jbCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCompraActionPerformed(evt);
+            }
+        });
 
         jbVenda.setBackground(new java.awt.Color(51, 51, 51));
         jbVenda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbVenda.setForeground(new java.awt.Color(255, 255, 255));
         jbVenda.setText("Venda");
         jbVenda.setBorder(null);
+        jbVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVendaActionPerformed(evt);
+            }
+        });
 
         jbDespesas.setBackground(new java.awt.Color(51, 51, 51));
         jbDespesas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbDespesas.setForeground(new java.awt.Color(255, 255, 255));
         jbDespesas.setText("Despesas");
         jbDespesas.setBorder(null);
+        jbDespesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDespesasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpBotoesLayout = new javax.swing.GroupLayout(jpBotoes);
         jpBotoes.setLayout(jpBotoesLayout);
@@ -132,40 +149,17 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalLoja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalLoja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalLoja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalLoja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jbCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCompraActionPerformed
+        GerenciadorInterface.getInstance().abrirJanCompra();
+    }//GEN-LAST:event_jbCompraActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmPrincipalLoja().setVisible(true);
-            }
-        });
-    }
+    private void jbVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVendaActionPerformed
+        GerenciadorInterface.getInstance().abrirJanVenda();
+    }//GEN-LAST:event_jbVendaActionPerformed
+
+    private void jbDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDespesasActionPerformed
+        GerenciadorInterface.getInstance().abrirJanDespesa();
+    }//GEN-LAST:event_jbDespesasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imagem;

@@ -152,6 +152,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCompraActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbVenda">
               <Properties>
@@ -169,6 +172,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbVendaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbDespesas">
               <Properties>
@@ -186,6 +192,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbDespesasActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

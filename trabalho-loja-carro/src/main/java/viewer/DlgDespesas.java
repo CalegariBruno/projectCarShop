@@ -64,14 +64,17 @@ public class DlgDespesas extends javax.swing.JDialog {
         jlTituloDespesas.setForeground(new java.awt.Color(0, 0, 0));
         jlTituloDespesas.setText("REGISTRO DE DESPESAS");
 
+        jtPainelDespesas.setBackground(new java.awt.Color(51, 51, 51));
         jtPainelDespesas.setForeground(new java.awt.Color(255, 255, 255));
         jtPainelDespesas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jpNovaDespesa.setBackground(new java.awt.Color(255, 255, 102));
         jpNovaDespesa.setBorder(new javax.swing.border.MatteBorder(null));
+        jpNovaDespesa.setForeground(new java.awt.Color(51, 51, 51));
 
         jpSelecionarVeiculoDespesa.setBackground(new java.awt.Color(255, 255, 102));
         jpSelecionarVeiculoDespesa.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpSelecionarVeiculoDespesa.setForeground(new java.awt.Color(0, 0, 0));
 
         jlPlaca.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jlPlaca.setForeground(new java.awt.Color(0, 0, 0));
@@ -155,6 +158,7 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         jpDespesas.setBackground(new java.awt.Color(255, 255, 102));
         jpDespesas.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Despesas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpDespesas.setForeground(new java.awt.Color(0, 0, 0));
 
         jlDescricao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jlDescricao.setForeground(new java.awt.Color(0, 0, 0));
@@ -228,13 +232,14 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addComponent(jpSelecionarVeiculoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jpDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jtPainelDespesas.addTab("Nova", jpNovaDespesa);
 
         jpListaDespesa.setBackground(new java.awt.Color(255, 255, 102));
         jpListaDespesa.setBorder(new javax.swing.border.MatteBorder(null));
+        jpListaDespesa.setForeground(new java.awt.Color(51, 51, 51));
 
         jpListaDepesas.setBackground(new java.awt.Color(255, 255, 102));
 
@@ -288,7 +293,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpListaDepesasLayout.setVerticalGroup(
             jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaDepesasLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlPlacaFiltroDespesas)
