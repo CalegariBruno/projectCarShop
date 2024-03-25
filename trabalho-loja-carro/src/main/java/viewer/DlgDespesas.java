@@ -96,10 +96,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jtVeiculoDespesa.setBackground(new java.awt.Color(204, 204, 204));
         jtVeiculoDespesa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Placa", "Marca", "Modelo", "Cor"

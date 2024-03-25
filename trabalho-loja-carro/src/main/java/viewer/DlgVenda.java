@@ -111,7 +111,7 @@ public class DlgVenda extends javax.swing.JDialog {
         jtFinanceiraComprador.setBorder(new javax.swing.border.MatteBorder(null));
 
         jpDataValorVenda.setBackground(new java.awt.Color(255, 255, 102));
-        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         jpDataValorVenda.setForeground(new java.awt.Color(0, 0, 0));
 
         jlDataVenda.setBackground(new java.awt.Color(0, 0, 0));
@@ -336,10 +336,7 @@ public class DlgVenda extends javax.swing.JDialog {
         jtVeiculosVendidos.setBackground(new java.awt.Color(204, 204, 204));
         jtVeiculosVendidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nome Comprador", "Placa", "Marca", "Modelo", "Data ", "Valor Venda", "Valor Compra", "Despesas", "Lucro"
