@@ -619,7 +619,7 @@ public class DlgCompra extends javax.swing.JDialog {
         );
 
         jbRegistrarCompra.setBackground(new java.awt.Color(51, 51, 51));
-        jbRegistrarCompra.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jbRegistrarCompra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbRegistrarCompra.setForeground(new java.awt.Color(255, 255, 255));
         jbRegistrarCompra.setText("Registrar");
         jbRegistrarCompra.setBorder(null);

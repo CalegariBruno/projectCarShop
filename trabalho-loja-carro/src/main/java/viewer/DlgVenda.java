@@ -54,7 +54,7 @@ public class DlgVenda extends javax.swing.JDialog {
         jtVeiculosVendidos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 700));
+        setTitle("Registro de Venda");
         setResizable(false);
 
         jpPainelPrincipalVenda.setBackground(new java.awt.Color(255, 255, 102));
@@ -263,7 +263,7 @@ public class DlgVenda extends javax.swing.JDialog {
         );
 
         jbRegistrar.setBackground(new java.awt.Color(51, 51, 51));
-        jbRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jbRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         jbRegistrar.setText("Registrar");
         jbRegistrar.setBorder(null);

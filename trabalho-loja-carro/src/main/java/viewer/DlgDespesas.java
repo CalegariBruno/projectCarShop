@@ -55,7 +55,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jbListarFiltroDespesas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro de despesas");
+        setTitle("Registro de Despesas");
         setResizable(false);
 
         jpPrincipalDespesas.setBackground(new java.awt.Color(255, 255, 102));
@@ -73,7 +73,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpNovaDespesa.setForeground(new java.awt.Color(51, 51, 51));
 
         jpSelecionarVeiculoDespesa.setBackground(new java.awt.Color(255, 255, 102));
-        jpSelecionarVeiculoDespesa.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpSelecionarVeiculoDespesa.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jpSelecionarVeiculoDespesa.setForeground(new java.awt.Color(0, 0, 0));
 
         jlPlaca.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -157,7 +157,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         );
 
         jpDespesas.setBackground(new java.awt.Color(255, 255, 102));
-        jpDespesas.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Despesas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpDespesas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Despesa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jpDespesas.setForeground(new java.awt.Color(0, 0, 0));
 
         jlDescricao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -177,7 +177,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jtValorDespesa.setBorder(new javax.swing.border.MatteBorder(null));
 
         jbAddDespesa.setBackground(new java.awt.Color(51, 51, 51));
-        jbAddDespesa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jbAddDespesa.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbAddDespesa.setForeground(new java.awt.Color(255, 255, 255));
         jbAddDespesa.setText("Adicionar");
 
@@ -286,7 +286,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                         .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbPesquisarFiltroDespesas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
                         .addComponent(jbListarFiltroDespesas)))
                 .addContainerGap())
         );
