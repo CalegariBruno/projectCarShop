@@ -58,6 +58,7 @@ public class DlgVenda extends javax.swing.JDialog {
         setResizable(false);
 
         jpPainelPrincipalVenda.setBackground(new java.awt.Color(255, 255, 102));
+        jpPainelPrincipalVenda.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
         jpPainelPrincipalVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jlTituloCompra.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -205,7 +206,7 @@ public class DlgVenda extends javax.swing.JDialog {
                                 .addComponent(jtFinanceiraComprador)
                                 .addGap(12, 12, 12))
                             .addGroup(jpCompradorLayout.createSequentialGroup()
-                                .addComponent(jfTelComprador, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                .addComponent(jfTelComprador)
                                 .addGap(178, 178, 178))
                             .addGroup(jpCompradorLayout.createSequentialGroup()
                                 .addComponent(jtNomeComprador)
@@ -280,7 +281,7 @@ public class DlgVenda extends javax.swing.JDialog {
             .addGroup(jpVendaLayout.createSequentialGroup()
                 .addGap(397, 397, 397)
                 .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(388, Short.MAX_VALUE))
         );
         jpVendaLayout.setVerticalGroup(
             jpVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +290,7 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGroup(jpVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jpVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpComprador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -316,14 +317,14 @@ public class DlgVenda extends javax.swing.JDialog {
             jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaVendidosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
+                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jpListaVendidosLayout.setVerticalGroup(
             jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaVendidosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -341,7 +342,7 @@ public class DlgVenda extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPainelPrincipalVendaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jtPainelCompra)))
+                        .addComponent(jtPainelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpPainelPrincipalVendaLayout.setVerticalGroup(
@@ -350,7 +351,7 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jlTituloCompra)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtPainelCompra)
+                .addComponent(jtPainelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
