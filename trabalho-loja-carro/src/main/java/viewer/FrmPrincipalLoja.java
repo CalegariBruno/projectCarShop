@@ -42,6 +42,7 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
         setResizable(false);
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 102));
+        jpPrincipal.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
 
         jpImagem.setBackground(new java.awt.Color(255, 255, 102));
 
@@ -64,35 +65,33 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpBotoes.setBackground(new java.awt.Color(255, 255, 102));
+        jpBotoes.setBackground(new java.awt.Color(0, 0, 0));
+        jpBotoes.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(255, 255, 102)));
 
-        jbCompra.setBackground(new java.awt.Color(51, 51, 51));
+        jbCompra.setBackground(new java.awt.Color(255, 255, 102));
         jbCompra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jbCompra.setForeground(new java.awt.Color(255, 255, 255));
+        jbCompra.setForeground(new java.awt.Color(0, 0, 0));
         jbCompra.setText("Compra");
-        jbCompra.setBorder(null);
         jbCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCompraActionPerformed(evt);
             }
         });
 
-        jbVenda.setBackground(new java.awt.Color(51, 51, 51));
+        jbVenda.setBackground(new java.awt.Color(255, 255, 102));
         jbVenda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jbVenda.setForeground(new java.awt.Color(255, 255, 255));
+        jbVenda.setForeground(new java.awt.Color(0, 0, 0));
         jbVenda.setText("Venda");
-        jbVenda.setBorder(null);
         jbVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbVendaActionPerformed(evt);
             }
         });
 
-        jbDespesas.setBackground(new java.awt.Color(51, 51, 51));
+        jbDespesas.setBackground(new java.awt.Color(255, 255, 102));
         jbDespesas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jbDespesas.setForeground(new java.awt.Color(255, 255, 255));
+        jbDespesas.setForeground(new java.awt.Color(0, 0, 0));
         jbDespesas.setText("Despesas");
-        jbDespesas.setBorder(null);
         jbDespesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbDespesasActionPerformed(evt);
@@ -103,24 +102,24 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
         jpBotoes.setLayout(jpBotoesLayout);
         jpBotoesLayout.setHorizontalGroup(
             jpBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpBotoesLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jbCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBotoesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addGap(188, 188, 188))
         );
         jpBotoesLayout.setVerticalGroup(
             jpBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBotoesLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addGroup(jpBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
@@ -129,19 +128,17 @@ public class FrmPrincipalLoja extends javax.swing.JFrame {
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addGap(184, 184, 184)
-                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(jpImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addComponent(jpBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(jpImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(jpPrincipal, java.awt.BorderLayout.CENTER);

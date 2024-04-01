@@ -65,8 +65,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jlTituloCompra" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jtPainelCompra" min="-2" pref="585" max="-2" attributes="0"/>
-                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <Component id="jtPainelCompra" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -120,20 +120,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jpComprador" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jpVeiculos" min="-2" pref="450" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
-                                  <Component id="jbRegistrar" min="-2" pref="189" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="72" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jpComprador" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jpVeiculos" min="-2" pref="481" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
+                          <Component id="jbRegistrar" min="-2" pref="189" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -142,12 +139,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jpVeiculos" max="32767" attributes="0"/>
                               <Component id="jpComprador" max="32767" attributes="0"/>
-                              <Component id="jpVeiculos" pref="442" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace pref="41" max="32767" attributes="0"/>
                           <Component id="jbRegistrar" min="-2" pref="67" max="-2" attributes="0"/>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -191,7 +188,7 @@
                                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <Component id="jfTelComprador" pref="101" max="32767" attributes="0"/>
+                                              <Component id="jfTelComprador" pref="136" max="32767" attributes="0"/>
                                               <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
@@ -513,8 +510,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jsTabelaVeiculos" min="-2" pref="427" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="jsTabelaVeiculos" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -522,8 +519,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jsTabelaVeiculos" min="-2" pref="350" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="jsTabelaVeiculos" min="-2" pref="408" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -567,9 +564,6 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Registrar"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -607,7 +601,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jsTabelaVeiculosVendidos" pref="536" max="32767" attributes="0"/>
+                          <Component id="jsTabelaVeiculosVendidos" pref="585" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
