@@ -78,8 +78,6 @@ public class GerenciadorInterface {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         
-        
-        
         GerenciadorInterface.getInstance().abrirJanelaPrincipal();
         
     }
