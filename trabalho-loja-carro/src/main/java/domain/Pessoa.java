@@ -4,20 +4,45 @@
  */
 package domain;
 
-/**
- *
- * @author USUARIO
- */
-public class Pessoa {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+
+
+@Entity
+public class Pessoa implements Serializable {
     
+    @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idPessoa;
+    
+    @Column (name="nomeCliente", nullable = false)
     private String nome;
+    
+    @Column ( length = 15)
     private String telefone;
     
+    @OneToOne
+    @JoinColumn ( name = "endereco")
     private Endereco endereco;
+    
+    @OneToOne
+    @JoinColumn ( name = "compra")
     private Compra compra = null;
+    
+    @OneToOne
+    @JoinColumn ( name = "compra")
     private Venda venda = null;
 
+    public Pessoa() {
+    }
+    
     public Pessoa(int idPessoa, String nome, String telefone, Endereco endereco) {
         this.idPessoa = idPessoa;
         this.nome = nome;

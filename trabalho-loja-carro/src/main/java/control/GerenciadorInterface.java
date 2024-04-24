@@ -4,6 +4,7 @@
  */
 package control;
 
+import dao.ConexaoHibernate;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.JDialog;
@@ -79,7 +80,7 @@ public class GerenciadorInterface {
         /* Set the Nimbus look and feel */
         
         GerenciadorInterface.getInstance().abrirJanelaPrincipal();
-        
+        ConexaoHibernate.getSessionFactory().openSession();
     }
     
 }
