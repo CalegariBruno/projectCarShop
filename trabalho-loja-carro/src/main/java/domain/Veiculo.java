@@ -5,13 +5,27 @@
 package domain;
 
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
-
+@Entity
 public class Veiculo {
     
+    @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idVeiculo;
+    
+    @Column(length = 8 ,unique=true)
     private String placa;
+    
+    @Column(unique=true)
     private int renavam;
+    
     private String marca;
     private String modelo;
     private String cor;
@@ -19,9 +33,17 @@ public class Veiculo {
     private String combustivel;
     private int ano;
     
+    @Transient
     private Compra compra;
+    
+     @Transient
     private Venda venda;
+    
+    @OneToMany (mappedBy = "veiculo")
     private List<Despesa> despesas;
+
+    public Veiculo() {
+    }
 
     public Veiculo(int idVeiculo, String placa, int renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano, Compra compra, Venda venda, List<Despesa> despesas) {
         this.idVeiculo = idVeiculo;

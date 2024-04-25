@@ -16,6 +16,10 @@
     
     <mapping class="domain.Endereco"/>
     <mapping class="domain.Pessoa"/>
+    <mapping class="domain.Despesa"/>
+    <mapping class="domain.Veiculo"/>
+    <mapping class="domain.Compra"/>
+    <mapping class="domain.Venda"/>
         
     
   </session-factory>

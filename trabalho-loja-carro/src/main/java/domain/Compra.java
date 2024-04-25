@@ -4,18 +4,38 @@
  */
 package domain;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-
-public class Compra {
+@Entity
+public class Compra implements Serializable {
     
+    @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idCompra;
-    private double valor;
+    
+    @Temporal(TemporalType.DATE)
     private Date data; 
     
+    private double valor;
+    
+    @OneToOne
     private Pessoa cliente;
+    
+    @OneToOne
     private Veiculo veiculo;
 
+    public Compra() {
+    }
+
+    
     public Compra(int idCompra, double valor, Date data, Pessoa cliente, Veiculo veiculo) {
         this.idCompra = idCompra;
         this.valor = valor;

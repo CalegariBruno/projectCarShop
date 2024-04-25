@@ -33,10 +33,10 @@ public class Pessoa implements Serializable {
     @JoinColumn ( name = "endereco")
     private Endereco endereco;
     
-    @Transient
+    @OneToOne
     private Compra compra = null;
     
-    @Transient
+    @OneToOne
     private Venda venda = null;
 
     public Pessoa() {
