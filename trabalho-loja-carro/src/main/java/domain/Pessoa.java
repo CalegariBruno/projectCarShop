@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 
 
@@ -32,12 +33,10 @@ public class Pessoa implements Serializable {
     @JoinColumn ( name = "endereco")
     private Endereco endereco;
     
-    @OneToOne
-    @JoinColumn ( name = "compra")
+    @Transient
     private Compra compra = null;
     
-    @OneToOne
-    @JoinColumn ( name = "compra")
+    @Transient
     private Venda venda = null;
 
     public Pessoa() {

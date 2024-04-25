@@ -4,16 +4,42 @@
  */
 package domain;
 
-public class Endereco {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
+public class Endereco implements Serializable {
     
+    @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idEndereco;
-    private String cep;   
+    
+    @Column ( length = 10)
+    private String cep;
+    
+    @Column ( length = 50)
     private String bairro;
+    
+    @Column ( length = 100)
     private String descricao;
-    private int numero;  
+    
+    @Column
+    private int numero;
+    
+    @Column ( length = 50)
     private String cidade;
+    
+    @Column ( length = 20)
     private String uf; 
 
+    public Endereco() {
+    }
+    
     public Endereco(int idEndereco, String cep, String bairro, String descricao, int numero, String cidade, String uf) {
         this.idEndereco = idEndereco;
         this.cep = cep;

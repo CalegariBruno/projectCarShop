@@ -7,8 +7,10 @@ package control;
 import dao.ConexaoHibernate;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import viewer.DlgCompra;
 import viewer.DlgDespesas;
 import viewer.DlgVenda;
@@ -27,17 +29,20 @@ public class GerenciadorInterface {
     
     //  SINGLETON
     private static GerenciadorInterface myInstance = new GerenciadorInterface();
-
+    private GerenciadorDominio gerDom;
     
     // CONSTRUTOR PRIVADO
     private GerenciadorInterface() {
-       
+        gerDom = new GerenciadorDominio();
     }
     
     public static GerenciadorInterface getInstance(){
         return myInstance;
     }
     
+    public GerenciadorDominio getGerenciadorDominio() {
+        return gerDom;       
+    }    
     
     //  ABRIR JDIALOG
     private JDialog abrirJanela(java.awt.Frame parent, JDialog dlg, Class classe){
@@ -79,8 +84,10 @@ public class GerenciadorInterface {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         
-        GerenciadorInterface.getInstance().abrirJanelaPrincipal();
-        ConexaoHibernate.getSessionFactory().openSession();
+        UIManager.put("OptionPane.yesButtonText", "Sim"); 
+        UIManager.put("OptionPane.noButtonText", "Não");
+        
+        GerenciadorInterface.getInstance().abrirJanelaPrincipal();        
     }
     
 }
