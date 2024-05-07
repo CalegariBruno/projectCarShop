@@ -5,14 +5,16 @@
 package domain;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+
 
 
 
@@ -29,15 +31,17 @@ public class Pessoa implements Serializable {
     @Column ( length = 15)
     private String telefone;
     
-    @OneToOne
-    @JoinColumn ( name = "endereco")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn ( name = "idEndereco")
     private Endereco endereco;
     
     @OneToOne
-    private Compra compra = null;
+    @JoinColumn ( name = "idCompra")
+    private Compra compra;
     
     @OneToOne
-    private Venda venda = null;
+    @JoinColumn ( name = "idVenda")
+    private Venda venda;
 
     public Pessoa() {
     }

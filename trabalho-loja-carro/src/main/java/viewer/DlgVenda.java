@@ -48,6 +48,9 @@ public class DlgVenda extends javax.swing.JDialog {
         jpVeiculos = new javax.swing.JPanel();
         jsTabelaVeiculos = new javax.swing.JScrollPane();
         jtVeiculos = new javax.swing.JTable();
+        jlPlaca = new javax.swing.JLabel();
+        jtPlaca = new javax.swing.JTextField();
+        jbPesquisar = new javax.swing.JButton();
         jbRegistrar = new javax.swing.JButton();
         jpListaVendidos = new javax.swing.JPanel();
         jsTabelaVeiculosVendidos = new javax.swing.JScrollPane();
@@ -227,7 +230,7 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlFinanceiraComprador)
                     .addComponent(jtFinanceiraComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addComponent(jpDataValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -246,20 +249,45 @@ public class DlgVenda extends javax.swing.JDialog {
         ));
         jsTabelaVeiculos.setViewportView(jtVeiculos);
 
+        jlPlaca.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jlPlaca.setForeground(new java.awt.Color(0, 0, 0));
+        jlPlaca.setText("Placa:");
+
+        jtPlaca.setBackground(new java.awt.Color(204, 204, 204));
+        jtPlaca.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtPlaca.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jbPesquisar.setBackground(new java.awt.Color(51, 51, 51));
+        jbPesquisar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbPesquisar.setForeground(new java.awt.Color(255, 255, 255));
+        jbPesquisar.setText("Pesquisar");
+
         javax.swing.GroupLayout jpVeiculosLayout = new javax.swing.GroupLayout(jpVeiculos);
         jpVeiculos.setLayout(jpVeiculosLayout);
         jpVeiculosLayout.setHorizontalGroup(
             jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpVeiculosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlPlaca)
+                .addGap(18, 18, 18)
+                .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jpVeiculosLayout.setVerticalGroup(
             jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPlaca)
+                    .addComponent(jbPesquisar))
+                .addGap(18, 18, 18)
+                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -342,7 +370,7 @@ public class DlgVenda extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPainelPrincipalVendaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jtPainelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)))
+                        .addComponent(jtPainelCompra)))
                 .addContainerGap())
         );
         jpPainelPrincipalVendaLayout.setVerticalGroup(
@@ -351,7 +379,7 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jlTituloCompra)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtPainelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+                .addComponent(jtPainelCompra)
                 .addContainerGap())
         );
 
@@ -363,12 +391,14 @@ public class DlgVenda extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JFormattedTextField jfDataVenda;
     private javax.swing.JFormattedTextField jfTelComprador;
     private javax.swing.JLabel jlDataVenda;
     private javax.swing.JLabel jlFinanceiraComprador;
     private javax.swing.JLabel jlNomeComprador;
+    private javax.swing.JLabel jlPlaca;
     private javax.swing.JLabel jlTelComprador;
     private javax.swing.JLabel jlTituloCompra;
     private javax.swing.JLabel jlValorVenda;
@@ -384,6 +414,7 @@ public class DlgVenda extends javax.swing.JDialog {
     private javax.swing.JTextField jtFinanceiraComprador;
     private javax.swing.JTextField jtNomeComprador;
     private javax.swing.JTabbedPane jtPainelCompra;
+    private javax.swing.JTextField jtPlaca;
     private javax.swing.JTextField jtValorVenda;
     private javax.swing.JTextField jtValorVenda1;
     private javax.swing.JTable jtVeiculos;
