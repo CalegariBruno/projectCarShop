@@ -35,9 +35,27 @@ public class DlgVenda extends javax.swing.JDialog {
         jlNomeComprador = new javax.swing.JLabel();
         jtNomeComprador = new javax.swing.JTextField();
         jlTelComprador = new javax.swing.JLabel();
-        jlFinanceiraComprador = new javax.swing.JLabel();
         jfTelComprador = new javax.swing.JFormattedTextField();
-        jtFinanceiraComprador = new javax.swing.JTextField();
+        jlCEPVendedor = new javax.swing.JLabel();
+        jfCEPVendedor = new javax.swing.JFormattedTextField();
+        jlNumEndVendedor = new javax.swing.JLabel();
+        jtNumEnderecoVendedor = new javax.swing.JTextField();
+        jlEndVendedor = new javax.swing.JLabel();
+        jtEndVendedor = new javax.swing.JTextField();
+        jlBairroVendedor = new javax.swing.JLabel();
+        jtBairroVendedor = new javax.swing.JTextField();
+        jlCidadeVendedor = new javax.swing.JLabel();
+        jtCidadeVendedor = new javax.swing.JTextField();
+        jlEstadoVendedor = new javax.swing.JLabel();
+        jtEstadoVendedor = new javax.swing.JTextField();
+        jlCEPVendedor1 = new javax.swing.JLabel();
+        jfCEPVendedor1 = new javax.swing.JFormattedTextField();
+        jpVeiculos = new javax.swing.JPanel();
+        jsTabelaVeiculos = new javax.swing.JScrollPane();
+        jtVeiculos = new javax.swing.JTable();
+        jlPlaca = new javax.swing.JLabel();
+        jtPlaca = new javax.swing.JTextField();
+        jbPesquisar = new javax.swing.JButton();
         jpDataValorVenda = new javax.swing.JPanel();
         jlDataVenda = new javax.swing.JLabel();
         jfDataVenda = new javax.swing.JFormattedTextField();
@@ -45,16 +63,16 @@ public class DlgVenda extends javax.swing.JDialog {
         jtValorVenda = new javax.swing.JTextField();
         jlValorVenda1 = new javax.swing.JLabel();
         jtValorVenda1 = new javax.swing.JTextField();
-        jpVeiculos = new javax.swing.JPanel();
-        jsTabelaVeiculos = new javax.swing.JScrollPane();
-        jtVeiculos = new javax.swing.JTable();
-        jlPlaca = new javax.swing.JLabel();
-        jtPlaca = new javax.swing.JTextField();
-        jbPesquisar = new javax.swing.JButton();
+        jtFinanceiraComprador = new javax.swing.JTextField();
+        jlFinanceiraComprador = new javax.swing.JLabel();
         jbRegistrar = new javax.swing.JButton();
         jpListaVendidos = new javax.swing.JPanel();
         jsTabelaVeiculosVendidos = new javax.swing.JScrollPane();
         jtVeiculosVendidos = new javax.swing.JTable();
+        jlPlacaFiltroDespesas = new javax.swing.JLabel();
+        jtPlacaFiltroDespesas = new javax.swing.JTextField();
+        jbPesquisarFiltroDespesas = new javax.swing.JButton();
+        jbListarFiltroDespesas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Venda");
@@ -93,11 +111,6 @@ public class DlgVenda extends javax.swing.JDialog {
         jlTelComprador.setForeground(new java.awt.Color(0, 0, 0));
         jlTelComprador.setText("Telefone:");
 
-        jlFinanceiraComprador.setBackground(new java.awt.Color(0, 0, 0));
-        jlFinanceiraComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlFinanceiraComprador.setForeground(new java.awt.Color(0, 0, 0));
-        jlFinanceiraComprador.setText("Financeira:");
-
         jfTelComprador.setBackground(new java.awt.Color(204, 204, 204));
         jfTelComprador.setBorder(new javax.swing.border.MatteBorder(null));
         jfTelComprador.setForeground(new java.awt.Color(0, 0, 0));
@@ -108,85 +121,85 @@ public class DlgVenda extends javax.swing.JDialog {
         }
         jfTelComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jtFinanceiraComprador.setBackground(new java.awt.Color(204, 204, 204));
-        jtFinanceiraComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtFinanceiraComprador.setBorder(new javax.swing.border.MatteBorder(null));
+        jlCEPVendedor.setBackground(new java.awt.Color(0, 0, 0));
+        jlCEPVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlCEPVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jlCEPVendedor.setText("CEP:");
 
-        jpDataValorVenda.setBackground(new java.awt.Color(255, 255, 102));
-        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
-        jpDataValorVenda.setForeground(new java.awt.Color(0, 0, 0));
-
-        jlDataVenda.setBackground(new java.awt.Color(0, 0, 0));
-        jlDataVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlDataVenda.setForeground(new java.awt.Color(204, 0, 0));
-        jlDataVenda.setText("Data da venda:");
-
-        jfDataVenda.setBackground(new java.awt.Color(204, 204, 204));
-        jfDataVenda.setBorder(new javax.swing.border.MatteBorder(null));
-        jfDataVenda.setForeground(new java.awt.Color(0, 0, 0));
+        jfCEPVendedor.setBackground(new java.awt.Color(204, 204, 204));
+        jfCEPVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        jfCEPVendedor.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            jfDataVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jfCEPVendedor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jfDataVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jfCEPVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jlValorVenda.setBackground(new java.awt.Color(0, 0, 0));
-        jlValorVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlValorVenda.setForeground(new java.awt.Color(204, 0, 0));
-        jlValorVenda.setText("Valor da venda:");
+        jlNumEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
+        jlNumEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlNumEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jlNumEndVendedor.setText("Nº:");
 
-        jtValorVenda.setBackground(new java.awt.Color(204, 204, 204));
-        jtValorVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtValorVenda.setBorder(new javax.swing.border.MatteBorder(null));
+        jtNumEnderecoVendedor.setBackground(new java.awt.Color(204, 204, 204));
+        jtNumEnderecoVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtNumEnderecoVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jtNumEnderecoVendedor.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jlValorVenda1.setBackground(new java.awt.Color(0, 0, 0));
-        jlValorVenda1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlValorVenda1.setForeground(new java.awt.Color(204, 0, 0));
-        jlValorVenda1.setText("Retorno:");
+        jlEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
+        jlEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jlEndVendedor.setText("Endereço:");
 
-        jtValorVenda1.setBackground(new java.awt.Color(204, 204, 204));
-        jtValorVenda1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtValorVenda1.setBorder(new javax.swing.border.MatteBorder(null));
+        jtEndVendedor.setBackground(new java.awt.Color(204, 204, 204));
+        jtEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jtEndVendedor.setBorder(new javax.swing.border.MatteBorder(null));
 
-        javax.swing.GroupLayout jpDataValorVendaLayout = new javax.swing.GroupLayout(jpDataValorVenda);
-        jpDataValorVenda.setLayout(jpDataValorVendaLayout);
-        jpDataValorVendaLayout.setHorizontalGroup(
-            jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDataValorVendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpDataValorVendaLayout.createSequentialGroup()
-                        .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlValorVenda)
-                            .addComponent(jlDataVenda))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpDataValorVendaLayout.createSequentialGroup()
-                                .addComponent(jfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jtValorVenda)))
-                    .addGroup(jpDataValorVendaLayout.createSequentialGroup()
-                        .addComponent(jlValorVenda1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtValorVenda1))))
-        );
-        jpDataValorVendaLayout.setVerticalGroup(
-            jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDataValorVendaLayout.createSequentialGroup()
-                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlDataVenda)
-                    .addComponent(jfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlValorVenda)
-                    .addComponent(jtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlValorVenda1)
-                    .addComponent(jtValorVenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
+        jlBairroVendedor.setBackground(new java.awt.Color(0, 0, 0));
+        jlBairroVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlBairroVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jlBairroVendedor.setText("Bairro:");
+
+        jtBairroVendedor.setBackground(new java.awt.Color(204, 204, 204));
+        jtBairroVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtBairroVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jtBairroVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jlCidadeVendedor.setBackground(new java.awt.Color(0, 0, 0));
+        jlCidadeVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlCidadeVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jlCidadeVendedor.setText("Cidade:");
+
+        jtCidadeVendedor.setBackground(new java.awt.Color(204, 204, 204));
+        jtCidadeVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtCidadeVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jtCidadeVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jlEstadoVendedor.setBackground(new java.awt.Color(0, 0, 0));
+        jlEstadoVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlEstadoVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jlEstadoVendedor.setText("Estado:");
+
+        jtEstadoVendedor.setBackground(new java.awt.Color(204, 204, 204));
+        jtEstadoVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtEstadoVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        jtEstadoVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jlCEPVendedor1.setBackground(new java.awt.Color(0, 0, 0));
+        jlCEPVendedor1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlCEPVendedor1.setForeground(new java.awt.Color(0, 0, 0));
+        jlCEPVendedor1.setText("CPF:");
+
+        jfCEPVendedor1.setBackground(new java.awt.Color(204, 204, 204));
+        jfCEPVendedor1.setBorder(new javax.swing.border.MatteBorder(null));
+        jfCEPVendedor1.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            jfCEPVendedor1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jfCEPVendedor1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpCompradorLayout = new javax.swing.GroupLayout(jpComprador);
         jpComprador.setLayout(jpCompradorLayout);
@@ -196,24 +209,43 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpCompradorLayout.createSequentialGroup()
-                        .addComponent(jpDataValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlEndVendedor)
+                            .addComponent(jlCEPVendedor)
+                            .addComponent(jlBairroVendedor)
+                            .addComponent(jlCidadeVendedor)
+                            .addComponent(jlEstadoVendedor))
+                        .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpCompradorLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlNumEndVendedor)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtNumEnderecoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpCompradorLayout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtEstadoVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtCidadeVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtBairroVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtEndVendedor)))))
                     .addGroup(jpCompradorLayout.createSequentialGroup()
                         .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlNomeComprador)
                             .addComponent(jlTelComprador)
-                            .addComponent(jlFinanceiraComprador))
+                            .addComponent(jlCEPVendedor1))
                         .addGap(18, 18, 18)
                         .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpCompradorLayout.createSequentialGroup()
-                                .addComponent(jtFinanceiraComprador)
+                                .addComponent(jtNomeComprador)
                                 .addGap(12, 12, 12))
-                            .addGroup(jpCompradorLayout.createSequentialGroup()
-                                .addComponent(jfTelComprador)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCompradorLayout.createSequentialGroup()
+                                .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jfCEPVendedor1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jfTelComprador, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                                 .addGap(178, 178, 178))
                             .addGroup(jpCompradorLayout.createSequentialGroup()
-                                .addComponent(jtNomeComprador)
-                                .addGap(12, 12, 12))))))
+                                .addComponent(jfCEPVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jpCompradorLayout.setVerticalGroup(
             jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,13 +258,33 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTelComprador)
                     .addComponent(jfTelComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jfCEPVendedor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCEPVendedor1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlFinanceiraComprador)
-                    .addComponent(jtFinanceiraComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(jpDataValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(jlNumEndVendedor)
+                    .addComponent(jfCEPVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCEPVendedor)
+                    .addComponent(jtNumEnderecoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlEndVendedor)
+                    .addComponent(jtEndVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlBairroVendedor)
+                    .addComponent(jtBairroVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCidadeVendedor)
+                    .addComponent(jtCidadeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlEstadoVendedor)
+                    .addComponent(jtEstadoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpVeiculos.setBackground(new java.awt.Color(255, 255, 102));
@@ -262,21 +314,114 @@ public class DlgVenda extends javax.swing.JDialog {
         jbPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jbPesquisar.setText("Pesquisar");
 
+        jpDataValorVenda.setBackground(new java.awt.Color(255, 255, 102));
+        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpDataValorVenda.setForeground(new java.awt.Color(0, 0, 0));
+
+        jlDataVenda.setBackground(new java.awt.Color(0, 0, 0));
+        jlDataVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlDataVenda.setForeground(new java.awt.Color(204, 0, 0));
+        jlDataVenda.setText("Data:");
+
+        jfDataVenda.setBackground(new java.awt.Color(204, 204, 204));
+        jfDataVenda.setBorder(new javax.swing.border.MatteBorder(null));
+        jfDataVenda.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            jfDataVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jfDataVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jlValorVenda.setBackground(new java.awt.Color(0, 0, 0));
+        jlValorVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlValorVenda.setForeground(new java.awt.Color(204, 0, 0));
+        jlValorVenda.setText("Valor:");
+
+        jtValorVenda.setBackground(new java.awt.Color(204, 204, 204));
+        jtValorVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtValorVenda.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jlValorVenda1.setBackground(new java.awt.Color(0, 0, 0));
+        jlValorVenda1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlValorVenda1.setForeground(new java.awt.Color(204, 0, 0));
+        jlValorVenda1.setText("Retorno:");
+
+        jtValorVenda1.setBackground(new java.awt.Color(204, 204, 204));
+        jtValorVenda1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtValorVenda1.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jtFinanceiraComprador.setBackground(new java.awt.Color(204, 204, 204));
+        jtFinanceiraComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtFinanceiraComprador.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jlFinanceiraComprador.setBackground(new java.awt.Color(0, 0, 0));
+        jlFinanceiraComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlFinanceiraComprador.setForeground(new java.awt.Color(204, 0, 0));
+        jlFinanceiraComprador.setText("Financeira:");
+
+        javax.swing.GroupLayout jpDataValorVendaLayout = new javax.swing.GroupLayout(jpDataValorVenda);
+        jpDataValorVenda.setLayout(jpDataValorVendaLayout);
+        jpDataValorVendaLayout.setHorizontalGroup(
+            jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpDataValorVendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpDataValorVendaLayout.createSequentialGroup()
+                        .addComponent(jlDataVenda)
+                        .addGap(22, 22, 22)
+                        .addComponent(jfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlValorVenda)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtValorVenda))
+                    .addGroup(jpDataValorVendaLayout.createSequentialGroup()
+                        .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlFinanceiraComprador)
+                            .addComponent(jlValorVenda1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtValorVenda1)
+                            .addComponent(jtFinanceiraComprador))))
+                .addContainerGap())
+        );
+        jpDataValorVendaLayout.setVerticalGroup(
+            jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpDataValorVendaLayout.createSequentialGroup()
+                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlDataVenda)
+                    .addComponent(jfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlValorVenda)
+                    .addComponent(jtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlFinanceiraComprador)
+                    .addComponent(jtFinanceiraComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlValorVenda1)
+                    .addComponent(jtValorVenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jpVeiculosLayout = new javax.swing.GroupLayout(jpVeiculos);
         jpVeiculos.setLayout(jpVeiculosLayout);
         jpVeiculosLayout.setHorizontalGroup(
             jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpVeiculosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlPlaca)
-                .addGap(18, 18, 18)
-                .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpDataValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpVeiculosLayout.createSequentialGroup()
+                        .addComponent(jlPlaca)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpVeiculosLayout.setVerticalGroup(
@@ -287,7 +432,9 @@ public class DlgVenda extends javax.swing.JDialog {
                     .addComponent(jlPlaca)
                     .addComponent(jbPesquisar))
                 .addGap(18, 18, 18)
-                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jpDataValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -339,20 +486,53 @@ public class DlgVenda extends javax.swing.JDialog {
         ));
         jsTabelaVeiculosVendidos.setViewportView(jtVeiculosVendidos);
 
+        jlPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jlPlacaFiltroDespesas.setForeground(new java.awt.Color(0, 0, 0));
+        jlPlacaFiltroDespesas.setText("Placa:");
+
+        jtPlacaFiltroDespesas.setBackground(new java.awt.Color(204, 204, 204));
+        jtPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtPlacaFiltroDespesas.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jbPesquisarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
+        jbPesquisarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbPesquisarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
+        jbPesquisarFiltroDespesas.setText("Pesquisar");
+
+        jbListarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
+        jbListarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
+        jbListarFiltroDespesas.setText("Listar Todas");
+
         javax.swing.GroupLayout jpListaVendidosLayout = new javax.swing.GroupLayout(jpListaVendidos);
         jpListaVendidos.setLayout(jpListaVendidosLayout);
         jpListaVendidosLayout.setHorizontalGroup(
             jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaVendidosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
+                .addGroup(jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
+                    .addGroup(jpListaVendidosLayout.createSequentialGroup()
+                        .addComponent(jlPlacaFiltroDespesas)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbPesquisarFiltroDespesas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
+                        .addComponent(jbListarFiltroDespesas)))
                 .addContainerGap())
         );
         jpListaVendidosLayout.setVerticalGroup(
             jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpListaVendidosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaVendidosLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPlacaFiltroDespesas)
+                    .addComponent(jbListarFiltroDespesas)
+                    .addComponent(jbPesquisarFiltroDespesas))
+                .addGap(18, 18, 18)
+                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -391,14 +571,26 @@ public class DlgVenda extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jbListarFiltroDespesas;
     private javax.swing.JButton jbPesquisar;
+    private javax.swing.JButton jbPesquisarFiltroDespesas;
     private javax.swing.JButton jbRegistrar;
+    private javax.swing.JFormattedTextField jfCEPVendedor;
+    private javax.swing.JFormattedTextField jfCEPVendedor1;
     private javax.swing.JFormattedTextField jfDataVenda;
     private javax.swing.JFormattedTextField jfTelComprador;
+    private javax.swing.JLabel jlBairroVendedor;
+    private javax.swing.JLabel jlCEPVendedor;
+    private javax.swing.JLabel jlCEPVendedor1;
+    private javax.swing.JLabel jlCidadeVendedor;
     private javax.swing.JLabel jlDataVenda;
+    private javax.swing.JLabel jlEndVendedor;
+    private javax.swing.JLabel jlEstadoVendedor;
     private javax.swing.JLabel jlFinanceiraComprador;
     private javax.swing.JLabel jlNomeComprador;
+    private javax.swing.JLabel jlNumEndVendedor;
     private javax.swing.JLabel jlPlaca;
+    private javax.swing.JLabel jlPlacaFiltroDespesas;
     private javax.swing.JLabel jlTelComprador;
     private javax.swing.JLabel jlTituloCompra;
     private javax.swing.JLabel jlValorVenda;
@@ -411,10 +603,16 @@ public class DlgVenda extends javax.swing.JDialog {
     private javax.swing.JPanel jpVenda;
     private javax.swing.JScrollPane jsTabelaVeiculos;
     private javax.swing.JScrollPane jsTabelaVeiculosVendidos;
+    private javax.swing.JTextField jtBairroVendedor;
+    private javax.swing.JTextField jtCidadeVendedor;
+    private javax.swing.JTextField jtEndVendedor;
+    private javax.swing.JTextField jtEstadoVendedor;
     private javax.swing.JTextField jtFinanceiraComprador;
     private javax.swing.JTextField jtNomeComprador;
+    private javax.swing.JTextField jtNumEnderecoVendedor;
     private javax.swing.JTabbedPane jtPainelCompra;
     private javax.swing.JTextField jtPlaca;
+    private javax.swing.JTextField jtPlacaFiltroDespesas;
     private javax.swing.JTextField jtValorVenda;
     private javax.swing.JTextField jtValorVenda1;
     private javax.swing.JTable jtVeiculos;
