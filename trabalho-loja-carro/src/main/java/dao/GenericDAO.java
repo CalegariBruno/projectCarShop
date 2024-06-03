@@ -4,10 +4,7 @@
  */
 package dao;
 
-/**
- *
- * @author USUARIO
- */
-public class EnderecoDAO {
+
+public class GenericDAO {
     
 }
