@@ -365,7 +365,7 @@ public class DlgCompra extends javax.swing.JDialog {
         );
 
         jpVeiculo.setBackground(new java.awt.Color(255, 255, 102));
-        jpVeiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpVeiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jlPlacaVeiculoCompra.setBackground(new java.awt.Color(0, 0, 0));
         jlPlacaVeiculoCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -418,7 +418,7 @@ public class DlgCompra extends javax.swing.JDialog {
         jtAnoVeiculoCompra.setBorder(new javax.swing.border.MatteBorder(null));
 
         jpTipoVeiculoCompra.setBackground(new java.awt.Color(255, 255, 102));
-        jpTipoVeiculoCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpTipoVeiculoCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         jpTipoVeiculoCompra.setForeground(new java.awt.Color(0, 0, 0));
 
         jrbCarro.setBackground(new java.awt.Color(255, 255, 102));
@@ -467,7 +467,7 @@ public class DlgCompra extends javax.swing.JDialog {
         jcbCorVeiculoCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jpCombustivelVeiculoCompra.setBackground(new java.awt.Color(255, 255, 102));
-        jpCombustivelVeiculoCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Combustível", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpCombustivelVeiculoCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Combustível", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         jpCombustivelVeiculoCompra.setForeground(new java.awt.Color(0, 0, 0));
 
         jrbGasolina.setBackground(new java.awt.Color(255, 255, 102));

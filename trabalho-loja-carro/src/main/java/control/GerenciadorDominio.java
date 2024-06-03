@@ -5,10 +5,13 @@
 package control;
 
 import dao.ConexaoHibernate;
+import dao.GenericDAO;
 
 
 public class GerenciadorDominio {
 
+    private GenericDAO genDAO;
+    
     public GerenciadorDominio() {
         ConexaoHibernate.getSessionFactory().openSession();
     }    
