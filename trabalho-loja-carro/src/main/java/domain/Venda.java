@@ -32,11 +32,9 @@ public class Venda implements Serializable {
     private double valor;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn ( name = "idCliente")
     private Pessoa cliente;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn ( name = "idVeiculo")
     private Veiculo veiculo;
 
     

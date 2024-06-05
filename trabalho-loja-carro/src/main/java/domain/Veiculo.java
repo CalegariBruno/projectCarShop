@@ -23,11 +23,11 @@ public class Veiculo {
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idVeiculo;
     
-    @Column(length = 8 ,unique=true)
+    @Column(length = 7 ,unique=true)
     private String placa;
     
     @Column(unique=true)
-    private int renavam;
+    private long renavam;
     
     private String marca;
     private String modelo;
@@ -37,11 +37,9 @@ public class Veiculo {
     private int ano;
     
     @OneToMany ( mappedBy = "veiculo", fetch = FetchType.LAZY )
-    @JoinColumn(name="idCompra")
     private List<Compra> compras;
     
     @OneToMany ( mappedBy = "veiculo", fetch = FetchType.LAZY )
-    @JoinColumn(name="idVenda")
     private List<Venda> vendas;
     
     @OneToMany (mappedBy = "veiculo", fetch = FetchType.LAZY)
@@ -50,7 +48,7 @@ public class Veiculo {
     public Veiculo() {
     }
 
-    public Veiculo(int idVeiculo, String placa, int renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
+    public Veiculo(int idVeiculo, String placa, long renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
         this.idVeiculo = idVeiculo;
         this.placa = placa;
         this.renavam = renavam;
@@ -62,7 +60,7 @@ public class Veiculo {
         this.ano = ano;
     }
 
-    public Veiculo(String placa, int renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
+    public Veiculo(String placa, long renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
         this.placa = placa;
         this.renavam = renavam;
         this.marca = marca;
@@ -89,11 +87,11 @@ public class Veiculo {
         this.placa = placa;
     }
 
-    public int getRenavam() {
+    public long getRenavam() {
         return renavam;
     }
 
-    public void setRenavam(int renavam) {
+    public void setRenavam(long renavam) {
         this.renavam = renavam;
     }
 

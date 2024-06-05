@@ -30,35 +30,45 @@ public class Pessoa implements Serializable {
     @Column (name="nomeCliente", nullable = false)
     private String nome;
     
+    @Column( length = 14 ,unique=true )
+    private String cpf;
+    
     @Column ( length = 15)
     private String telefone;
     
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn ( name = "idEndereco")
     private Endereco endereco;
     
     @OneToMany(mappedBy = "revendedor", fetch = FetchType.LAZY )
-    @JoinColumn ( name = "idCompra")
     private List<Compra> compras;
     
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY )
-    @JoinColumn ( name = "idVenda")
     private List<Venda> vendas;
 
     public Pessoa() {
     }
     
-    public Pessoa(int idPessoa, String nome, String telefone, Endereco endereco) {
+    public Pessoa(int idPessoa, String nome, String cpf ,String telefone, Endereco endereco) {
         this.idPessoa = idPessoa;
         this.nome = nome;
+        this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
     }
 
-    public Pessoa(String nome, String telefone, Endereco endereco) {
+    public Pessoa(String nome, String cpf , String telefone, Endereco endereco) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.cpf = cpf;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public int getIdPessoa() {
