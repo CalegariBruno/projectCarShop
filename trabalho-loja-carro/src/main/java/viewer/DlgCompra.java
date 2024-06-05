@@ -4,12 +4,14 @@
  */
 package viewer;
 
+import control.BuscarCEP;
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import domain.Compra;
 import domain.Endereco;
 import domain.Pessoa;
 import domain.Veiculo;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -161,6 +163,11 @@ public class DlgCompra extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         txtCepRevendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCepRevendedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCepRevendedorFocusLost(evt);
+            }
+        });
 
         jlEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -742,6 +749,23 @@ public class DlgCompra extends javax.swing.JDialog {
             Logger.getLogger(DlgCompra.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbRegistrarCompraActionPerformed
+
+    private void txtCepRevendedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepRevendedorFocusLost
+        try {
+            Endereco ender;
+            ender = BuscarCEP.consultarCEP(txtCepRevendedor.getText() );
+            if (ender != null ) {
+                txtDescEndereco.setText( ender.getDescricao() );
+                txtBairroEnder.setText(ender.getBairro() );
+                txtCidadeEnder.setText(ender.getCidade() );
+                txtEstadoEnd.setText(ender.getUf());
+            } else {
+                JOptionPane.showMessageDialog(this, "CEP não encontrado");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "CEP não encontrado", "Erro CEP", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_txtCepRevendedorFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
