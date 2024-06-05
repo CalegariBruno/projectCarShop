@@ -327,12 +327,13 @@ public class DlgCompra extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addComponent(txtNumEndRevendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtNomeRevendedor)
-                                    .addComponent(txtEstadoEnd, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                    .addComponent(txtEstadoEnd, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jpVendedorLayout.createSequentialGroup()
+                                        .addComponent(txtCpfRevendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(3, 3, 3))
                     .addGroup(jpVendedorLayout.createSequentialGroup()
                         .addComponent(jlCEPVendedor1)
-                        .addGap(109, 109, 109)
-                        .addComponent(txtCpfRevendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jpVendedorLayout.setVerticalGroup(
@@ -663,7 +664,7 @@ public class DlgCompra extends javax.swing.JDialog {
                     .addGroup(jpNovaCompraLayout.createSequentialGroup()
                         .addGap(387, 387, 387)
                         .addComponent(jbRegistrarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jpNovaCompraLayout.setVerticalGroup(
             jpNovaCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -799,19 +800,19 @@ public class DlgCompra extends javax.swing.JDialog {
         String tAno = txtAno.getText();
         String cor = (String) cmbCor.getSelectedItem();
         String tipoVeiculo = bgTipo.getSelection().getActionCommand();
-        String combustivel = bgCombustivel.getSelection().getActionCommand();
-
+        String combustivel = bgCombustivel.getSelection().getActionCommand();        
+        
         try {
             // INSERIR NO BANCO
 
             int num = Integer.parseInt(txtNumero);
-            int renavam = Integer.parseInt(tRenavam);
+            long renavam = Long.parseLong(tRenavam);
             int ano = Integer.parseInt(tAno);
             double valor = Double.parseDouble(valorCompra);
             Date data = FuncoesUteis.strToDate(dataCompra);
             
             Endereco endereco = new Endereco(cep, bairro, descricao, num, cidade, estado);
-            Pessoa revendedor = new Pessoa(nome, telefone, endereco);
+            Pessoa revendedor = new Pessoa(nome, cpf, telefone, endereco);
             Veiculo veiculo = new Veiculo(placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
             
             Compra compra = GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra( valor, data, revendedor, veiculo );
