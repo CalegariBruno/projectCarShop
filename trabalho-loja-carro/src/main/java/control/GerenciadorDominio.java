@@ -6,6 +6,10 @@ package control;
 
 import dao.ConexaoHibernate;
 import dao.GenericDAO;
+import domain.Compra;
+import domain.Pessoa;
+import domain.Veiculo;
+import java.util.Date;
 
 
 public class GerenciadorDominio {
@@ -14,6 +18,14 @@ public class GerenciadorDominio {
     
     public GerenciadorDominio() {
         ConexaoHibernate.getSessionFactory().openSession();
+        
+        genDAO = new GenericDAO();
     }    
+    
+    public Compra inserirCompra( double valor, Date data, Pessoa revendedor, Veiculo veiculo ){
+        Compra compra = new Compra(valor, data, revendedor, veiculo);
+        genDAO.inserir(compra);
+        return compra;
+    }
     
 }
