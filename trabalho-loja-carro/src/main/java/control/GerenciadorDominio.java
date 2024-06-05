@@ -23,8 +23,14 @@ public class GerenciadorDominio {
     }    
     
     public Compra inserirCompra( double valor, Date data, Pessoa revendedor, Veiculo veiculo ){
+        
+        genDAO.inserir(revendedor.getEndereco());
+        genDAO.inserir(revendedor);
+        genDAO.inserir(veiculo);        
+        
         Compra compra = new Compra(valor, data, revendedor, veiculo);
         genDAO.inserir(compra);
+        
         return compra;
     }
     
