@@ -39,11 +39,11 @@ public class Compra implements Serializable {
     }
 
     
-    public Compra(int idCompra, double valor, Date data, Pessoa cliente, Veiculo veiculo) {
+    public Compra(int idCompra, double valor, Date data, Pessoa revendedor, Veiculo veiculo) {
         this.idCompra = idCompra;
         this.valor = valor;
         this.data = data;
-        this.cliente = cliente;
+        this.cliente = revendedor;
         this.veiculo = veiculo;
     }
 

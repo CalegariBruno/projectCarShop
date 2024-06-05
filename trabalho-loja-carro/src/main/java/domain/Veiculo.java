@@ -50,7 +50,7 @@ public class Veiculo {
     public Veiculo() {
     }
 
-    public Veiculo(int idVeiculo, String placa, int renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano, Compra compra, Venda venda, List<Despesa> despesas) {
+    public Veiculo(int idVeiculo, String placa, int renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
         this.idVeiculo = idVeiculo;
         this.placa = placa;
         this.renavam = renavam;
@@ -60,12 +60,9 @@ public class Veiculo {
         this.tipo = tipo;
         this.combustivel = combustivel;
         this.ano = ano;
-        this.compra = compra;
-        this.venda = venda;
-        this.despesas = despesas;
     }
 
-    public Veiculo(String placa, int renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano, Compra compra, Venda venda, List<Despesa> despesas) {
+    public Veiculo(String placa, int renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
         this.placa = placa;
         this.renavam = renavam;
         this.marca = marca;
@@ -74,9 +71,6 @@ public class Veiculo {
         this.tipo = tipo;
         this.combustivel = combustivel;
         this.ano = ano;
-        this.compra = compra;
-        this.venda = venda;
-        this.despesas = despesas;
     }
 
     public int getIdVeiculo() {
