@@ -5,6 +5,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -35,13 +37,13 @@ public class Pessoa implements Serializable {
     @JoinColumn ( name = "idEndereco")
     private Endereco endereco;
     
-    @OneToOne
+    @OneToMany(mappedBy = "revendedor", fetch = FetchType.LAZY )
     @JoinColumn ( name = "idCompra")
-    private Compra compra;
+    private List<Compra> compras;
     
-    @OneToOne
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY )
     @JoinColumn ( name = "idVenda")
-    private Venda venda;
+    private List<Venda> vendas;
 
     public Pessoa() {
     }
@@ -91,21 +93,23 @@ public class Pessoa implements Serializable {
         this.endereco = endereco;
     }
 
-    public Compra getCompra() {
-        return compra;
+    public List<Compra> getCompras() {
+        return compras;
     }
 
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
     }
 
-    public Venda getVenda() {
-        return venda;
+    public List<Venda> getVendas() {
+        return vendas;
     }
 
-    public void setVenda(Venda venda) {
-        this.venda = venda;
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
     }
+
+    
     
     
     

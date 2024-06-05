@@ -7,10 +7,12 @@ package domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,30 +29,29 @@ public class Compra implements Serializable {
     
     private double valor;
     
-    @OneToOne
-    @JoinColumn(name = "idPessoa")
-    private Pessoa cliente;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idRevendedor")
+    private Pessoa revendedor;
     
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idVeiculo")
     private Veiculo veiculo;
 
     public Compra() {
     }
 
-    
     public Compra(int idCompra, double valor, Date data, Pessoa revendedor, Veiculo veiculo) {
         this.idCompra = idCompra;
         this.valor = valor;
         this.data = data;
-        this.cliente = revendedor;
+        this.revendedor = revendedor;
         this.veiculo = veiculo;
     }
 
-    public Compra(double valor, Date data, Pessoa cliente, Veiculo veiculo) {
+    public Compra(double valor, Date data, Pessoa revendedor, Veiculo veiculo) {
         this.valor = valor;
         this.data = data;
-        this.cliente = cliente;
+        this.revendedor = revendedor;
         this.veiculo = veiculo;
     }
 
@@ -78,12 +79,12 @@ public class Compra implements Serializable {
         this.data = data;
     }
 
-    public Pessoa getCliente() {
-        return cliente;
+    public Pessoa getRevendedor() {
+        return revendedor;
     }
 
-    public void setCliente(Pessoa cliente) {
-        this.cliente = cliente;
+    public void setRevendedor(Pessoa revendedor) {
+        this.revendedor = revendedor;
     }
 
     public Veiculo getVeiculo() {

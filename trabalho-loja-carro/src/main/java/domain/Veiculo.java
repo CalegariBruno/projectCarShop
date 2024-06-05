@@ -36,13 +36,13 @@ public class Veiculo {
     private String combustivel;
     private int ano;
     
-    @OneToOne
+    @OneToMany ( mappedBy = "veiculo", fetch = FetchType.LAZY )
     @JoinColumn(name="idCompra")
-    private Compra compra;
+    private List<Compra> compras;
     
-    @OneToOne
+    @OneToMany ( mappedBy = "veiculo", fetch = FetchType.LAZY )
     @JoinColumn(name="idVenda")
-    private Venda venda;
+    private List<Venda> vendas;
     
     @OneToMany (mappedBy = "veiculo", fetch = FetchType.LAZY)
     private List<Despesa> despesas;
@@ -145,20 +145,20 @@ public class Veiculo {
         this.ano = ano;
     }
 
-    public Compra getCompra() {
-        return compra;
+    public List<Compra> getCompras() {
+        return compras;
     }
 
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
     }
 
-    public Venda getVenda() {
-        return venda;
+    public List<Venda> getVendas() {
+        return vendas;
     }
 
-    public void setVenda(Venda venda) {
-        this.venda = venda;
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
     }
 
     public List<Despesa> getDespesas() {
