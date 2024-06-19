@@ -735,11 +735,8 @@ public class DlgCompra extends javax.swing.JDialog {
             double valor = Double.parseDouble(valorCompra);
             Date data = FuncoesUteis.strToDate(dataCompra);
             
-            Endereco endereco = new Endereco(cep, bairro, descricao, num, cidade, estado);
-            Pessoa revendedor = new Pessoa(nome, cpf, telefone, endereco);
-            Veiculo veiculo = new Veiculo(placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
-            
-            Compra compra = GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra( valor, data, revendedor, veiculo );
+            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra( valor, data, nome, cpf, telefone,cep, bairro,
+                    descricao, num, cidade, estado, placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
 
             JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
 

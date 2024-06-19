@@ -189,15 +189,15 @@
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="jlNumEndVendedor" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jtNumEnderecoVendedor" min="-2" pref="90" max="-2" attributes="0"/>
+                                              <Component id="txtNumero" min="-2" pref="90" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jtEstadoVendedor" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="jtCidadeVendedor" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="jtBairroVendedor" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="jtEndVendedor" max="32767" attributes="0"/>
+                                                  <Component id="txtEstado" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtCidade" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtBairro" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtEndereco" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -211,18 +211,18 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jtNomeComprador" max="32767" attributes="0"/>
+                                              <Component id="txtNome" max="32767" attributes="0"/>
                                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="jfCEPVendedor1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jfTelComprador" pref="126" max="32767" attributes="0"/>
+                                                  <Component id="txtCpf" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtTelefone" pref="126" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jfCEPVendedor" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <Component id="txtCep" min="-2" pref="100" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -237,44 +237,44 @@
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlNomeComprador" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtNomeComprador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlTelComprador" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jfTelComprador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jfCEPVendedor1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlCEPVendedor1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlNumEndVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jfCEPVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCep" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlCEPVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtNumEnderecoVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlEndVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtEndVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlBairroVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtBairroVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlCidadeVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtCidadeVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlEstadoVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtEstadoVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -296,7 +296,7 @@
                         <Property name="text" type="java.lang.String" value="Nome Completo:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jtNomeComprador">
+                    <Component class="javax.swing.JTextField" name="txtNome">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -328,7 +328,7 @@
                         <Property name="text" type="java.lang.String" value="Telefone:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jfTelComprador">
+                    <Component class="javax.swing.JFormattedTextField" name="txtTelefone">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -363,7 +363,7 @@
                         <Property name="text" type="java.lang.String" value="CEP:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jfCEPVendedor">
+                    <Component class="javax.swing.JFormattedTextField" name="txtCep">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -398,7 +398,7 @@
                         <Property name="text" type="java.lang.String" value="N&#xba;:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jtNumEnderecoVendedor">
+                    <Component class="javax.swing.JTextField" name="txtNumero">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -430,7 +430,7 @@
                         <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jtEndVendedor">
+                    <Component class="javax.swing.JTextField" name="txtEndereco">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -462,7 +462,7 @@
                         <Property name="text" type="java.lang.String" value="Bairro:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jtBairroVendedor">
+                    <Component class="javax.swing.JTextField" name="txtBairro">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -494,7 +494,7 @@
                         <Property name="text" type="java.lang.String" value="Cidade:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jtCidadeVendedor">
+                    <Component class="javax.swing.JTextField" name="txtCidade">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -526,7 +526,7 @@
                         <Property name="text" type="java.lang.String" value="Estado:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jtEstadoVendedor">
+                    <Component class="javax.swing.JTextField" name="txtEstado">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -558,7 +558,7 @@
                         <Property name="text" type="java.lang.String" value="CPF:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jfCEPVendedor1">
+                    <Component class="javax.swing.JFormattedTextField" name="txtCpf">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -729,11 +729,11 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jlDataVenda" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="jfDataVenda" min="-2" pref="128" max="-2" attributes="0"/>
+                                          <Component id="txtData" min="-2" pref="128" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jlValorVenda" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jtValorVenda" max="32767" attributes="0"/>
+                                          <Component id="txtValor" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -742,8 +742,8 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jtValorVenda1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jtFinanceiraComprador" max="32767" attributes="0"/>
+                                              <Component id="txtRetorno" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtFinanceira" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -756,19 +756,19 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jlDataVenda" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jfDataVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtData" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jlValorVenda" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtValorVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtValor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="19" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jlFinanceiraComprador" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtFinanceiraComprador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFinanceira" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jlValorVenda1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtValorVenda1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtRetorno" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -790,7 +790,7 @@
                             <Property name="text" type="java.lang.String" value="Data:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="jfDataVenda">
+                        <Component class="javax.swing.JFormattedTextField" name="txtData">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -825,7 +825,7 @@
                             <Property name="text" type="java.lang.String" value="Valor:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jtValorVenda">
+                        <Component class="javax.swing.JTextField" name="txtValor">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -854,7 +854,7 @@
                             <Property name="text" type="java.lang.String" value="Retorno:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jtValorVenda1">
+                        <Component class="javax.swing.JTextField" name="txtRetorno">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -869,7 +869,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jtFinanceiraComprador">
+                        <Component class="javax.swing.JTextField" name="txtFinanceira">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -915,6 +915,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Registrar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbRegistrarActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -4,6 +4,15 @@
  */
 package viewer;
 
+import control.FuncoesUteis;
+import control.GerenciadorInterface;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
+
 /**
  *
  * @author USUARIO
@@ -33,23 +42,23 @@ public class DlgVenda extends javax.swing.JDialog {
         jpVenda = new javax.swing.JPanel();
         jpComprador = new javax.swing.JPanel();
         jlNomeComprador = new javax.swing.JLabel();
-        jtNomeComprador = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         jlTelComprador = new javax.swing.JLabel();
-        jfTelComprador = new javax.swing.JFormattedTextField();
+        txtTelefone = new javax.swing.JFormattedTextField();
         jlCEPVendedor = new javax.swing.JLabel();
-        jfCEPVendedor = new javax.swing.JFormattedTextField();
+        txtCep = new javax.swing.JFormattedTextField();
         jlNumEndVendedor = new javax.swing.JLabel();
-        jtNumEnderecoVendedor = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
         jlEndVendedor = new javax.swing.JLabel();
-        jtEndVendedor = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
         jlBairroVendedor = new javax.swing.JLabel();
-        jtBairroVendedor = new javax.swing.JTextField();
+        txtBairro = new javax.swing.JTextField();
         jlCidadeVendedor = new javax.swing.JLabel();
-        jtCidadeVendedor = new javax.swing.JTextField();
+        txtCidade = new javax.swing.JTextField();
         jlEstadoVendedor = new javax.swing.JLabel();
-        jtEstadoVendedor = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
         jlCEPVendedor1 = new javax.swing.JLabel();
-        jfCEPVendedor1 = new javax.swing.JFormattedTextField();
+        txtCpf = new javax.swing.JFormattedTextField();
         jpVeiculos = new javax.swing.JPanel();
         jsTabelaVeiculos = new javax.swing.JScrollPane();
         jtVeiculos = new javax.swing.JTable();
@@ -58,12 +67,12 @@ public class DlgVenda extends javax.swing.JDialog {
         jbPesquisar = new javax.swing.JButton();
         jpDataValorVenda = new javax.swing.JPanel();
         jlDataVenda = new javax.swing.JLabel();
-        jfDataVenda = new javax.swing.JFormattedTextField();
+        txtData = new javax.swing.JFormattedTextField();
         jlValorVenda = new javax.swing.JLabel();
-        jtValorVenda = new javax.swing.JTextField();
+        txtValor = new javax.swing.JTextField();
         jlValorVenda1 = new javax.swing.JLabel();
-        jtValorVenda1 = new javax.swing.JTextField();
-        jtFinanceiraComprador = new javax.swing.JTextField();
+        txtRetorno = new javax.swing.JTextField();
+        txtFinanceira = new javax.swing.JTextField();
         jlFinanceiraComprador = new javax.swing.JLabel();
         jbRegistrar = new javax.swing.JButton();
         jpListaVendidos = new javax.swing.JPanel();
@@ -94,112 +103,112 @@ public class DlgVenda extends javax.swing.JDialog {
         jpVenda.setBorder(new javax.swing.border.MatteBorder(null));
 
         jpComprador.setBackground(new java.awt.Color(255, 255, 102));
-        jpComprador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Comprador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpComprador.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comprador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jlNomeComprador.setBackground(new java.awt.Color(0, 0, 0));
         jlNomeComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlNomeComprador.setForeground(new java.awt.Color(0, 0, 0));
         jlNomeComprador.setText("Nome Completo:");
 
-        jtNomeComprador.setBackground(new java.awt.Color(204, 204, 204));
-        jtNomeComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtNomeComprador.setBorder(new javax.swing.border.MatteBorder(null));
-        jtNomeComprador.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txtNome.setBackground(new java.awt.Color(204, 204, 204));
+        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNome.setBorder(new javax.swing.border.MatteBorder(null));
+        txtNome.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
         jlTelComprador.setBackground(new java.awt.Color(0, 0, 0));
         jlTelComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlTelComprador.setForeground(new java.awt.Color(0, 0, 0));
         jlTelComprador.setText("Telefone:");
 
-        jfTelComprador.setBackground(new java.awt.Color(204, 204, 204));
-        jfTelComprador.setBorder(new javax.swing.border.MatteBorder(null));
-        jfTelComprador.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefone.setBackground(new java.awt.Color(204, 204, 204));
+        txtTelefone.setBorder(new javax.swing.border.MatteBorder(null));
+        txtTelefone.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            jfTelComprador.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jfTelComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTelefone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jlCEPVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlCEPVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlCEPVendedor.setForeground(new java.awt.Color(0, 0, 0));
         jlCEPVendedor.setText("CEP:");
 
-        jfCEPVendedor.setBackground(new java.awt.Color(204, 204, 204));
-        jfCEPVendedor.setBorder(new javax.swing.border.MatteBorder(null));
-        jfCEPVendedor.setForeground(new java.awt.Color(0, 0, 0));
+        txtCep.setBackground(new java.awt.Color(204, 204, 204));
+        txtCep.setBorder(new javax.swing.border.MatteBorder(null));
+        txtCep.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            jfCEPVendedor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            txtCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jfCEPVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCep.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jlNumEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlNumEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlNumEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
         jlNumEndVendedor.setText("Nº:");
 
-        jtNumEnderecoVendedor.setBackground(new java.awt.Color(204, 204, 204));
-        jtNumEnderecoVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtNumEnderecoVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jtNumEnderecoVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        txtNumero.setBackground(new java.awt.Color(204, 204, 204));
+        txtNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNumero.setForeground(new java.awt.Color(0, 0, 0));
+        txtNumero.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
         jlEndVendedor.setText("Endereço:");
 
-        jtEndVendedor.setBackground(new java.awt.Color(204, 204, 204));
-        jtEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jtEndVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        txtEndereco.setBackground(new java.awt.Color(204, 204, 204));
+        txtEndereco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEndereco.setForeground(new java.awt.Color(0, 0, 0));
+        txtEndereco.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlBairroVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlBairroVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlBairroVendedor.setForeground(new java.awt.Color(0, 0, 0));
         jlBairroVendedor.setText("Bairro:");
 
-        jtBairroVendedor.setBackground(new java.awt.Color(204, 204, 204));
-        jtBairroVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtBairroVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jtBairroVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        txtBairro.setBackground(new java.awt.Color(204, 204, 204));
+        txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtBairro.setForeground(new java.awt.Color(0, 0, 0));
+        txtBairro.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlCidadeVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlCidadeVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlCidadeVendedor.setForeground(new java.awt.Color(0, 0, 0));
         jlCidadeVendedor.setText("Cidade:");
 
-        jtCidadeVendedor.setBackground(new java.awt.Color(204, 204, 204));
-        jtCidadeVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtCidadeVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jtCidadeVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        txtCidade.setBackground(new java.awt.Color(204, 204, 204));
+        txtCidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCidade.setForeground(new java.awt.Color(0, 0, 0));
+        txtCidade.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlEstadoVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlEstadoVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlEstadoVendedor.setForeground(new java.awt.Color(0, 0, 0));
         jlEstadoVendedor.setText("Estado:");
 
-        jtEstadoVendedor.setBackground(new java.awt.Color(204, 204, 204));
-        jtEstadoVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtEstadoVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jtEstadoVendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        txtEstado.setBackground(new java.awt.Color(204, 204, 204));
+        txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEstado.setForeground(new java.awt.Color(0, 0, 0));
+        txtEstado.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlCEPVendedor1.setBackground(new java.awt.Color(0, 0, 0));
         jlCEPVendedor1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlCEPVendedor1.setForeground(new java.awt.Color(0, 0, 0));
         jlCEPVendedor1.setText("CPF:");
 
-        jfCEPVendedor1.setBackground(new java.awt.Color(204, 204, 204));
-        jfCEPVendedor1.setBorder(new javax.swing.border.MatteBorder(null));
-        jfCEPVendedor1.setForeground(new java.awt.Color(0, 0, 0));
+        txtCpf.setBackground(new java.awt.Color(204, 204, 204));
+        txtCpf.setBorder(new javax.swing.border.MatteBorder(null));
+        txtCpf.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            jfCEPVendedor1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jfCEPVendedor1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpCompradorLayout = new javax.swing.GroupLayout(jpComprador);
         jpComprador.setLayout(jpCompradorLayout);
@@ -220,14 +229,14 @@ public class DlgVenda extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jlNumEndVendedor)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtNumEnderecoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpCompradorLayout.createSequentialGroup()
                                 .addGap(78, 78, 78)
                                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtEstadoVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtCidadeVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtBairroVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtEndVendedor)))))
+                                    .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtBairro, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtEndereco)))))
                     .addGroup(jpCompradorLayout.createSequentialGroup()
                         .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlNomeComprador)
@@ -236,15 +245,15 @@ public class DlgVenda extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpCompradorLayout.createSequentialGroup()
-                                .addComponent(jtNomeComprador)
+                                .addComponent(txtNome)
                                 .addGap(12, 12, 12))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCompradorLayout.createSequentialGroup()
                                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jfCEPVendedor1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jfTelComprador, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+                                    .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                                 .addGap(178, 178, 178))
                             .addGroup(jpCompradorLayout.createSequentialGroup()
-                                .addComponent(jfCEPVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jpCompradorLayout.setVerticalGroup(
@@ -253,42 +262,42 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNomeComprador)
-                    .addComponent(jtNomeComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTelComprador)
-                    .addComponent(jfTelComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jfCEPVendedor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCEPVendedor1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNumEndVendedor)
-                    .addComponent(jfCEPVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCEPVendedor)
-                    .addComponent(jtNumEnderecoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEndVendedor)
-                    .addComponent(jtEndVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlBairroVendedor)
-                    .addComponent(jtBairroVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCidadeVendedor)
-                    .addComponent(jtCidadeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEstadoVendedor)
-                    .addComponent(jtEstadoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpVeiculos.setBackground(new java.awt.Color(255, 255, 102));
-        jpVeiculos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpVeiculos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jtVeiculos.setBackground(new java.awt.Color(204, 204, 204));
         jtVeiculos.setModel(new javax.swing.table.DefaultTableModel(
@@ -315,7 +324,7 @@ public class DlgVenda extends javax.swing.JDialog {
         jbPesquisar.setText("Pesquisar");
 
         jpDataValorVenda.setBackground(new java.awt.Color(255, 255, 102));
-        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         jpDataValorVenda.setForeground(new java.awt.Color(0, 0, 0));
 
         jlDataVenda.setBackground(new java.awt.Color(0, 0, 0));
@@ -323,37 +332,37 @@ public class DlgVenda extends javax.swing.JDialog {
         jlDataVenda.setForeground(new java.awt.Color(204, 0, 0));
         jlDataVenda.setText("Data:");
 
-        jfDataVenda.setBackground(new java.awt.Color(204, 204, 204));
-        jfDataVenda.setBorder(new javax.swing.border.MatteBorder(null));
-        jfDataVenda.setForeground(new java.awt.Color(0, 0, 0));
+        txtData.setBackground(new java.awt.Color(204, 204, 204));
+        txtData.setBorder(new javax.swing.border.MatteBorder(null));
+        txtData.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            jfDataVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jfDataVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtData.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jlValorVenda.setBackground(new java.awt.Color(0, 0, 0));
         jlValorVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlValorVenda.setForeground(new java.awt.Color(204, 0, 0));
         jlValorVenda.setText("Valor:");
 
-        jtValorVenda.setBackground(new java.awt.Color(204, 204, 204));
-        jtValorVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtValorVenda.setBorder(new javax.swing.border.MatteBorder(null));
+        txtValor.setBackground(new java.awt.Color(204, 204, 204));
+        txtValor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtValor.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlValorVenda1.setBackground(new java.awt.Color(0, 0, 0));
         jlValorVenda1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jlValorVenda1.setForeground(new java.awt.Color(204, 0, 0));
         jlValorVenda1.setText("Retorno:");
 
-        jtValorVenda1.setBackground(new java.awt.Color(204, 204, 204));
-        jtValorVenda1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtValorVenda1.setBorder(new javax.swing.border.MatteBorder(null));
+        txtRetorno.setBackground(new java.awt.Color(204, 204, 204));
+        txtRetorno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtRetorno.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jtFinanceiraComprador.setBackground(new java.awt.Color(204, 204, 204));
-        jtFinanceiraComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtFinanceiraComprador.setBorder(new javax.swing.border.MatteBorder(null));
+        txtFinanceira.setBackground(new java.awt.Color(204, 204, 204));
+        txtFinanceira.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtFinanceira.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlFinanceiraComprador.setBackground(new java.awt.Color(0, 0, 0));
         jlFinanceiraComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -370,19 +379,19 @@ public class DlgVenda extends javax.swing.JDialog {
                     .addGroup(jpDataValorVendaLayout.createSequentialGroup()
                         .addComponent(jlDataVenda)
                         .addGap(22, 22, 22)
-                        .addComponent(jfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jlValorVenda)
                         .addGap(18, 18, 18)
-                        .addComponent(jtValorVenda))
+                        .addComponent(txtValor))
                     .addGroup(jpDataValorVendaLayout.createSequentialGroup()
                         .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlFinanceiraComprador)
                             .addComponent(jlValorVenda1))
                         .addGap(18, 18, 18)
                         .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtValorVenda1)
-                            .addComponent(jtFinanceiraComprador))))
+                            .addComponent(txtRetorno)
+                            .addComponent(txtFinanceira))))
                 .addContainerGap())
         );
         jpDataValorVendaLayout.setVerticalGroup(
@@ -390,17 +399,17 @@ public class DlgVenda extends javax.swing.JDialog {
             .addGroup(jpDataValorVendaLayout.createSequentialGroup()
                 .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDataVenda)
-                    .addComponent(jfDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlValorVenda)
-                    .addComponent(jtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlFinanceiraComprador)
-                    .addComponent(jtFinanceiraComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFinanceira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlValorVenda1)
-                    .addComponent(jtValorVenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -442,6 +451,11 @@ public class DlgVenda extends javax.swing.JDialog {
         jbRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         jbRegistrar.setText("Registrar");
+        jbRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpVendaLayout = new javax.swing.GroupLayout(jpVenda);
         jpVenda.setLayout(jpVendaLayout);
@@ -568,6 +582,48 @@ public class DlgVenda extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
+        
+        // INFORMAÇÕES DO COMPRADOR
+        String nome = txtNome.getText();
+        String telefone = txtTelefone.getText();
+        String cpf = txtCpf.getText();
+        String cep = txtCep.getText();
+        String tNumero = txtNumero.getText();
+        String descricao = txtEndereco.getText();
+        String bairro = txtBairro.getText();
+        String cidade = txtCidade.getText();
+        String estado = txtEstado.getText();
+
+        // INFORMAÇÕES DA VENDA
+        String dataVenda = txtData.getText();
+        String valorVenda = txtValor.getText();
+        String financeira = txtFinanceira.getText();
+        String retorno = txtRetorno.getText();
+        
+        // INFORMAÇÕES DO VEICULO 
+        // PEGAR O VEICULO SELECIONADO
+                
+        try {
+            // INSERIR NO BANCO
+
+            int num = Integer.parseInt(tNumero);
+            
+            double valor = Double.parseDouble(valorVenda);
+            Date data = FuncoesUteis.strToDate(dataVenda);
+            
+//            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda( valor, data, nome, cpf, telefone,cep, bairro,
+//                    descricao, num, cidade, estado, placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+
+            JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
+        } catch (ParseException ex) {
+            Logger.getLogger(DlgCompra.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbRegistrarActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -575,10 +631,6 @@ public class DlgVenda extends javax.swing.JDialog {
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbPesquisarFiltroDespesas;
     private javax.swing.JButton jbRegistrar;
-    private javax.swing.JFormattedTextField jfCEPVendedor;
-    private javax.swing.JFormattedTextField jfCEPVendedor1;
-    private javax.swing.JFormattedTextField jfDataVenda;
-    private javax.swing.JFormattedTextField jfTelComprador;
     private javax.swing.JLabel jlBairroVendedor;
     private javax.swing.JLabel jlCEPVendedor;
     private javax.swing.JLabel jlCEPVendedor1;
@@ -603,19 +655,23 @@ public class DlgVenda extends javax.swing.JDialog {
     private javax.swing.JPanel jpVenda;
     private javax.swing.JScrollPane jsTabelaVeiculos;
     private javax.swing.JScrollPane jsTabelaVeiculosVendidos;
-    private javax.swing.JTextField jtBairroVendedor;
-    private javax.swing.JTextField jtCidadeVendedor;
-    private javax.swing.JTextField jtEndVendedor;
-    private javax.swing.JTextField jtEstadoVendedor;
-    private javax.swing.JTextField jtFinanceiraComprador;
-    private javax.swing.JTextField jtNomeComprador;
-    private javax.swing.JTextField jtNumEnderecoVendedor;
     private javax.swing.JTabbedPane jtPainelCompra;
     private javax.swing.JTextField jtPlaca;
     private javax.swing.JTextField jtPlacaFiltroDespesas;
-    private javax.swing.JTextField jtValorVenda;
-    private javax.swing.JTextField jtValorVenda1;
     private javax.swing.JTable jtVeiculos;
     private javax.swing.JTable jtVeiculosVendidos;
+    private javax.swing.JTextField txtBairro;
+    private javax.swing.JFormattedTextField txtCep;
+    private javax.swing.JTextField txtCidade;
+    private javax.swing.JFormattedTextField txtCpf;
+    private javax.swing.JFormattedTextField txtData;
+    private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtFinanceira;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtRetorno;
+    private javax.swing.JFormattedTextField txtTelefone;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
