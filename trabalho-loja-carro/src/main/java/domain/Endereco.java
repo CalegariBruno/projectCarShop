@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -36,6 +39,12 @@ public class Endereco implements Serializable {
     
     @Column ( length = 20)
     private String uf; 
+    
+    @OneToOne 
+    @MapsId
+    @JoinColumn (name = "idPessoa")
+    private Pessoa cliente;
+
 
     public Endereco() {
     }
@@ -57,6 +66,14 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.cidade = cidade;
         this.uf = uf;
+    }
+    
+     public Pessoa getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Pessoa cliente) {
+        this.cliente = cliente;
     }
 
     public int getIdEndereco() {

@@ -36,7 +36,7 @@ public class Pessoa implements Serializable {
     @Column ( length = 15)
     private String telefone;
     
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne( mappedBy = "cliente" ,cascade = CascadeType.ALL)
     private Endereco endereco;
     
     @OneToMany(mappedBy = "revendedor", fetch = FetchType.LAZY )
@@ -48,19 +48,19 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
     
-    public Pessoa(int idPessoa, String nome, String cpf ,String telefone, Endereco endereco) {
+    public Pessoa(int idPessoa, String nome, String cpf ,String telefone,String cep, String bairro, String descricao, int numero, String cidade, String uf) {
         this.idPessoa = idPessoa;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.endereco = endereco;
+        this.endereco = new Endereco(cep, bairro, descricao, numero, cidade, uf);
     }
 
-    public Pessoa(String nome, String cpf , String telefone, Endereco endereco) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.endereco = endereco;
+    public Pessoa(String nome, String cpf , String telefone, String cep, String bairro, String descricao, int numero, String cidade, String uf) {
+        this.nome = nome;               
         this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = new Endereco(cep, bairro, descricao, numero, cidade, uf);
     }
 
     public String getCpf() {
