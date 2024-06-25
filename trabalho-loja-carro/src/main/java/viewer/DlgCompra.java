@@ -97,6 +97,8 @@ public class DlgCompra extends javax.swing.JDialog {
         jtPlacaFiltroDespesas = new javax.swing.JTextField();
         jbPesquisarFiltroDespesas = new javax.swing.JButton();
         jbListarFiltroDespesas = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ficha de Entrada");
@@ -133,6 +135,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtNumEndRevendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNumEndRevendedor.setForeground(new java.awt.Color(0, 0, 0));
         txtNumEndRevendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        txtNumEndRevendedor.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jlTelVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlTelVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -147,6 +150,7 @@ public class DlgCompra extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtTelRevendedor.setCaretColor(new java.awt.Color(0, 0, 0));
         txtTelRevendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jlNumEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
@@ -162,6 +166,7 @@ public class DlgCompra extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCepRevendedor.setCaretColor(new java.awt.Color(0, 0, 0));
         txtCepRevendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCepRevendedor.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -178,6 +183,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtDescEndereco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDescEndereco.setForeground(new java.awt.Color(0, 0, 0));
         txtDescEndereco.setBorder(new javax.swing.border.MatteBorder(null));
+        txtDescEndereco.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jlBairroVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlBairroVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -198,11 +204,13 @@ public class DlgCompra extends javax.swing.JDialog {
         txtCidadeEnder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCidadeEnder.setForeground(new java.awt.Color(0, 0, 0));
         txtCidadeEnder.setBorder(new javax.swing.border.MatteBorder(null));
+        txtCidadeEnder.setCaretColor(new java.awt.Color(0, 0, 0));
 
         txtBairroEnder.setBackground(new java.awt.Color(204, 204, 204));
         txtBairroEnder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtBairroEnder.setForeground(new java.awt.Color(0, 0, 0));
         txtBairroEnder.setBorder(new javax.swing.border.MatteBorder(null));
+        txtBairroEnder.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jlCEPVendedor.setBackground(new java.awt.Color(0, 0, 0));
         jlCEPVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -213,6 +221,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtNomeRevendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNomeRevendedor.setForeground(new java.awt.Color(0, 0, 0));
         txtNomeRevendedor.setBorder(new javax.swing.border.MatteBorder(null));
+        txtNomeRevendedor.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jpDataValorCompra.setBackground(new java.awt.Color(255, 255, 102));
         jpDataValorCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Compra", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -230,6 +239,7 @@ public class DlgCompra extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDataCompra.setCaretColor(new java.awt.Color(0, 0, 0));
         txtDataCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jlValorCompra.setBackground(new java.awt.Color(0, 0, 0));
@@ -241,6 +251,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtValorCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtValorCompra.setForeground(new java.awt.Color(0, 0, 0));
         txtValorCompra.setBorder(new javax.swing.border.MatteBorder(null));
+        txtValorCompra.setCaretColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jpDataValorCompraLayout = new javax.swing.GroupLayout(jpDataValorCompra);
         jpDataValorCompra.setLayout(jpDataValorCompraLayout);
@@ -276,6 +287,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtEstadoEnd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEstadoEnd.setForeground(new java.awt.Color(0, 0, 0));
         txtEstadoEnd.setBorder(new javax.swing.border.MatteBorder(null));
+        txtEstadoEnd.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jlCEPVendedor1.setBackground(new java.awt.Color(0, 0, 0));
         jlCEPVendedor1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -290,6 +302,7 @@ public class DlgCompra extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpfRevendedor.setCaretColor(new java.awt.Color(0, 0, 0));
         txtCpfRevendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jpVendedorLayout = new javax.swing.GroupLayout(jpVendedor);
@@ -390,6 +403,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtPlaca.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPlaca.setForeground(new java.awt.Color(0, 0, 0));
         txtPlaca.setBorder(new javax.swing.border.MatteBorder(null));
+        txtPlaca.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jlRenavamVeiculoCompra.setBackground(new java.awt.Color(0, 0, 0));
         jlRenavamVeiculoCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -400,6 +414,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtRenavam.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRenavam.setForeground(new java.awt.Color(0, 0, 0));
         txtRenavam.setBorder(new javax.swing.border.MatteBorder(null));
+        txtRenavam.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jlMarcaVeiculoCompra.setBackground(new java.awt.Color(0, 0, 0));
         jlMarcaVeiculoCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -415,11 +430,13 @@ public class DlgCompra extends javax.swing.JDialog {
         txtModelo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtModelo.setForeground(new java.awt.Color(0, 0, 0));
         txtModelo.setBorder(new javax.swing.border.MatteBorder(null));
+        txtModelo.setCaretColor(new java.awt.Color(0, 0, 0));
 
         txtMarca.setBackground(new java.awt.Color(204, 204, 204));
         txtMarca.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtMarca.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca.setBorder(new javax.swing.border.MatteBorder(null));
+        txtMarca.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jlAnoVeiculoCompra.setBackground(new java.awt.Color(0, 0, 0));
         jlAnoVeiculoCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -430,6 +447,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtAno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtAno.setForeground(new java.awt.Color(0, 0, 0));
         txtAno.setBorder(new javax.swing.border.MatteBorder(null));
+        txtAno.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jpTipoVeiculoCompra.setBackground(new java.awt.Color(255, 255, 102));
         jpTipoVeiculoCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -625,6 +643,7 @@ public class DlgCompra extends javax.swing.JDialog {
         jtPlacaFiltroDespesas.setBackground(new java.awt.Color(204, 204, 204));
         jtPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtPlacaFiltroDespesas.setBorder(new javax.swing.border.MatteBorder(null));
+        jtPlacaFiltroDespesas.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jbPesquisarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
         jbPesquisarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -635,6 +654,18 @@ public class DlgCompra extends javax.swing.JDialog {
         jbListarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
         jbListarFiltroDespesas.setText("Listar Todas");
+
+        btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
+        btnExcluir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Excluir");
+        btnExcluir.setEnabled(false);
+
+        btnEditar.setBackground(new java.awt.Color(153, 153, 153));
+        btnEditar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.setEnabled(false);
 
         javax.swing.GroupLayout jpListaVeiculosCompradosLayout = new javax.swing.GroupLayout(jpListaVeiculosComprados);
         jpListaVeiculosComprados.setLayout(jpListaVeiculosCompradosLayout);
@@ -651,7 +682,12 @@ public class DlgCompra extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jbPesquisarFiltroDespesas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                        .addComponent(jbListarFiltroDespesas)))
+                        .addComponent(jbListarFiltroDespesas))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaVeiculosCompradosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir)))
                 .addContainerGap())
         );
         jpListaVeiculosCompradosLayout.setVerticalGroup(
@@ -664,7 +700,11 @@ public class DlgCompra extends javax.swing.JDialog {
                     .addComponent(jbListarFiltroDespesas)
                     .addComponent(jbPesquisarFiltroDespesas))
                 .addGap(18, 18, 18)
-                .addComponent(jsListaVeiculosComprados, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                .addComponent(jsListaVeiculosComprados, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpListaVeiculosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnEditar))
                 .addContainerGap())
         );
 
@@ -735,8 +775,14 @@ public class DlgCompra extends javax.swing.JDialog {
             double valor = Double.parseDouble(valorCompra);
             Date data = FuncoesUteis.strToDate(dataCompra);
             
-            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra( valor, data, nome, cpf, telefone,cep, bairro,
-                    descricao, num, cidade, estado, placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+            Endereco end = new Endereco(cep, bairro, descricao, num, cidade, estado);
+            Pessoa revendedor = new Pessoa(nome, cpf, telefone, end);
+            Veiculo veiculo = new Veiculo(placa, renavam, marca, modelo, cor, tAno, combustivel, ano);
+            
+            //GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra( valor, data, nome, cpf, telefone,cep, bairro,
+            //        descricao, num, cidade, estado, placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+            
+            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra( valor, data, revendedor, veiculo);
 
             JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
 
@@ -767,6 +813,8 @@ public class DlgCompra extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgTipo;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JComboBox<String> cmbCombustivel;
     private javax.swing.JComboBox<String> cmbCor;
     private javax.swing.JButton jbListarFiltroDespesas;

@@ -4,14 +4,10 @@
  */
 package viewer;
 
-import control.FuncoesUteis;
 import control.GerenciadorInterface;
-import domain.Compra;
-import domain.Despesa;
-import java.text.ParseException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import control.VeiculoAbstractTableModel;
+import domain.Veiculo;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
@@ -21,13 +17,30 @@ import org.hibernate.HibernateException;
  */
 public class DlgDespesas extends javax.swing.JDialog {
 
+    private Veiculo veiculoSelecionado = null;
+    
+    private VeiculoAbstractTableModel veiculoTableModel;
+    
+    
+    
     /**
      * Creates new form DlgConsulta
      */
     public DlgDespesas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        // ASSOCIAR o TABLE MODEL ABSTRACT
+        veiculoTableModel = new VeiculoAbstractTableModel();
+        tblVeiculoDespesa.setModel(veiculoTableModel);
+        
     }
+
+    public Veiculo getVeiculoSelecionado() {
+        return veiculoSelecionado;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +62,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jbPesquisar = new javax.swing.JButton();
         jpVeiculosDespesa = new javax.swing.JPanel();
         jsVeiculoDespesa = new javax.swing.JScrollPane();
-        jtVeiculoDespesa = new javax.swing.JTable();
+        tblVeiculoDespesa = new javax.swing.JTable();
         jpDespesas = new javax.swing.JPanel();
         jlDescricao = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
@@ -64,6 +77,8 @@ public class DlgDespesas extends javax.swing.JDialog {
         jtPlacaFiltroDespesas = new javax.swing.JTextField();
         jbPesquisarFiltroDespesas = new javax.swing.JButton();
         jbListarFiltroDespesas = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Despesas");
@@ -94,12 +109,19 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         txtPesquisa.setBackground(new java.awt.Color(204, 204, 204));
         txtPesquisa.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtPesquisa.setForeground(new java.awt.Color(0, 0, 0));
         txtPesquisa.setBorder(new javax.swing.border.MatteBorder(null));
+        txtPesquisa.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jbListarVeiculos.setBackground(new java.awt.Color(51, 51, 51));
         jbListarVeiculos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jbListarVeiculos.setForeground(new java.awt.Color(255, 255, 255));
         jbListarVeiculos.setText("Listar Veículos");
+        jbListarVeiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListarVeiculosActionPerformed(evt);
+            }
+        });
 
         jbPesquisar.setBackground(new java.awt.Color(51, 51, 51));
         jbPesquisar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -108,8 +130,8 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         jpVeiculosDespesa.setBackground(new java.awt.Color(255, 255, 102));
 
-        jtVeiculoDespesa.setBackground(new java.awt.Color(204, 204, 204));
-        jtVeiculoDespesa.setModel(new javax.swing.table.DefaultTableModel(
+        tblVeiculoDespesa.setBackground(new java.awt.Color(204, 204, 204));
+        tblVeiculoDespesa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -117,7 +139,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                 "Placa", "Marca", "Modelo", "Cor"
             }
         ));
-        jsVeiculoDespesa.setViewportView(jtVeiculoDespesa);
+        jsVeiculoDespesa.setViewportView(tblVeiculoDespesa);
 
         javax.swing.GroupLayout jpVeiculosDespesaLayout = new javax.swing.GroupLayout(jpVeiculosDespesa);
         jpVeiculosDespesa.setLayout(jpVeiculosDespesaLayout);
@@ -146,11 +168,11 @@ public class DlgDespesas extends javax.swing.JDialog {
                     .addComponent(jpVeiculosDespesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpSelecionarVeiculoDespesaLayout.createSequentialGroup()
                         .addComponent(jlPlaca)
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbPesquisar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                         .addComponent(jbListarVeiculos)))
                 .addContainerGap())
         );
@@ -296,6 +318,18 @@ public class DlgDespesas extends javax.swing.JDialog {
         jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
         jbListarFiltroDespesas.setText("Listar Todas");
 
+        btnEditar.setBackground(new java.awt.Color(153, 153, 153));
+        btnEditar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.setEnabled(false);
+
+        btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
+        btnExcluir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Excluir");
+        btnExcluir.setEnabled(false);
+
         javax.swing.GroupLayout jpListaDepesasLayout = new javax.swing.GroupLayout(jpListaDepesas);
         jpListaDepesas.setLayout(jpListaDepesasLayout);
         jpListaDepesasLayout.setHorizontalGroup(
@@ -307,10 +341,15 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbPesquisarFiltroDespesas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                 .addComponent(jbListarFiltroDespesas)
                 .addContainerGap())
             .addComponent(jsListaDespesasVeiculos)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaDepesasLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEditar)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcluir))
         );
         jpListaDepesasLayout.setVerticalGroup(
             jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +360,12 @@ public class DlgDespesas extends javax.swing.JDialog {
                     .addComponent(jbListarFiltroDespesas)
                     .addComponent(jbPesquisarFiltroDespesas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE))
+                .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnEditar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jpListaDespesaLayout = new javax.swing.GroupLayout(jpListaDespesa);
@@ -394,9 +438,17 @@ public class DlgDespesas extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jbAddDespesaActionPerformed
 
+    private void jbListarVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarVeiculosActionPerformed
+        List<Veiculo> lista;
+        lista = GerenciadorInterface.getInstance().getGerenciadorDominio().listarVeiculos();
+        veiculoTableModel.setLista(lista);
+    }//GEN-LAST:event_jbListarVeiculosActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jbAddDespesa;
     private javax.swing.JButton jbListarFiltroDespesas;
     private javax.swing.JButton jbListarVeiculos;
@@ -419,7 +471,7 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JTable jtListaDespesasVeiculos;
     private javax.swing.JTabbedPane jtPainelDespesas;
     private javax.swing.JTextField jtPlacaFiltroDespesas;
-    private javax.swing.JTable jtVeiculoDespesa;
+    private javax.swing.JTable tblVeiculoDespesa;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtPesquisa;
     private javax.swing.JTextField txtValor;
