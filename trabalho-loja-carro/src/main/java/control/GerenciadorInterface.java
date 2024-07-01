@@ -5,12 +5,14 @@
 package control;
 
 import dao.ConexaoHibernate;
+import domain.Pessoa;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import viewer.DlgCadPessoa;
 import viewer.DlgCompra;
 import viewer.DlgDespesas;
 import viewer.DlgVenda;
@@ -26,6 +28,7 @@ public class GerenciadorInterface {
     private DlgCompra dlgCompra = null;
     private DlgVenda dlgVenda = null;
     private DlgDespesas dlgDepesa = null;
+    private DlgCadPessoa pesqPessoa = null;
     
     //  SINGLETON
     private static GerenciadorInterface myInstance = new GerenciadorInterface();
@@ -75,6 +78,11 @@ public class GerenciadorInterface {
     
     public void abrirJanDespesa(){
         dlgDepesa = (DlgDespesas) abrirJanela(frmPrinc, dlgDepesa, DlgDespesas.class);
+    }
+    
+    public Pessoa abrirJanCadPessoa(){
+        pesqPessoa = (DlgCadPessoa) abrirJanela(frmPrinc, pesqPessoa, DlgCadPessoa.class);
+        return pesqPessoa.getPessoaSelecionada();
     }
     
       
