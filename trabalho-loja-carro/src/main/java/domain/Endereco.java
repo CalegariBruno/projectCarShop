@@ -40,7 +40,7 @@ public class Endereco implements Serializable {
     @Column ( length = 20)
     private String uf; 
     
-    @OneToOne 
+    @OneToOne
     @MapsId
     @JoinColumn (name = "idPessoa")
     private Pessoa cliente;
@@ -68,7 +68,7 @@ public class Endereco implements Serializable {
         this.uf = uf;
     }
     
-     public Pessoa getCliente() {
+    public Pessoa getCliente() {
         return cliente;
     }
 

@@ -27,7 +27,7 @@ public class Venda implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date data;
     
-    private String finaceira;
+    private String financeira;
     private double retorno;
     private double valor;
     
@@ -41,20 +41,20 @@ public class Venda implements Serializable {
     public Venda() {
     }
     
-    public Venda(int idVenda, double valor, Date data, String finaceira, Double retorno, Pessoa cliente, Veiculo veiculo) {
+    public Venda(int idVenda, double valor, Date data, String financeira, Double retorno, Pessoa cliente, Veiculo veiculo) {
         this.idVenda = idVenda;
         this.valor = valor;
         this.data = data;
-        this.finaceira = finaceira;
+        this.financeira = financeira;
         this.retorno = retorno;
         this.cliente = cliente;
         this.veiculo = veiculo;
     }
 
-    public Venda(double valor, Date data, String finaceira, Double retorno, Pessoa cliente, Veiculo veiculo) {
+    public Venda(double valor, Date data, String financeira, Double retorno, Pessoa cliente, Veiculo veiculo) {
         this.valor = valor;
         this.data = data;
-        this.finaceira = finaceira;
+        this.financeira = financeira;
         this.retorno = retorno;
         this.cliente = cliente;
         this.veiculo = veiculo;
@@ -84,12 +84,12 @@ public class Venda implements Serializable {
         this.data = data;
     }
 
-    public String getFinaceira() {
-        return finaceira;
+    public String getFinanceira() {
+        return financeira;
     }
 
-    public void setFinaceira(String finaceira) {
-        this.finaceira = finaceira;
+    public void setFinanceira(String financeira) {
+        this.financeira = financeira;
     }
 
     public Double getRetorno() {

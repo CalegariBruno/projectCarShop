@@ -5,6 +5,7 @@
 package domain;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,7 @@ public class Veiculo {
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idVeiculo;
     
-    @Column(length = 7 ,unique=true)
+    @Column(unique=true)
     private String placa;
     
     @Column(unique=true)
@@ -42,7 +43,7 @@ public class Veiculo {
     @OneToMany ( mappedBy = "veiculo", fetch = FetchType.LAZY )
     private List<Venda> vendas;
     
-    @OneToMany (mappedBy = "veiculo", fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "veiculo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Despesa> despesas;
 
     public Veiculo() {

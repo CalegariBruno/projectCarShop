@@ -69,6 +69,7 @@ public class Compra implements Serializable {
 //        this.revendedor = new Pessoa(nome, cpf, telefone, cep, bairro, descricao, numero, cidade, uf);
 //        this.veiculo = new Veiculo(placa, renavam, marca, modelo, cor, tipo, combustivel, ano);
 //    }
+    
 
     public int getIdCompra() {
         return idCompra;
