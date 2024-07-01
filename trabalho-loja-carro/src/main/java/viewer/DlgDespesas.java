@@ -7,6 +7,7 @@ package viewer;
 import control.GerenciadorInterface;
 import control.VeiculoAbstractTableModel;
 import domain.Veiculo;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
@@ -20,12 +21,7 @@ public class DlgDespesas extends javax.swing.JDialog {
     private Veiculo veiculoSelecionado = null;
     
     private VeiculoAbstractTableModel veiculoTableModel;
-    
-    
-    
-    /**
-     * Creates new form DlgConsulta
-     */
+
     public DlgDespesas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -77,8 +73,9 @@ public class DlgDespesas extends javax.swing.JDialog {
         jtPlacaFiltroDespesas = new javax.swing.JTextField();
         jbPesquisarFiltroDespesas = new javax.swing.JButton();
         jbListarFiltroDespesas = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
+        txtValorTotal = new javax.swing.JLabel();
+        btnCalcular = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Despesas");
@@ -110,7 +107,6 @@ public class DlgDespesas extends javax.swing.JDialog {
         txtPesquisa.setBackground(new java.awt.Color(204, 204, 204));
         txtPesquisa.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPesquisa.setForeground(new java.awt.Color(0, 0, 0));
-        txtPesquisa.setBorder(new javax.swing.border.MatteBorder(null));
         txtPesquisa.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jbListarVeiculos.setBackground(new java.awt.Color(51, 51, 51));
@@ -200,7 +196,6 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         txtDescricao.setBackground(new java.awt.Color(204, 204, 204));
         txtDescricao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtDescricao.setBorder(new javax.swing.border.MatteBorder(null));
 
         jlValorDespesa.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jlValorDespesa.setForeground(new java.awt.Color(0, 0, 0));
@@ -208,7 +203,6 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         txtValor.setBackground(new java.awt.Color(204, 204, 204));
         txtValor.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtValor.setBorder(new javax.swing.border.MatteBorder(null));
 
         jbAddDespesa.setBackground(new java.awt.Color(51, 51, 51));
         jbAddDespesa.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -318,17 +312,18 @@ public class DlgDespesas extends javax.swing.JDialog {
         jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
         jbListarFiltroDespesas.setText("Listar Todas");
 
-        btnEditar.setBackground(new java.awt.Color(153, 153, 153));
-        btnEditar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar");
-        btnEditar.setEnabled(false);
+        txtValorTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtValorTotal.setForeground(new java.awt.Color(0, 0, 0));
+        txtValorTotal.setText("Valor Total:");
 
-        btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
-        btnExcluir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setText("Excluir");
-        btnExcluir.setEnabled(false);
+        btnCalcular.setBackground(new java.awt.Color(51, 51, 51));
+        btnCalcular.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnCalcular.setForeground(new java.awt.Color(255, 255, 255));
+        btnCalcular.setText("Calcular");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("valor");
 
         javax.swing.GroupLayout jpListaDepesasLayout = new javax.swing.GroupLayout(jpListaDepesas);
         jpListaDepesas.setLayout(jpListaDepesasLayout);
@@ -346,10 +341,12 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addContainerGap())
             .addComponent(jsListaDespesasVeiculos)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaDepesasLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEditar)
+                .addComponent(btnCalcular)
                 .addGap(18, 18, 18)
-                .addComponent(btnExcluir))
+                .addComponent(txtValorTotal)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpListaDepesasLayout.setVerticalGroup(
             jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,12 +357,12 @@ public class DlgDespesas extends javax.swing.JDialog {
                     .addComponent(jbListarFiltroDespesas)
                     .addComponent(jbPesquisarFiltroDespesas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnEditar))
-                .addContainerGap())
+                    .addComponent(btnCalcular)
+                    .addComponent(txtValorTotal)
+                    .addComponent(jLabel1)))
         );
 
         javax.swing.GroupLayout jpListaDespesaLayout = new javax.swing.GroupLayout(jpListaDespesa);
@@ -417,24 +414,41 @@ public class DlgDespesas extends javax.swing.JDialog {
 
     private void jbAddDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddDespesaActionPerformed
         
-        // PEGAR O VEICULO
-        String pesquisa = txtPesquisa.getText();
+        int linha = tblVeiculoDespesa.getSelectedRow();
         
-        String descricao = txtDescricao.getText();
-        String valor = txtValor.getText();
-        
-        try {
-            // INSERIR NO BANCO
-
-            double valorDespesa = Double.parseDouble(valor);
+        if ( linha >= 0 ) {
             
-            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirDespesa( descricao, valorDespesa /*, veiculo */ );
+            String descricao = txtDescricao.getText();
+            String valor = txtValor.getText();
+            
+            
+            //PEGAR O VEICULO SELECIONADO
+            linha = tblVeiculoDespesa.convertRowIndexToModel(linha);
+            Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
+            
+            try {
+                // INSERIR NO BANCO
 
-            JOptionPane.showMessageDialog(this, "Despesa inserida com sucesso.", "Cadastro Despesa", JOptionPane.INFORMATION_MESSAGE);
+                double valorDespesa = Double.parseDouble(valor);
 
-        } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Despesa", JOptionPane.ERROR_MESSAGE);
-        } 
+                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirDespesa(descricao, valorDespesa , veiculo );
+
+                JOptionPane.showMessageDialog(this, "Despesa inserida com sucesso.", "Cadastro Despesa", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (HibernateException ex) {
+                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Despesa", JOptionPane.ERROR_MESSAGE);
+        }
+            
+             
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this,"Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        
+        
+         
         
     }//GEN-LAST:event_jbAddDespesaActionPerformed
 
@@ -447,8 +461,8 @@ public class DlgDespesas extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnCalcular;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbAddDespesa;
     private javax.swing.JButton jbListarFiltroDespesas;
     private javax.swing.JButton jbListarVeiculos;
@@ -475,5 +489,6 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtPesquisa;
     private javax.swing.JTextField txtValor;
+    private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables
 }
