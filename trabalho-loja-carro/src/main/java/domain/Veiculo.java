@@ -19,31 +19,31 @@ import javax.persistence.Transient;
 
 @Entity
 public class Veiculo {
-    
+
     @Id
-    @GeneratedValue ( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVeiculo;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     private String placa;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     private long renavam;
-    
+
     private String marca;
     private String modelo;
     private String cor;
     private String tipo;
     private String combustivel;
     private int ano;
-    
-    @OneToMany ( mappedBy = "veiculo", fetch = FetchType.LAZY )
+
+    @OneToMany(mappedBy = "veiculo", fetch = FetchType.LAZY)
     private List<Compra> compras;
-    
-    @OneToMany ( mappedBy = "veiculo", fetch = FetchType.LAZY )
+
+    @OneToMany(mappedBy = "veiculo", fetch = FetchType.LAZY)
     private List<Venda> vendas;
-    
-    @OneToMany (mappedBy = "veiculo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "veiculo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Despesa> despesas;
 
     public Veiculo() {
@@ -167,7 +167,18 @@ public class Veiculo {
     public void setDespesas(List<Despesa> despesas) {
         this.despesas = despesas;
     }
-    
-    
-    
+
+    public Double calcularDespesas() {
+
+        double total = 0;
+        int i = 0;
+        
+        while (i < despesas.size()) {
+            total += despesas.get(i).getValor();
+            i++;
+        }
+
+        return total;
+    }
+
 }

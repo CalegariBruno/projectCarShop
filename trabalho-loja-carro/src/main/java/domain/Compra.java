@@ -6,6 +6,7 @@ package domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Compra implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Pessoa revendedor;
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Veiculo veiculo;
 
     public Compra() {

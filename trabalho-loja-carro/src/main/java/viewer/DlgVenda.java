@@ -6,24 +6,17 @@ package viewer;
 
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
-import control.tables.PessoaAbstractTableModel;
 import control.tables.VeiculoAbstractTableModel;
 import domain.Pessoa;
 import domain.Veiculo;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
-/**
- *
- * @author USUARIO
- */
 public class DlgVenda extends javax.swing.JDialog {
 
     private Pessoa pessoaSelecionado = null;
@@ -120,7 +113,8 @@ public class DlgVenda extends javax.swing.JDialog {
         jpVenda.setBorder(new javax.swing.border.MatteBorder(null));
 
         jpComprador.setBackground(new java.awt.Color(255, 255, 102));
-        jpComprador.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comprador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpComprador.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Comprador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpComprador.setForeground(new java.awt.Color(0, 0, 0));
 
         jlNome.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jlNome.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,7 +159,7 @@ public class DlgVenda extends javax.swing.JDialog {
                             .addGroup(jpCompradorLayout.createSequentialGroup()
                                 .addComponent(jlTelefone)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
                             .addGroup(jpCompradorLayout.createSequentialGroup()
                                 .addComponent(jlNome)
                                 .addGap(18, 18, 18)
@@ -200,7 +194,7 @@ public class DlgVenda extends javax.swing.JDialog {
         );
 
         jpVeiculos.setBackground(new java.awt.Color(255, 255, 102));
-        jpVeiculos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpVeiculos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
 
         tblVeiculo.setBackground(new java.awt.Color(204, 204, 204));
         tblVeiculo.setModel(new javax.swing.table.DefaultTableModel(
@@ -243,17 +237,17 @@ public class DlgVenda extends javax.swing.JDialog {
             .addGroup(jpVeiculosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpVeiculosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpVeiculosLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
                         .addComponent(jlPlaca)
                         .addGap(18, 18, 18)
                         .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnListarVeiculo)))
+                        .addComponent(btnListarVeiculo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jpVeiculosLayout.setVerticalGroup(
@@ -280,7 +274,7 @@ public class DlgVenda extends javax.swing.JDialog {
         });
 
         jpDataValorVenda.setBackground(new java.awt.Color(255, 255, 102));
-        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpDataValorVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         jpDataValorVenda.setForeground(new java.awt.Color(0, 0, 0));
 
         jlDataVenda.setBackground(new java.awt.Color(0, 0, 0));
@@ -335,7 +329,7 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGroup(jpDataValorVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDataValorVendaLayout.createSequentialGroup()
                         .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jlValorVenda)
                         .addGap(18, 18, 18)
                         .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -379,9 +373,9 @@ public class DlgVenda extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVendaLayout.createSequentialGroup()
-                .addGap(0, 193, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jpDataValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addGap(202, 202, 202))
         );
         jpVendaLayout.setVerticalGroup(
             jpVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

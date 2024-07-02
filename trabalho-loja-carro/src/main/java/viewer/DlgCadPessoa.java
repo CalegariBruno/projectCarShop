@@ -9,14 +9,9 @@ import control.GerenciadorInterface;
 import control.tables.PessoaAbstractTableModel;
 import domain.Endereco;
 import domain.Pessoa;
-import domain.Veiculo;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
@@ -199,7 +194,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         });
 
         tblPessoa.setBackground(new java.awt.Color(255, 255, 255));
-        tblPessoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblPessoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblPessoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

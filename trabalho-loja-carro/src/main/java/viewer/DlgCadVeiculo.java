@@ -207,7 +207,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         });
 
         tblVeiculo.setBackground(new java.awt.Color(255, 255, 255));
-        tblVeiculo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblVeiculo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblVeiculo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -342,11 +342,11 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSelecionar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCadastrar)
-                        .addComponent(btnCancelar)))
+                        .addComponent(btnCancelar))
+                    .addComponent(btnSelecionar))
                 .addGap(26, 26, 26))
         );
 

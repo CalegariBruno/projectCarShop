@@ -8,9 +8,7 @@ import control.tables.DespesasAbstractTableModel;
 import control.GerenciadorInterface;
 import control.tables.VeiculoAbstractTableModel;
 import domain.Despesa;
-import domain.Pessoa;
 import domain.Veiculo;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
@@ -102,7 +100,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpNovaDespesa.setForeground(new java.awt.Color(51, 51, 51));
 
         jpSelecionarVeiculoDespesa.setBackground(new java.awt.Color(255, 255, 102));
-        jpSelecionarVeiculoDespesa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpSelecionarVeiculoDespesa.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jpSelecionarVeiculoDespesa.setForeground(new java.awt.Color(0, 0, 0));
 
         jlPlaca.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -192,7 +190,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         );
 
         jpDespesas.setBackground(new java.awt.Color(255, 255, 102));
-        jpDespesas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Despesa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpDespesas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Despesa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jpDespesas.setForeground(new java.awt.Color(0, 0, 0));
 
         jlDescricao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
