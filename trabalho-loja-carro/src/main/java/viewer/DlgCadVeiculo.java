@@ -150,7 +150,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         cmbCombustivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gasolina", "Diesel", "Flex", "Etanol", "Gás", "Elétrico", "Híbrido" }));
 
         jpTipoVeiculoCompra.setBackground(new java.awt.Color(204, 204, 204));
-        jpTipoVeiculoCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpTipoVeiculoCompra.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         jpTipoVeiculoCompra.setForeground(new java.awt.Color(0, 0, 0));
 
         jrbCarro.setBackground(new java.awt.Color(204, 204, 204));
