@@ -6,6 +6,7 @@ package control;
 
 import dao.ConexaoHibernate;
 import domain.Pessoa;
+import domain.Veiculo;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import viewer.DlgCadPessoa;
+import viewer.DlgCadVeiculo;
 import viewer.DlgCompra;
 import viewer.DlgDespesas;
 import viewer.DlgVenda;
@@ -29,6 +31,7 @@ public class GerenciadorInterface {
     private DlgVenda dlgVenda = null;
     private DlgDespesas dlgDepesa = null;
     private DlgCadPessoa pesqPessoa = null;
+    private DlgCadVeiculo pesqVeiculo = null;
     
     //  SINGLETON
     private static GerenciadorInterface myInstance = new GerenciadorInterface();
@@ -85,6 +88,10 @@ public class GerenciadorInterface {
         return pesqPessoa.getPessoaSelecionada();
     }
     
+    public Veiculo abrirJanCadVeiculo(){
+        pesqVeiculo = (DlgCadVeiculo) abrirJanela(frmPrinc, pesqVeiculo, DlgCadVeiculo.class);
+        return pesqVeiculo.getVeiculoSelecionado();
+    }
       
      /**
      * @param args the command line arguments

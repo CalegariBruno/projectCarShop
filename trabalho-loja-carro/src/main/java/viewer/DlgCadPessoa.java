@@ -73,12 +73,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         tblPessoa = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
         btnSelecionar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
         txtTelefone = new javax.swing.JFormattedTextField();
         jlNomePesq = new javax.swing.JLabel();
         txtNomePesq = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -183,7 +180,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         txtNumero.setForeground(new java.awt.Color(0, 0, 0));
         txtNumero.setBorder(new javax.swing.border.MatteBorder(null));
 
-        txtCadCliente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtCadCliente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtCadCliente.setForeground(new java.awt.Color(0, 0, 0));
         txtCadCliente.setText("Cadastro de Pessoa");
 
@@ -213,7 +210,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         ));
         jsTabelaVeiculos1.setViewportView(tblPessoa);
 
-        btnListar.setText("L");
+        btnListar.setText("Listar");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarActionPerformed(evt);
@@ -224,20 +221,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
-            }
-        });
-
-        btnExcluir.setText("excluir");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
-
-        btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
             }
         });
 
@@ -258,8 +241,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         txtNomePesq.setBackground(new java.awt.Color(255, 255, 255));
         txtNomePesq.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNomePesq.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-
-        jButton1.setText("ok - alterar");
 
         btnPesquisar.setText("P");
 
@@ -308,27 +289,20 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                         .addGap(98, 98, 98)
                         .addComponent(btnCadastrar)
                         .addGap(39, 39, 39)
-                        .addComponent(btnCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(btnCancelar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnSelecionar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jlNomePesq)
                             .addGap(18, 18, 18)
-                            .addComponent(btnExcluir)
+                            .addComponent(txtNomePesq, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(btnAlterar))
-                        .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jlNomePesq)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNomePesq, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnListar)))
+                            .addComponent(btnPesquisar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnListar)))
+                    .addComponent(btnSelecionar))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -386,11 +360,8 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
                     .addComponent(btnCancelar)
-                    .addComponent(btnSelecionar)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnAlterar)
-                    .addComponent(jButton1))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(btnSelecionar))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -420,31 +391,14 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         String cidade = txtCidade.getText();
         String estado = txtEstado.getText();
 
-        int linha = tblPessoa.getSelectedRow();
-        
         try {
             // INSERIR NO BANCO
 
-            if ( linha <= 0 ) {
-                // INSERIR
-                
-                int num = Integer.parseInt(tNumero);
+            int num = Integer.parseInt(tNumero);
 
-                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
+            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
 
-                JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
-
-            } else {
-                // ALTERAR
-                                
-                linha = tblPessoa.convertRowIndexToModel(linha);
-                Pessoa pessoa = pessoaTableModel.getCliente(linha);
-                
-                GerenciadorInterface.getInstance().getGerenciadorDominio().alterarPesssoa(pessoa.getIdPessoa(), nome, cpf, telefone, cep, bairro, descricao, ERROR, cidade, cpf);
-
-                JOptionPane.showMessageDialog(this, pessoa.getNome() + " alterado com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
-
-            }
+            JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (HibernateException ex) {
             JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
@@ -474,33 +428,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int linha = tblPessoa.getSelectedRow();
-        if (linha >= 0) {
-
-            if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir pessoa", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
-                //Excluir do BANCO
-                linha = tblPessoa.convertRowIndexToModel(linha);
-                Pessoa pessoa = pessoaTableModel.getCliente(linha);
-
-                try {
-                    GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(pessoa);
-                } catch (ClassNotFoundException | SQLException ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao excluir veiculo. " + ex.getMessage(), "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
-                }
-
-                // Remover da TABELA
-                pessoaTableModel.remover(linha);
-            }
-
-        } else {
-            // Mensagem de erro
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
-
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
     private void txtCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusLost
         try {
             Endereco ender;
@@ -518,30 +445,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtCepFocusLost
 
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-
-        int linha = tblPessoa.getSelectedRow();
-
-        if (linha >= 0) {
-
-            linha = tblPessoa.convertRowIndexToModel(linha);
-            Pessoa pessoa = pessoaTableModel.getCliente(linha);
-
-            try {
-                preencherCampos(pessoa);
-            } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Pessoa", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } else {
-            // Mensagem de erro
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
-
-        }
-
-
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
     private void preencherCampos(Pessoa pessoa) throws ParseException {
 
         txtNome.setText(pessoa.getNome());
@@ -558,14 +461,11 @@ public class DlgCadPessoa extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSelecionar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlBairroVendedor;
     private javax.swing.JLabel jlCEPVendedor;

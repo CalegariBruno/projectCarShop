@@ -70,8 +70,6 @@ public class DlgVenda extends javax.swing.JDialog {
         jtPlaca = new javax.swing.JTextField();
         jbPesquisar = new javax.swing.JButton();
         btnListarVeiculo = new javax.swing.JButton();
-        btnExluirVeiculo = new javax.swing.JButton();
-        btnAlterarVeiculo = new javax.swing.JButton();
         jbRegistrar = new javax.swing.JButton();
         jpDataValorVenda = new javax.swing.JPanel();
         jlDataVenda = new javax.swing.JLabel();
@@ -131,7 +129,7 @@ public class DlgVenda extends javax.swing.JDialog {
         btnBuscarPessoa.setBackground(new java.awt.Color(51, 51, 51));
         btnBuscarPessoa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnBuscarPessoa.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarPessoa.setText("Buscar");
+        btnBuscarPessoa.setText("Buscar pessoa");
         btnBuscarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarPessoaActionPerformed(evt);
@@ -139,7 +137,7 @@ public class DlgVenda extends javax.swing.JDialog {
         });
 
         txtTelefone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtTelefone.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefone.setForeground(new java.awt.Color(204, 0, 0));
 
         jlTelefone.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jlTelefone.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,33 +148,36 @@ public class DlgVenda extends javax.swing.JDialog {
         jlCpf.setText("Cpf: ");
 
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtCpf.setForeground(new java.awt.Color(0, 0, 0));
+        txtCpf.setForeground(new java.awt.Color(204, 0, 0));
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout jpCompradorLayout = new javax.swing.GroupLayout(jpComprador);
         jpComprador.setLayout(jpCompradorLayout);
         jpCompradorLayout.setHorizontalGroup(
             jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCompradorLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jpCompradorLayout.createSequentialGroup()
-                            .addComponent(jlTelefone)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtTelefone))
-                        .addGroup(jpCompradorLayout.createSequentialGroup()
-                            .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCompradorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpCompradorLayout.createSequentialGroup()
+                                .addComponent(jlTelefone)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jpCompradorLayout.createSequentialGroup()
+                                .addComponent(jlNome)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jpCompradorLayout.createSequentialGroup()
                                 .addComponent(jlCpf)
-                                .addComponent(jlNome))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCpf)
-                                .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING))))
-                    .addComponent(btnBuscarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jpCompradorLayout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(btnBuscarPessoa)))
+                .addContainerGap())
         );
         jpCompradorLayout.setVerticalGroup(
             jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,23 +227,14 @@ public class DlgVenda extends javax.swing.JDialog {
         jbPesquisar.setText("p");
 
         btnListarVeiculo.setBackground(new java.awt.Color(51, 51, 51));
-        btnListarVeiculo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnListarVeiculo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnListarVeiculo.setForeground(new java.awt.Color(255, 255, 255));
-        btnListarVeiculo.setText("L");
+        btnListarVeiculo.setText("Listar");
         btnListarVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarVeiculoActionPerformed(evt);
             }
         });
-
-        btnExluirVeiculo.setText("excluir");
-        btnExluirVeiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExluirVeiculoActionPerformed(evt);
-            }
-        });
-
-        btnAlterarVeiculo.setText("alterar");
 
         javax.swing.GroupLayout jpVeiculosLayout = new javax.swing.GroupLayout(jpVeiculos);
         jpVeiculos.setLayout(jpVeiculosLayout);
@@ -251,7 +243,7 @@ public class DlgVenda extends javax.swing.JDialog {
             .addGroup(jpVeiculosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
+                    .addGroup(jpVeiculosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpVeiculosLayout.createSequentialGroup()
@@ -259,14 +251,9 @@ public class DlgVenda extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnListarVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpVeiculosLayout.createSequentialGroup()
-                        .addComponent(btnExluirVeiculo)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAlterarVeiculo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnListarVeiculo)))
                 .addContainerGap())
         );
         jpVeiculosLayout.setVerticalGroup(
@@ -278,12 +265,8 @@ public class DlgVenda extends javax.swing.JDialog {
                     .addComponent(jbPesquisar)
                     .addComponent(btnListarVeiculo))
                 .addGap(18, 18, 18)
-                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExluirVeiculo)
-                    .addComponent(btnAlterarVeiculo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jbRegistrar.setBackground(new java.awt.Color(51, 51, 51));
@@ -302,7 +285,7 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jlDataVenda.setBackground(new java.awt.Color(0, 0, 0));
         jlDataVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlDataVenda.setForeground(new java.awt.Color(204, 0, 0));
+        jlDataVenda.setForeground(new java.awt.Color(0, 0, 0));
         jlDataVenda.setText("Data:");
 
         txtData.setBackground(new java.awt.Color(204, 204, 204));
@@ -316,7 +299,7 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jlValorVenda.setBackground(new java.awt.Color(0, 0, 0));
         jlValorVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlValorVenda.setForeground(new java.awt.Color(204, 0, 0));
+        jlValorVenda.setForeground(new java.awt.Color(0, 0, 0));
         jlValorVenda.setText("Valor:");
 
         txtValor.setBackground(new java.awt.Color(204, 204, 204));
@@ -324,7 +307,7 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jlValorVenda1.setBackground(new java.awt.Color(0, 0, 0));
         jlValorVenda1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlValorVenda1.setForeground(new java.awt.Color(204, 0, 0));
+        jlValorVenda1.setForeground(new java.awt.Color(0, 0, 0));
         jlValorVenda1.setText("Retorno:");
 
         txtRetorno.setBackground(new java.awt.Color(204, 204, 204));
@@ -335,7 +318,7 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jlFinanceiraComprador.setBackground(new java.awt.Color(0, 0, 0));
         jlFinanceiraComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlFinanceiraComprador.setForeground(new java.awt.Color(204, 0, 0));
+        jlFinanceiraComprador.setForeground(new java.awt.Color(0, 0, 0));
         jlFinanceiraComprador.setText("Financeira:");
 
         javax.swing.GroupLayout jpDataValorVendaLayout = new javax.swing.GroupLayout(jpDataValorVenda);
@@ -409,7 +392,7 @@ public class DlgVenda extends javax.swing.JDialog {
                     .addComponent(jpComprador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jpDataValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -476,7 +459,7 @@ public class DlgVenda extends javax.swing.JDialog {
                     .addComponent(jbListarFiltroDespesas)
                     .addComponent(jbPesquisarFiltroDespesas))
                 .addGap(18, 18, 18)
-                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                 .addGap(49, 49, 49))
         );
 
@@ -551,51 +534,7 @@ public class DlgVenda extends javax.swing.JDialog {
             
         }
 
-//        try {
-//            // INSERIR NO BANCO
-//
-//            int num = Integer.parseInt(tNumero);
-//            
-//            double valor = Double.parseDouble(valorVenda);
-//            Date data = FuncoesUteis.strToDate(dataVenda);
-//            
-////            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda( valor, data, nome, cpf, telefone,cep, bairro,
-////                    descricao, num, cidade, estado, placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
-//
-//            JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
-//
-//        } catch (HibernateException ex) {
-//            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(DlgCompra.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }//GEN-LAST:event_jbRegistrarActionPerformed
-
-    private void btnExluirVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExluirVeiculoActionPerformed
-        int linha = tblVeiculo.getSelectedRow();
-        if (linha >= 0) {
-
-            if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir veiculo", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
-                //Excluir do BANCO
-                linha = tblVeiculo.convertRowIndexToModel(linha);
-                Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
-                try {
-                    GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(veiculo);
-                } catch (ClassNotFoundException | SQLException ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao excluir veiculo. " + ex.getMessage(), "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
-                }
-
-                // Remover da TABELA
-                veiculoTableModel.remover(linha);
-            }
-
-        } else {
-            // Mensagem de erro
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
-
-        }
-    }//GEN-LAST:event_btnExluirVeiculoActionPerformed
 
     private void btnListarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarVeiculoActionPerformed
         List<Veiculo> lista;
@@ -621,15 +560,13 @@ public class DlgVenda extends javax.swing.JDialog {
             txtTelefone.setText(pessoa.getTelefone());
 
         }
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterarVeiculo;
     private javax.swing.JButton btnBuscarPessoa;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnExluirVeiculo;
     private javax.swing.JButton btnListarVeiculo;
     private javax.swing.JButton jbListarFiltroDespesas;
     private javax.swing.JButton jbPesquisar;
