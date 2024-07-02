@@ -6,8 +6,8 @@ package viewer;
 
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
-import control.PessoaAbstractTableModel;
-import control.VeiculoAbstractTableModel;
+import control.tables.PessoaAbstractTableModel;
+import control.tables.VeiculoAbstractTableModel;
 import domain.Pessoa;
 import domain.Veiculo;
 import java.sql.SQLException;

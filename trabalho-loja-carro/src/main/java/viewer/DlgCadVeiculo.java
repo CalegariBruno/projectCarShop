@@ -6,7 +6,7 @@ package viewer;
 
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
-import control.VeiculoAbstractTableModel;
+import control.tables.VeiculoAbstractTableModel;
 import domain.Veiculo;
 import java.util.List;
 import javax.swing.JOptionPane;

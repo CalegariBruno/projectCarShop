@@ -83,5 +83,12 @@ public class GerenciadorDominio {
         return genDAO.listar(Pessoa.class);
     }
     
+    public List<Despesa> listarDespesa(){
+        return genDAO.listar(Despesa.class);
+    }    
+    
+    public List<Compra> listarCompra(){
+        return genDAO.listar(Compra.class);
+    } 
     
 }

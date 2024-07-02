@@ -4,8 +4,11 @@
  */
 package viewer;
 
+import control.tables.DespesasAbstractTableModel;
 import control.GerenciadorInterface;
-import control.VeiculoAbstractTableModel;
+import control.tables.VeiculoAbstractTableModel;
+import domain.Despesa;
+import domain.Pessoa;
 import domain.Veiculo;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,6 +24,7 @@ public class DlgDespesas extends javax.swing.JDialog {
     private Veiculo veiculoSelecionado = null;
     
     private VeiculoAbstractTableModel veiculoTableModel;
+    private DespesasAbstractTableModel despesaTableModel;
 
     public DlgDespesas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -30,13 +34,14 @@ public class DlgDespesas extends javax.swing.JDialog {
         veiculoTableModel = new VeiculoAbstractTableModel();
         tblVeiculoDespesa.setModel(veiculoTableModel);
         
+        despesaTableModel = new DespesasAbstractTableModel();
+        tblDespesas.setModel(despesaTableModel);
+        
     }
 
     public Veiculo getVeiculoSelecionado() {
         return veiculoSelecionado;
-    }
-    
-    
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,7 +73,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpListaDespesa = new javax.swing.JPanel();
         jpListaDepesas = new javax.swing.JPanel();
         jsListaDespesasVeiculos = new javax.swing.JScrollPane();
-        jtListaDespesasVeiculos = new javax.swing.JTable();
+        tblDespesas = new javax.swing.JTable();
         jlPlacaFiltroDespesas = new javax.swing.JLabel();
         jtPlacaFiltroDespesas = new javax.swing.JTextField();
         jbPesquisarFiltroDespesas = new javax.swing.JButton();
@@ -283,8 +288,8 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         jpListaDepesas.setBackground(new java.awt.Color(255, 255, 102));
 
-        jtListaDespesasVeiculos.setBackground(new java.awt.Color(204, 204, 204));
-        jtListaDespesasVeiculos.setModel(new javax.swing.table.DefaultTableModel(
+        tblDespesas.setBackground(new java.awt.Color(204, 204, 204));
+        tblDespesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -292,7 +297,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                 "Placa", "Marca", "Modelo", "Cor", "Despesa", "Valor"
             }
         ));
-        jsListaDespesasVeiculos.setViewportView(jtListaDespesasVeiculos);
+        jsListaDespesasVeiculos.setViewportView(tblDespesas);
 
         jlPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jlPlacaFiltroDespesas.setForeground(new java.awt.Color(0, 0, 0));
@@ -311,6 +316,11 @@ public class DlgDespesas extends javax.swing.JDialog {
         jbListarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
         jbListarFiltroDespesas.setText("Listar");
+        jbListarFiltroDespesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListarFiltroDespesasActionPerformed(evt);
+            }
+        });
 
         txtValorTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtValorTotal.setForeground(new java.awt.Color(0, 0, 0));
@@ -458,6 +468,12 @@ public class DlgDespesas extends javax.swing.JDialog {
         veiculoTableModel.setLista(lista);
     }//GEN-LAST:event_jbListarVeiculosActionPerformed
 
+    private void jbListarFiltroDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarFiltroDespesasActionPerformed
+        List<Despesa> lista;
+        lista = GerenciadorInterface.getInstance().getGerenciadorDominio().listarDespesa();
+        despesaTableModel.setLista(lista);
+    }//GEN-LAST:event_jbListarFiltroDespesasActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -482,9 +498,9 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JPanel jpVeiculosDespesa;
     private javax.swing.JScrollPane jsListaDespesasVeiculos;
     private javax.swing.JScrollPane jsVeiculoDespesa;
-    private javax.swing.JTable jtListaDespesasVeiculos;
     private javax.swing.JTabbedPane jtPainelDespesas;
     private javax.swing.JTextField jtPlacaFiltroDespesas;
+    private javax.swing.JTable tblDespesas;
     private javax.swing.JTable tblVeiculoDespesa;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtPesquisa;

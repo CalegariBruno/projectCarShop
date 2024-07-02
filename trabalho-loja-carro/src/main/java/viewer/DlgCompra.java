@@ -6,10 +6,15 @@ package viewer;
 
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
+import control.tables.CompraAbstractTableModel;
+import control.tables.DespesasAbstractTableModel;
+import domain.Compra;
+import domain.Despesa;
 import domain.Pessoa;
 import domain.Veiculo;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,10 +28,16 @@ public class DlgCompra extends javax.swing.JDialog {
 
     private Pessoa pessoaSelecionado = null;
     private Veiculo veiculoSelecionado = null;
+    
+    private CompraAbstractTableModel comprasTableModel;
 
     public DlgCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        comprasTableModel = new CompraAbstractTableModel();
+        tblCompras.setModel(comprasTableModel);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -62,10 +73,10 @@ public class DlgCompra extends javax.swing.JDialog {
         txtValorCompra = new javax.swing.JTextField();
         jpListaVeiculosComprados = new javax.swing.JPanel();
         jsListaVeiculosComprados = new javax.swing.JScrollPane();
-        jtListaVeiculosComprados = new javax.swing.JTable();
+        tblCompras = new javax.swing.JTable();
         jtPlacaFiltroDespesas = new javax.swing.JTextField();
         jbPesquisarFiltroDespesas = new javax.swing.JButton();
-        jbListarFiltroDespesas = new javax.swing.JButton();
+        btnListarCompra = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -369,8 +380,8 @@ public class DlgCompra extends javax.swing.JDialog {
         jpListaVeiculosComprados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpListaVeiculosComprados.setForeground(new java.awt.Color(0, 0, 0));
 
-        jtListaVeiculosComprados.setBackground(new java.awt.Color(204, 204, 204));
-        jtListaVeiculosComprados.setModel(new javax.swing.table.DefaultTableModel(
+        tblCompras.setBackground(new java.awt.Color(204, 204, 204));
+        tblCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -378,7 +389,7 @@ public class DlgCompra extends javax.swing.JDialog {
                 "Vendedor", "Tipo", "Placa", "Renavam", "Marca", "Modelo", "Ano", "Cor", "Combustível", "Data Compra", "Valor"
             }
         ));
-        jsListaVeiculosComprados.setViewportView(jtListaVeiculosComprados);
+        jsListaVeiculosComprados.setViewportView(tblCompras);
 
         jtPlacaFiltroDespesas.setBackground(new java.awt.Color(204, 204, 204));
         jtPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -389,10 +400,15 @@ public class DlgCompra extends javax.swing.JDialog {
         jbPesquisarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
         jbPesquisarFiltroDespesas.setText("Pesquisar");
 
-        jbListarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
-        jbListarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
-        jbListarFiltroDespesas.setText("Listar");
+        btnListarCompra.setBackground(new java.awt.Color(51, 51, 51));
+        btnListarCompra.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnListarCompra.setForeground(new java.awt.Color(255, 255, 255));
+        btnListarCompra.setText("Listar");
+        btnListarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarCompraActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -414,7 +430,7 @@ public class DlgCompra extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jbPesquisarFiltroDespesas)
                         .addGap(113, 113, 113)
-                        .addComponent(jbListarFiltroDespesas)))
+                        .addComponent(btnListarCompra)))
                 .addContainerGap())
         );
         jpListaVeiculosCompradosLayout.setVerticalGroup(
@@ -425,7 +441,7 @@ public class DlgCompra extends javax.swing.JDialog {
                         .addGap(16, 16, 16)
                         .addGroup(jpListaVeiculosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbListarFiltroDespesas)
+                            .addComponent(btnListarCompra)
                             .addComponent(jbPesquisarFiltroDespesas)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaVeiculosCompradosLayout.createSequentialGroup()
                         .addContainerGap()
@@ -506,6 +522,12 @@ public class DlgCompra extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnBuscarPessoaActionPerformed
 
+    private void btnListarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarCompraActionPerformed
+        List<Compra> lista;
+        lista = GerenciadorInterface.getInstance().getGerenciadorDominio().listarCompra();
+        comprasTableModel.setLista(lista);
+    }//GEN-LAST:event_btnListarCompraActionPerformed
+
     private void preencherCampos(Object obj) throws ParseException {
 
         if (obj instanceof Pessoa) {
@@ -531,8 +553,8 @@ public class DlgCompra extends javax.swing.JDialog {
     private javax.swing.ButtonGroup bgTipo;
     private javax.swing.JButton btnBuscarPessoa;
     private javax.swing.JButton btnBuscarVeiculo;
+    private javax.swing.JButton btnListarCompra;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JButton jbListarFiltroDespesas;
     private javax.swing.JButton jbPesquisarFiltroDespesas;
     private javax.swing.JButton jbRegistrarCompra;
     private javax.swing.JLabel jlCpf;
@@ -551,9 +573,9 @@ public class DlgCompra extends javax.swing.JDialog {
     private javax.swing.JPanel jpVeiculo;
     private javax.swing.JPanel jpVendedor;
     private javax.swing.JScrollPane jsListaVeiculosComprados;
-    private javax.swing.JTable jtListaVeiculosComprados;
     private javax.swing.JTabbedPane jtPainelCompra;
     private javax.swing.JTextField jtPlacaFiltroDespesas;
+    private javax.swing.JTable tblCompras;
     private javax.swing.JLabel txtCpf;
     private javax.swing.JFormattedTextField txtDataCompra;
     private javax.swing.JLabel txtMarca;

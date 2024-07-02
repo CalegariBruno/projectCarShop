@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package control;
+package control.tables;
 
-import domain.Pessoa;
 import domain.Veiculo;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +13,9 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author bruno
  */
-public class PessoaAbstractTableModel extends AbstractTableModel{
+public class VeiculoAbstractTableModel extends AbstractTableModel{
 
-    private List<Pessoa> listaItens = new ArrayList();
+    private List<Veiculo> listaItens = new ArrayList();
 
     @Override
     public int getRowCount() {
@@ -32,26 +31,26 @@ public class PessoaAbstractTableModel extends AbstractTableModel{
     // Títulos das colunas
     @Override
     public String getColumnName(int column) {
-        String nomesColunas[] = {"Nome", "Telefone", "CPF", "CEP"};        
+        String nomesColunas[] = {"Placa", "Marca", "Modelo", "Cor"};        
         return nomesColunas[column];        
     }
     
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Pessoa item = listaItens.get(rowIndex);
+        Veiculo item = listaItens.get(rowIndex);
 
         switch (columnIndex) {
-            case 0: return item.getNome();
-            case 1: return item.getTelefone();
-            case 2: return item.getCpf();
-            case 3: return item.getEndereco().getCep();            
+            case 0: return item.getPlaca();
+            case 1: return item.getMarca();
+            case 2: return item.getModelo();
+            case 3: return item.getCor();            
             default: return null;
         }
 
     }
     
-    public void adicionar (Pessoa item) {
+    public void adicionar (Veiculo item) {
         listaItens.add(item);
         fireTableRowsInserted( listaItens.size() - 1, listaItens.size() - 1 );
         
@@ -63,11 +62,11 @@ public class PessoaAbstractTableModel extends AbstractTableModel{
         
     }
 
-    public Pessoa getCliente(int linha) {
+    public Veiculo getVeiculo(int linha) {
         return listaItens.get(linha);
     }
     
-    public void setLista(List<Pessoa> novaLista) {
+    public void setLista(List<Veiculo> novaLista) {
         
         if ( novaLista.isEmpty()) {
             if ( !listaItens.isEmpty() ) {

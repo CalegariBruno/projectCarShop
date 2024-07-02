@@ -6,7 +6,7 @@ package viewer;
 
 import control.BuscarCEP;
 import control.GerenciadorInterface;
-import control.PessoaAbstractTableModel;
+import control.tables.PessoaAbstractTableModel;
 import domain.Endereco;
 import domain.Pessoa;
 import domain.Veiculo;

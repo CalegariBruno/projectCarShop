@@ -695,7 +695,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbPesquisarFiltroDespesas" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                  <Component id="jbListarFiltroDespesas" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnListarCompra" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -710,7 +710,7 @@
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jtPlacaFiltroDespesas" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jbListarFiltroDespesas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnListarCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jbPesquisarFiltroDespesas" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -734,7 +734,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jtListaVeiculosComprados">
+                    <Component class="javax.swing.JTable" name="tblCompras">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -812,7 +812,7 @@
                     <Property name="text" type="java.lang.String" value="Pesquisar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbListarFiltroDespesas">
+                <Component class="javax.swing.JButton" name="btnListarCompra">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="33" type="rgb"/>
@@ -825,6 +825,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Listar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarCompraActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox1">
                   <Properties>
