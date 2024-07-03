@@ -130,7 +130,7 @@
                       <Component id="btnListar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jlNomePesq" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtNomePesq" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPesquisar" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -570,8 +570,13 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnPesquisar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="P"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imgs/png/24x24/search.png"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

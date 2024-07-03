@@ -12,10 +12,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
-/**
- *
- * @author bruno
- */
 public class DlgCadVeiculo extends javax.swing.JDialog {
 
     //TABELA VEICULO
@@ -59,8 +55,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         jpTipoVeiculoCompra = new javax.swing.JPanel();
         jrbCarro = new javax.swing.JRadioButton();
         jrbMoto = new javax.swing.JRadioButton();
-        jlNomePesq = new javax.swing.JLabel();
-        txtNomePesq = new javax.swing.JTextField();
+        txtPesq = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         jsTabelaVeiculos1 = new javax.swing.JScrollPane();
@@ -68,6 +63,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         btnSelecionar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        cmbTipo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -188,18 +184,18 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jlNomePesq.setBackground(new java.awt.Color(0, 0, 0));
-        jlNomePesq.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlNomePesq.setForeground(new java.awt.Color(0, 0, 0));
-        jlNomePesq.setText("Placa:");
+        txtPesq.setBackground(new java.awt.Color(255, 255, 255));
+        txtPesq.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPesq.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        txtNomePesq.setBackground(new java.awt.Color(255, 255, 255));
-        txtNomePesq.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtNomePesq.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
-        btnPesquisar.setText("P");
-
-        btnListar.setText("Listar");
+        btnListar.setText("L");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarActionPerformed(evt);
@@ -238,6 +234,11 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
+
+        cmbTipo.setBackground(new java.awt.Color(255, 255, 255));
+        cmbTipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbTipo.setForeground(new java.awt.Color(0, 0, 0));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -278,19 +279,21 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmbCombustivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cmbCor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jlNomePesq)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtNomePesq, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnPesquisar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnListar)))
-                    .addComponent(btnSelecionar))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSelecionar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesquisar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnListar)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -336,9 +339,9 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                 .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListar)
-                    .addComponent(jlNomePesq)
-                    .addComponent(txtNomePesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
+                    .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar)
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -415,6 +418,23 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        
+        String pesq = txtPesq.getText();
+        int tipo = cmbTipo.getSelectedIndex();
+        List<Veiculo> lista;
+        
+        try {
+            lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarVeiculo(pesq, tipo);
+            if ( lista.isEmpty() ) {
+                JOptionPane.showMessageDialog(this,"Cliente não encontrado.", "Pesquisar cliente", JOptionPane.INFORMATION_MESSAGE);
+            } 
+            veiculoTableModel.setLista(lista);
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgTipo;
@@ -425,13 +445,13 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cmbCombustivel;
     private javax.swing.JComboBox<String> cmbCor;
+    private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlAnoVeiculoCompra;
     private javax.swing.JLabel jlCorVeiculoCompra;
     private javax.swing.JLabel jlCorVeiculoCompra1;
     private javax.swing.JLabel jlMarcaVeiculoCompra;
     private javax.swing.JLabel jlModeloVeiculoCompra;
-    private javax.swing.JLabel jlNomePesq;
     private javax.swing.JLabel jlPlacaVeiculoCompra;
     private javax.swing.JLabel jlRenavamVeiculoCompra;
     private javax.swing.JPanel jpTipoVeiculoCompra;
@@ -443,7 +463,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
     private javax.swing.JLabel txtCadCliente;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
-    private javax.swing.JTextField txtNomePesq;
+    private javax.swing.JTextField txtPesq;
     private javax.swing.JTextField txtPlaca;
     private javax.swing.JTextField txtRenavam;
     // End of variables declaration//GEN-END:variables

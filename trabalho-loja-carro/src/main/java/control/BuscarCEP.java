@@ -48,7 +48,7 @@ public class BuscarCEP {
         connection.setRequestMethod("GET");
 
         // Ler a resposta
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
         StringBuilder response = new StringBuilder();
         String line;
         while ((line = reader.readLine()) != null) {

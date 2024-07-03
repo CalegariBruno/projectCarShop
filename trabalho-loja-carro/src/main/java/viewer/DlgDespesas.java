@@ -13,10 +13,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
-/**
- *
- * @author 2022122760044
- */
 public class DlgDespesas extends javax.swing.JDialog {
 
     private Veiculo veiculoSelecionado = null;
@@ -72,13 +68,13 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpListaDepesas = new javax.swing.JPanel();
         jsListaDespesasVeiculos = new javax.swing.JScrollPane();
         tblDespesas = new javax.swing.JTable();
-        jlPlacaFiltroDespesas = new javax.swing.JLabel();
         jtPlacaFiltroDespesas = new javax.swing.JTextField();
         jbPesquisarFiltroDespesas = new javax.swing.JButton();
         jbListarFiltroDespesas = new javax.swing.JButton();
         txtValorTotal = new javax.swing.JLabel();
         btnCalcular = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Despesas");
@@ -297,10 +293,6 @@ public class DlgDespesas extends javax.swing.JDialog {
         ));
         jsListaDespesasVeiculos.setViewportView(tblDespesas);
 
-        jlPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jlPlacaFiltroDespesas.setForeground(new java.awt.Color(0, 0, 0));
-        jlPlacaFiltroDespesas.setText("Placa:");
-
         jtPlacaFiltroDespesas.setBackground(new java.awt.Color(204, 204, 204));
         jtPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtPlacaFiltroDespesas.setBorder(new javax.swing.border.MatteBorder(null));
@@ -308,7 +300,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         jbPesquisarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
         jbPesquisarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jbPesquisarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
-        jbPesquisarFiltroDespesas.setText("Pesquisar");
+        jbPesquisarFiltroDespesas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
 
         jbListarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
         jbListarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -333,21 +325,25 @@ public class DlgDespesas extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("valor");
 
+        jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
+
         javax.swing.GroupLayout jpListaDepesasLayout = new javax.swing.GroupLayout(jpListaDepesas);
         jpListaDepesas.setLayout(jpListaDepesasLayout);
         jpListaDepesasLayout.setHorizontalGroup(
             jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaDepesasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlPlacaFiltroDespesas)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbPesquisarFiltroDespesas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbListarFiltroDespesas)
                 .addContainerGap())
-            .addComponent(jsListaDespesasVeiculos)
+            .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaDepesasLayout.createSequentialGroup()
                 .addComponent(btnCalcular)
                 .addGap(18, 18, 18)
@@ -359,14 +355,16 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpListaDepesasLayout.setVerticalGroup(
             jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaDepesasLayout.createSequentialGroup()
-                .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlPlacaFiltroDespesas)
-                    .addComponent(jbListarFiltroDespesas)
-                    .addComponent(jbPesquisarFiltroDespesas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbPesquisarFiltroDespesas)
+                    .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbListarFiltroDespesas))
                 .addGap(18, 18, 18)
+                .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(txtValorTotal)
@@ -476,6 +474,7 @@ public class DlgDespesas extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbAddDespesa;
     private javax.swing.JButton jbListarFiltroDespesas;
@@ -484,7 +483,6 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JButton jbPesquisarFiltroDespesas;
     private javax.swing.JLabel jlDescricao;
     private javax.swing.JLabel jlPlaca;
-    private javax.swing.JLabel jlPlacaFiltroDespesas;
     private javax.swing.JLabel jlTituloDespesas;
     private javax.swing.JLabel jlValorDespesa;
     private javax.swing.JPanel jpDespesas;

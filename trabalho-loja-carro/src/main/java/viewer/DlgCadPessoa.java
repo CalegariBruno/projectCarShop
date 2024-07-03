@@ -15,10 +15,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
-/**
- *
- * @author bruno
- */
 public class DlgCadPessoa extends javax.swing.JDialog {
 
     //TABELA PESSOA
@@ -237,7 +233,12 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         txtNomePesq.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNomePesq.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        btnPesquisar.setText("P");
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -439,6 +440,24 @@ public class DlgCadPessoa extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "CEP não encontrado", "Erro CEP", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_txtCepFocusLost
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        
+        String pesq = txtNomePesq.getText();
+        List<Pessoa> lista;
+        
+        try {
+            lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarPessoa(pesq);
+            if ( lista.isEmpty() ) {
+                JOptionPane.showMessageDialog(this,"Pessoa não encontrado.", "Pesquisar pessoa", JOptionPane.INFORMATION_MESSAGE);
+            } 
+            pessoaTableModel.setLista(lista);
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
+        
+        }
+        
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void preencherCampos(Pessoa pessoa) throws ParseException {
 

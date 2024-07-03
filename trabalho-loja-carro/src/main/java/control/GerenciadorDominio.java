@@ -6,6 +6,8 @@ package control;
 
 import dao.ConexaoHibernate;
 import dao.GenericDAO;
+import dao.PessoaDAO;
+import dao.VeiculoDAO;
 import domain.Compra;
 import domain.Despesa;
 import domain.Pessoa;
@@ -14,16 +16,21 @@ import domain.Venda;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import org.hibernate.HibernateException;
 
 
 public class GerenciadorDominio {
 
     private GenericDAO genDAO;
+    private PessoaDAO pesDAO;
+    private VeiculoDAO veiDAO;
     
     public GerenciadorDominio() {
         ConexaoHibernate.getSessionFactory().openSession();
         
         genDAO = new GenericDAO();
+        pesDAO = new PessoaDAO();
+        veiDAO = new VeiculoDAO();
     }    
     
     public void inserirCompra( double valor, Date data, Pessoa revendedor, Veiculo veiculo ){
@@ -69,6 +76,22 @@ public class GerenciadorDominio {
         
     }
     
+    public List<Pessoa> pesquisarPessoa(String pesq) throws HibernateException {
+        
+        return pesDAO.pesquisar(pesq);
+                
+    }
+    
+    public List<Veiculo> pesquisarVeiculo(String pesq, int tipo) throws HibernateException {
+        
+        switch (tipo) {
+            case 0: return veiDAO.pesquisarPorMarca(pesq);
+            case 1: return veiDAO.pesquisarPorModelo(pesq);
+            case 2: return veiDAO.pesquisarPorPlaca(pesq);            
+            default : return null;
+        }
+                       
+    }
     
     public void excluir (Object obj) throws SQLException, ClassNotFoundException {
         genDAO.excluir(obj);
