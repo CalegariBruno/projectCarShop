@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 public class Venda implements Serializable {
@@ -38,6 +39,8 @@ public class Venda implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Veiculo veiculo;
 
+    @Transient
+    private double lucro;
     
     public Venda() {
     }
@@ -117,6 +120,19 @@ public class Venda implements Serializable {
         this.veiculo = veiculo;
     }
     
+    public Double getValorCompra() {
+        if (veiculo != null && veiculo.getCompras() != null && !veiculo.getCompras().isEmpty()) {
+            // Supondo que a compra mais recente é a última da lista
+            Compra compra = veiculo.getCompras().get(veiculo.getCompras().size() - 1);
+            return compra.getValor();
+        }
+        return null;
+    }
     
+    public Double getLucro(){
+                
+        return lucro = getValor() - ( getValorCompra() + veiculo.getValorTotalDespesas() ) ;       
+        
+    }
     
 }

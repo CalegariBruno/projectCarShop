@@ -51,13 +51,12 @@ public class DlgDespesas extends javax.swing.JDialog {
         jtPainelDespesas = new javax.swing.JTabbedPane();
         jpNovaDespesa = new javax.swing.JPanel();
         jpSelecionarVeiculoDespesa = new javax.swing.JPanel();
-        jlPlaca = new javax.swing.JLabel();
-        txtPesquisa = new javax.swing.JTextField();
-        jbListarVeiculos = new javax.swing.JButton();
-        jbPesquisar = new javax.swing.JButton();
+        txtPesq = new javax.swing.JTextField();
+        btnPesq = new javax.swing.JButton();
         jpVeiculosDespesa = new javax.swing.JPanel();
         jsVeiculoDespesa = new javax.swing.JScrollPane();
         tblVeiculoDespesa = new javax.swing.JTable();
+        cmbTipo = new javax.swing.JComboBox<>();
         jpDespesas = new javax.swing.JPanel();
         jlDescricao = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
@@ -99,29 +98,20 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpSelecionarVeiculoDespesa.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jpSelecionarVeiculoDespesa.setForeground(new java.awt.Color(0, 0, 0));
 
-        jlPlaca.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jlPlaca.setForeground(new java.awt.Color(0, 0, 0));
-        jlPlaca.setText("Placa:");
+        txtPesq.setBackground(new java.awt.Color(204, 204, 204));
+        txtPesq.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtPesq.setForeground(new java.awt.Color(0, 0, 0));
+        txtPesq.setCaretColor(new java.awt.Color(0, 0, 0));
 
-        txtPesquisa.setBackground(new java.awt.Color(204, 204, 204));
-        txtPesquisa.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtPesquisa.setForeground(new java.awt.Color(0, 0, 0));
-        txtPesquisa.setCaretColor(new java.awt.Color(0, 0, 0));
-
-        jbListarVeiculos.setBackground(new java.awt.Color(51, 51, 51));
-        jbListarVeiculos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbListarVeiculos.setForeground(new java.awt.Color(255, 255, 255));
-        jbListarVeiculos.setText("Listar Veículos");
-        jbListarVeiculos.addActionListener(new java.awt.event.ActionListener() {
+        btnPesq.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesq.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnPesq.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
+        btnPesq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbListarVeiculosActionPerformed(evt);
+                btnPesqActionPerformed(evt);
             }
         });
-
-        jbPesquisar.setBackground(new java.awt.Color(51, 51, 51));
-        jbPesquisar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbPesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        jbPesquisar.setText("Pesquisar");
 
         jpVeiculosDespesa.setBackground(new java.awt.Color(255, 255, 102));
 
@@ -142,7 +132,7 @@ public class DlgDespesas extends javax.swing.JDialog {
             jpVeiculosDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpVeiculosDespesaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jsVeiculoDespesa)
+                .addComponent(jsVeiculoDespesa, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jpVeiculosDespesaLayout.setVerticalGroup(
@@ -153,6 +143,11 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        cmbTipo.setBackground(new java.awt.Color(204, 204, 204));
+        cmbTipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbTipo.setForeground(new java.awt.Color(0, 0, 0));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
+
         javax.swing.GroupLayout jpSelecionarVeiculoDespesaLayout = new javax.swing.GroupLayout(jpSelecionarVeiculoDespesa);
         jpSelecionarVeiculoDespesa.setLayout(jpSelecionarVeiculoDespesaLayout);
         jpSelecionarVeiculoDespesaLayout.setHorizontalGroup(
@@ -162,13 +157,13 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addGroup(jpSelecionarVeiculoDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpVeiculosDespesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpSelecionarVeiculoDespesaLayout.createSequentialGroup()
-                        .addComponent(jlPlaca)
-                        .addGap(30, 30, 30)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbPesquisar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
-                        .addComponent(jbListarVeiculos)))
+                        .addGap(11, 11, 11)
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesq)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpSelecionarVeiculoDespesaLayout.setVerticalGroup(
@@ -176,10 +171,9 @@ public class DlgDespesas extends javax.swing.JDialog {
             .addGroup(jpSelecionarVeiculoDespesaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpSelecionarVeiculoDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlPlaca)
-                    .addComponent(jbListarVeiculos)
-                    .addComponent(jbPesquisar))
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesq))
                 .addGap(18, 18, 18)
                 .addComponent(jpVeiculosDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -226,7 +220,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addGroup(jpDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDespesasLayout.createSequentialGroup()
                         .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 320, Short.MAX_VALUE))
                     .addGroup(jpDespesasLayout.createSequentialGroup()
                         .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -452,17 +446,7 @@ public class DlgDespesas extends javax.swing.JDialog {
             
         }
         
-        
-        
-         
-        
     }//GEN-LAST:event_jbAddDespesaActionPerformed
-
-    private void jbListarVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarVeiculosActionPerformed
-        List<Veiculo> lista;
-        lista = GerenciadorInterface.getInstance().getGerenciadorDominio().listarVeiculos();
-        veiculoTableModel.setLista(lista);
-    }//GEN-LAST:event_jbListarVeiculosActionPerformed
 
     private void jbListarFiltroDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarFiltroDespesasActionPerformed
         List<Despesa> lista;
@@ -470,19 +454,34 @@ public class DlgDespesas extends javax.swing.JDialog {
         despesaTableModel.setLista(lista);
     }//GEN-LAST:event_jbListarFiltroDespesasActionPerformed
 
+    private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
+        String pesq = txtPesq.getText();
+        int tipo = cmbTipo.getSelectedIndex();
+        List<Veiculo> lista;
+                
+        try {
+            lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarVeiculo(pesq, tipo);
+            if ( lista.isEmpty() ) {
+                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            } 
+            veiculoTableModel.setLista(lista);
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesqActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnPesq;
+    private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbAddDespesa;
     private javax.swing.JButton jbListarFiltroDespesas;
-    private javax.swing.JButton jbListarVeiculos;
-    private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbPesquisarFiltroDespesas;
     private javax.swing.JLabel jlDescricao;
-    private javax.swing.JLabel jlPlaca;
     private javax.swing.JLabel jlTituloDespesas;
     private javax.swing.JLabel jlValorDespesa;
     private javax.swing.JPanel jpDespesas;
@@ -499,7 +498,7 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JTable tblDespesas;
     private javax.swing.JTable tblVeiculoDespesa;
     private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtPesq;
     private javax.swing.JTextField txtValor;
     private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables

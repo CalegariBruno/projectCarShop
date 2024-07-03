@@ -1,7 +1,6 @@
-
 package dao;
 
-import domain.Veiculo;
+import domain.Compra;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -12,10 +11,10 @@ import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-public class VeiculoDAO extends GenericDAO{
+public class CompraDAO extends GenericDAO{
     
-    private List<Veiculo> pesquisar(String pesq, int tipo ) throws HibernateException  {
-        List<Veiculo> lista = new ArrayList();
+    private List<Compra> pesquisar(String pesq, int tipo ) throws HibernateException  {
+        List<Compra> lista = new ArrayList();
         
         Session sessao = null;
         
@@ -25,18 +24,18 @@ public class VeiculoDAO extends GenericDAO{
 
             //OPERAÇÕES
             CriteriaBuilder builder = sessao.getCriteriaBuilder();
-            CriteriaQuery consulta = builder.createQuery(Veiculo.class);
-            Root tabela = consulta.from(Veiculo.class);
+            CriteriaQuery consulta = builder.createQuery(Compra.class);
+            Root tabela = consulta.from(Compra.class);
             
             // Restrições
             Predicate restricoes = null;
             Expression mes = null;
             switch(tipo) {
-                case 1: restricoes = builder.like(tabela.get("marca"), pesq+"%");
+                case 1: restricoes = builder.like(tabela.get("veiculo").get("marca"), pesq+"%");
                         break;
-                case 2: restricoes = builder.like(tabela.get("modelo"), pesq+"%");
+                case 2: restricoes = builder.like(tabela.get("veiculo").get("modelo"), pesq+"%");
                         break;
-                case 3: restricoes = builder.like(tabela.get("placa"), pesq+"%");                
+                case 3: restricoes = builder.like(tabela.get("veiculo").get("placa"), pesq+"%");                
                         break;                                                            
             }            
 
@@ -60,16 +59,16 @@ public class VeiculoDAO extends GenericDAO{
         
     }
     
-    public List<Veiculo> pesquisarPorMarca (String pesq) throws HibernateException {
+    public List<Compra> pesquisarPorMarca (String pesq) throws HibernateException {
         return pesquisar(pesq,1);   
     }
     
-    public List<Veiculo> pesquisarPorModelo (String pesq) throws HibernateException {
+    public List<Compra> pesquisarPorModelo (String pesq) throws HibernateException {
         return pesquisar(pesq,2);        
     }
     
-    public List<Veiculo> pesquisarPorPlaca (String pesq) throws HibernateException {
+    public List<Compra> pesquisarPorPlaca (String pesq) throws HibernateException {
         return pesquisar(pesq,3);        
     }
-        
+    
 }

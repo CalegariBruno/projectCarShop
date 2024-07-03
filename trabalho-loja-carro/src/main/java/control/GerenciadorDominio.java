@@ -4,10 +4,12 @@
  */
 package control;
 
+import dao.CompraDAO;
 import dao.ConexaoHibernate;
 import dao.GenericDAO;
 import dao.PessoaDAO;
 import dao.VeiculoDAO;
+import dao.VendaDAO;
 import domain.Compra;
 import domain.Despesa;
 import domain.Pessoa;
@@ -24,6 +26,8 @@ public class GerenciadorDominio {
     private GenericDAO genDAO;
     private PessoaDAO pesDAO;
     private VeiculoDAO veiDAO;
+    private VendaDAO venDAO;
+    private CompraDAO comDAO;
     
     public GerenciadorDominio() {
         ConexaoHibernate.getSessionFactory().openSession();
@@ -31,6 +35,8 @@ public class GerenciadorDominio {
         genDAO = new GenericDAO();
         pesDAO = new PessoaDAO();
         veiDAO = new VeiculoDAO();
+        venDAO = new VendaDAO();
+        comDAO = new CompraDAO();
     }    
     
     public void inserirCompra( double valor, Date data, Pessoa revendedor, Veiculo veiculo ){
@@ -77,9 +83,7 @@ public class GerenciadorDominio {
     }
     
     public List<Pessoa> pesquisarPessoa(String pesq) throws HibernateException {
-        
-        return pesDAO.pesquisar(pesq);
-                
+        return pesDAO.pesquisar(pesq);               
     }
     
     public List<Veiculo> pesquisarVeiculo(String pesq, int tipo) throws HibernateException {
@@ -90,7 +94,29 @@ public class GerenciadorDominio {
             case 2: return veiDAO.pesquisarPorPlaca(pesq);            
             default : return null;
         }
-                       
+        
+    }
+    
+    public List<Venda> pesquisarVenda(String pesq, int tipo) throws HibernateException {
+        
+        switch (tipo) {
+            case 0: return venDAO.pesquisarPorMarca(pesq);
+            case 1: return venDAO.pesquisarPorModelo(pesq);
+            case 2: return venDAO.pesquisarPorPlaca(pesq);            
+            default : return null;
+        }
+        
+    }
+    
+    public List<Compra> pesquisarCompra(String pesq, int tipo) throws HibernateException {
+        
+        switch (tipo) {
+            case 0: return comDAO.pesquisarPorMarca(pesq);
+            case 1: return comDAO.pesquisarPorModelo(pesq);
+            case 2: return comDAO.pesquisarPorPlaca(pesq);            
+            default : return null;
+        }
+        
     }
     
     public void excluir (Object obj) throws SQLException, ClassNotFoundException {
@@ -113,5 +139,9 @@ public class GerenciadorDominio {
     public List<Compra> listarCompra(){
         return genDAO.listar(Compra.class);
     } 
+    
+    public List<Venda> listarVenda(){
+        return genDAO.listar(Venda.class);
+    }
     
 }

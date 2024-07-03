@@ -62,7 +62,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
         jsTabelaVeiculos1 = new javax.swing.JScrollPane();
         tblPessoa = new javax.swing.JTable();
-        btnListar = new javax.swing.JButton();
         btnSelecionar = new javax.swing.JButton();
         txtTelefone = new javax.swing.JFormattedTextField();
         jlNomePesq = new javax.swing.JLabel();
@@ -70,7 +69,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de pessoa");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -201,13 +202,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         ));
         jsTabelaVeiculos1.setViewportView(tblPessoa);
 
-        btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
-            }
-        });
-
         btnSelecionar.setText("Selecionar");
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,11 +287,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jlNomePesq)
                             .addGap(18, 18, 18)
-                            .addComponent(txtNomePesq, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomePesq)
                             .addGap(18, 18, 18)
-                            .addComponent(btnPesquisar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnListar)))
+                            .addComponent(btnPesquisar)))
                     .addComponent(btnSelecionar))
                 .addContainerGap())
         );
@@ -308,7 +300,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                 .addComponent(txtCadCliente)
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListar)
                     .addComponent(jlNomePesq)
                     .addComponent(txtNomePesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
@@ -401,12 +392,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        List<Pessoa> lista;
-        lista = GerenciadorInterface.getInstance().getGerenciadorDominio().listarPessoa();
-        pessoaTableModel.setLista(lista);
-    }//GEN-LAST:event_btnListarActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         pessoaSelecionado = null;
         this.setVisible(false);
@@ -477,7 +462,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnListar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JPanel jPanel1;

@@ -12,10 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+
 
 @Entity
 public class Veiculo {
@@ -168,7 +166,7 @@ public class Veiculo {
         this.despesas = despesas;
     }
 
-    public Double calcularDespesas() {
+    public Double getValorTotalDespesas() {
 
         double total = 0;
         int i = 0;
