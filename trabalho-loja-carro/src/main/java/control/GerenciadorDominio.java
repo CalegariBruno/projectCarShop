@@ -6,6 +6,7 @@ package control;
 
 import dao.CompraDAO;
 import dao.ConexaoHibernate;
+import dao.DespesaDAO;
 import dao.GenericDAO;
 import dao.PessoaDAO;
 import dao.VeiculoDAO;
@@ -28,6 +29,7 @@ public class GerenciadorDominio {
     private VeiculoDAO veiDAO;
     private VendaDAO venDAO;
     private CompraDAO comDAO;
+    private DespesaDAO desDAO;
     
     public GerenciadorDominio() {
         ConexaoHibernate.getSessionFactory().openSession();
@@ -37,6 +39,7 @@ public class GerenciadorDominio {
         veiDAO = new VeiculoDAO();
         venDAO = new VendaDAO();
         comDAO = new CompraDAO();
+        desDAO = new DespesaDAO();
     }    
     
     public void inserirCompra( double valor, Date data, Pessoa revendedor, Veiculo veiculo ){
@@ -84,6 +87,10 @@ public class GerenciadorDominio {
     
     public List<Pessoa> pesquisarPessoa(String pesq) throws HibernateException {
         return pesDAO.pesquisar(pesq);               
+    }
+    
+    public List<Despesa> pesquisarDespesa(String placa) throws HibernateException {
+        return desDAO.pesquisar(placa);               
     }
     
     public List<Veiculo> pesquisarVeiculo(String pesq, int tipo) throws HibernateException {

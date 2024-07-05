@@ -14,9 +14,7 @@ import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
 public class DlgDespesas extends javax.swing.JDialog {
-
-    private Veiculo veiculoSelecionado = null;
-    
+   
     private VeiculoAbstractTableModel veiculoTableModel;
     private DespesasAbstractTableModel despesaTableModel;
 
@@ -27,15 +25,13 @@ public class DlgDespesas extends javax.swing.JDialog {
         // ASSOCIAR o TABLE MODEL ABSTRACT
         veiculoTableModel = new VeiculoAbstractTableModel();
         tblVeiculoDespesa.setModel(veiculoTableModel);
+        tblVeiculoDespesa1.setModel(veiculoTableModel);
         
         despesaTableModel = new DespesasAbstractTableModel();
         tblDespesas.setModel(despesaTableModel);
         
     }
-
-    public Veiculo getVeiculoSelecionado() {
-        return veiculoSelecionado;
-    }    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,15 +61,19 @@ public class DlgDespesas extends javax.swing.JDialog {
         jbAddDespesa = new javax.swing.JButton();
         jpListaDespesa = new javax.swing.JPanel();
         jpListaDepesas = new javax.swing.JPanel();
-        jsListaDespesasVeiculos = new javax.swing.JScrollPane();
+        jpSelecionarVeiculoDespesa1 = new javax.swing.JPanel();
+        txtPesq1 = new javax.swing.JTextField();
+        btnPesq1 = new javax.swing.JButton();
+        jpVeiculosDespesa1 = new javax.swing.JPanel();
+        jsVeiculoDespesa1 = new javax.swing.JScrollPane();
+        tblVeiculoDespesa1 = new javax.swing.JTable();
+        cmbTipo1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jpListaDespesas = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tblDespesas = new javax.swing.JTable();
-        jtPlacaFiltroDespesas = new javax.swing.JTextField();
-        jbPesquisarFiltroDespesas = new javax.swing.JButton();
-        jbListarFiltroDespesas = new javax.swing.JButton();
-        txtValorTotal = new javax.swing.JLabel();
-        btnCalcular = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtValorTota = new javax.swing.JLabel();
+        txtValorDespesas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Despesas");
@@ -276,93 +276,173 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         jpListaDepesas.setBackground(new java.awt.Color(255, 255, 102));
 
+        jpSelecionarVeiculoDespesa1.setBackground(new java.awt.Color(255, 255, 102));
+        jpSelecionarVeiculoDespesa1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Selecione um veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpSelecionarVeiculoDespesa1.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtPesq1.setBackground(new java.awt.Color(204, 204, 204));
+        txtPesq1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtPesq1.setForeground(new java.awt.Color(0, 0, 0));
+        txtPesq1.setCaretColor(new java.awt.Color(0, 0, 0));
+
+        btnPesq1.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesq1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnPesq1.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesq1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
+        btnPesq1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesq1ActionPerformed(evt);
+            }
+        });
+
+        jpVeiculosDespesa1.setBackground(new java.awt.Color(255, 255, 102));
+
+        tblVeiculoDespesa1.setBackground(new java.awt.Color(204, 204, 204));
+        tblVeiculoDespesa1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Placa", "Marca", "Modelo", "Cor"
+            }
+        ));
+        jsVeiculoDespesa1.setViewportView(tblVeiculoDespesa1);
+
+        javax.swing.GroupLayout jpVeiculosDespesa1Layout = new javax.swing.GroupLayout(jpVeiculosDespesa1);
+        jpVeiculosDespesa1.setLayout(jpVeiculosDespesa1Layout);
+        jpVeiculosDespesa1Layout.setHorizontalGroup(
+            jpVeiculosDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpVeiculosDespesa1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jsVeiculoDespesa1, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jpVeiculosDespesa1Layout.setVerticalGroup(
+            jpVeiculosDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpVeiculosDespesa1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jsVeiculoDespesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        cmbTipo1.setBackground(new java.awt.Color(204, 204, 204));
+        cmbTipo1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbTipo1.setForeground(new java.awt.Color(0, 0, 0));
+        cmbTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
+
+        jButton1.setText("Selecionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpSelecionarVeiculoDespesa1Layout = new javax.swing.GroupLayout(jpSelecionarVeiculoDespesa1);
+        jpSelecionarVeiculoDespesa1.setLayout(jpSelecionarVeiculoDespesa1Layout);
+        jpSelecionarVeiculoDespesa1Layout.setHorizontalGroup(
+            jpSelecionarVeiculoDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSelecionarVeiculoDespesa1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpSelecionarVeiculoDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpSelecionarVeiculoDespesa1Layout.createSequentialGroup()
+                        .addComponent(jpVeiculosDespesa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jpSelecionarVeiculoDespesa1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(cmbTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPesq1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesq1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(16, 16, 16))))
+        );
+        jpSelecionarVeiculoDespesa1Layout.setVerticalGroup(
+            jpSelecionarVeiculoDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSelecionarVeiculoDespesa1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpSelecionarVeiculoDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpSelecionarVeiculoDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPesq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPesq1))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jpVeiculosDespesa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpListaDespesas.setBackground(new java.awt.Color(255, 255, 102));
+        jpListaDespesas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Despesas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jpListaDespesas.setForeground(new java.awt.Color(0, 0, 0));
+
+        jScrollPane2.setBackground(new java.awt.Color(204, 204, 204));
+
         tblDespesas.setBackground(new java.awt.Color(204, 204, 204));
         tblDespesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Placa", "Marca", "Modelo", "Cor", "Despesa", "Valor"
+                "Modelo", "Descrição", "Valor"
             }
         ));
-        jsListaDespesasVeiculos.setViewportView(tblDespesas);
+        jScrollPane2.setViewportView(tblDespesas);
 
-        jtPlacaFiltroDespesas.setBackground(new java.awt.Color(204, 204, 204));
-        jtPlacaFiltroDespesas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jtPlacaFiltroDespesas.setBorder(new javax.swing.border.MatteBorder(null));
+        txtValorTota.setBackground(new java.awt.Color(0, 0, 0));
+        txtValorTota.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtValorTota.setForeground(new java.awt.Color(0, 0, 0));
 
-        jbPesquisarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
-        jbPesquisarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbPesquisarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
-        jbPesquisarFiltroDespesas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
+        txtValorDespesas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtValorDespesas.setForeground(new java.awt.Color(255, 0, 0));
 
-        jbListarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
-        jbListarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
-        jbListarFiltroDespesas.setText("Listar");
-        jbListarFiltroDespesas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbListarFiltroDespesasActionPerformed(evt);
-            }
-        });
-
-        txtValorTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtValorTotal.setForeground(new java.awt.Color(0, 0, 0));
-        txtValorTotal.setText("Valor Total:");
-
-        btnCalcular.setBackground(new java.awt.Color(51, 51, 51));
-        btnCalcular.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnCalcular.setForeground(new java.awt.Color(255, 255, 255));
-        btnCalcular.setText("Calcular");
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setText("valor");
-
-        jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
+        javax.swing.GroupLayout jpListaDespesasLayout = new javax.swing.GroupLayout(jpListaDespesas);
+        jpListaDespesas.setLayout(jpListaDespesasLayout);
+        jpListaDespesasLayout.setHorizontalGroup(
+            jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpListaDespesasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+                    .addGroup(jpListaDespesasLayout.createSequentialGroup()
+                        .addComponent(txtValorTota)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtValorDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jpListaDespesasLayout.setVerticalGroup(
+            jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpListaDespesasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtValorTota)
+                    .addComponent(txtValorDespesas))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jpListaDepesasLayout = new javax.swing.GroupLayout(jpListaDepesas);
         jpListaDepesas.setLayout(jpListaDepesasLayout);
         jpListaDepesasLayout.setHorizontalGroup(
             jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaDepesasLayout.createSequentialGroup()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbPesquisarFiltroDespesas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbListarFiltroDespesas)
+                .addContainerGap()
+                .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpSelecionarVeiculoDespesa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpListaDespesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaDepesasLayout.createSequentialGroup()
-                .addComponent(btnCalcular)
-                .addGap(18, 18, 18)
-                .addComponent(txtValorTotal)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpListaDepesasLayout.setVerticalGroup(
             jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaDepesasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbPesquisarFiltroDespesas)
-                    .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtPlacaFiltroDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbListarFiltroDespesas))
+                .addComponent(jpSelecionarVeiculoDespesa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jsListaDespesasVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpListaDepesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCalcular)
-                    .addComponent(txtValorTotal)
-                    .addComponent(jLabel1)))
+                .addComponent(jpListaDespesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jpListaDespesaLayout = new javax.swing.GroupLayout(jpListaDespesa);
@@ -448,12 +528,6 @@ public class DlgDespesas extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jbAddDespesaActionPerformed
 
-    private void jbListarFiltroDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarFiltroDespesasActionPerformed
-        List<Despesa> lista;
-        lista = GerenciadorInterface.getInstance().getGerenciadorDominio().listarDespesa();
-        despesaTableModel.setLista(lista);
-    }//GEN-LAST:event_jbListarFiltroDespesasActionPerformed
-
     private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
         String pesq = txtPesq.getText();
         int tipo = cmbTipo.getSelectedIndex();
@@ -470,36 +544,84 @@ public class DlgDespesas extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnPesqActionPerformed
 
+    private void btnPesq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesq1ActionPerformed
+        String pesq = txtPesq1.getText();
+        int tipo = cmbTipo1.getSelectedIndex();
+        List<Veiculo> lista;
+                
+        try {
+            lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarVeiculo(pesq, tipo);
+            if ( lista.isEmpty() ) {
+                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            } 
+            veiculoTableModel.setLista(lista);
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesq1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        int linha = tblVeiculoDespesa1.getSelectedRow();
+        List<Despesa> lista;
+        
+        if ( linha >= 0 ) {                      
+            
+            //PEGAR O VEICULO SELECIONADO
+            linha = tblVeiculoDespesa1.convertRowIndexToModel(linha);
+            Veiculo veiculo = veiculoTableModel.getVeiculo(linha);         
+            
+            double total = veiculo.getValorTotalDespesas();
+            String totalDespesas = Double.toString(total);
+            
+            lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarDespesa(veiculo.getPlaca());
+            
+            despesaTableModel.setLista(lista);           
+            
+            txtValorTota.setText("Valor Total:");
+            txtValorDespesas.setText("R$ " + totalDespesas);
+             
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this,"Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnPesq;
+    private javax.swing.JButton btnPesq1;
     private javax.swing.JComboBox<String> cmbTipo;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cmbTipo1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbAddDespesa;
-    private javax.swing.JButton jbListarFiltroDespesas;
-    private javax.swing.JButton jbPesquisarFiltroDespesas;
     private javax.swing.JLabel jlDescricao;
     private javax.swing.JLabel jlTituloDespesas;
     private javax.swing.JLabel jlValorDespesa;
     private javax.swing.JPanel jpDespesas;
     private javax.swing.JPanel jpListaDepesas;
     private javax.swing.JPanel jpListaDespesa;
+    private javax.swing.JPanel jpListaDespesas;
     private javax.swing.JPanel jpNovaDespesa;
     private javax.swing.JPanel jpPrincipalDespesas;
     private javax.swing.JPanel jpSelecionarVeiculoDespesa;
+    private javax.swing.JPanel jpSelecionarVeiculoDespesa1;
     private javax.swing.JPanel jpVeiculosDespesa;
-    private javax.swing.JScrollPane jsListaDespesasVeiculos;
+    private javax.swing.JPanel jpVeiculosDespesa1;
     private javax.swing.JScrollPane jsVeiculoDespesa;
+    private javax.swing.JScrollPane jsVeiculoDespesa1;
     private javax.swing.JTabbedPane jtPainelDespesas;
-    private javax.swing.JTextField jtPlacaFiltroDespesas;
     private javax.swing.JTable tblDespesas;
     private javax.swing.JTable tblVeiculoDespesa;
+    private javax.swing.JTable tblVeiculoDespesa1;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtPesq;
+    private javax.swing.JTextField txtPesq1;
     private javax.swing.JTextField txtValor;
-    private javax.swing.JLabel txtValorTotal;
+    private javax.swing.JLabel txtValorDespesas;
+    private javax.swing.JLabel txtValorTota;
     // End of variables declaration//GEN-END:variables
 }

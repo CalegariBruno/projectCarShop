@@ -126,10 +126,12 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="txtCadCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlNomePesq" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNomePesq" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnPesquisar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlNomePesq" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomePesq" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
