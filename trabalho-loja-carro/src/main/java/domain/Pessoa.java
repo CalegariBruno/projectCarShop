@@ -53,7 +53,7 @@ public class Pessoa implements Serializable {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.endereco = new Endereco(cep, bairro, descricao, numero, cidade, uf);
+        this.endereco = new Endereco(idPessoa, cep, bairro, descricao, numero, cidade, uf);
     }
 
     public Pessoa(String nome, String cpf , String telefone, String cep, String bairro, String descricao, int numero, String cidade, String uf) {

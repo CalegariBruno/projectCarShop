@@ -12,9 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,7 +20,7 @@ import javax.persistence.TemporalType;
 public class Compra implements Serializable {
     
     @Id
-    @GeneratedValue ( strategy = GenerationType.IDENTITY)
+    @GeneratedValue ( strategy = GenerationType.IDENTITY )
     private int idCompra;
     
     @Temporal(TemporalType.DATE)
@@ -53,24 +51,6 @@ public class Compra implements Serializable {
         this.revendedor = revendedor;
         this.veiculo = veiculo;
     }
-    
-//    public Compra(int idCompra, double valor, Date data, String nome, String cpf , String telefone, String cep, String bairro, String descricao, int numero, String cidade, String uf,
-//            String placa, long renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
-//        this.idCompra = idCompra;
-//        this.valor = valor;
-//        this.data = data;
-//        this.revendedor = new Pessoa(nome, cpf, telefone, cep, bairro, descricao, numero, cidade, uf);
-//        this.veiculo = new Veiculo(placa, renavam, marca, modelo, cor, tipo, combustivel, ano);
-//    }
-//
-//    public Compra(double valor, Date data, String nome, String cpf , String telefone, String cep, String bairro, String descricao, int numero, String cidade, String uf,
-//            String placa, long renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano) {
-//        this.valor = valor;
-//        this.data = data;
-//        this.revendedor = new Pessoa(nome, cpf, telefone, cep, bairro, descricao, numero, cidade, uf);
-//        this.veiculo = new Veiculo(placa, renavam, marca, modelo, cor, tipo, combustivel, ano);
-//    }
-    
 
     public int getIdCompra() {
         return idCompra;

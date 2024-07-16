@@ -22,16 +22,16 @@ public class DlgCompra extends javax.swing.JDialog {
 
     private Pessoa pessoaSelecionado = null;
     private Veiculo veiculoSelecionado = null;
-    
+
     private CompraAbstractTableModel comprasTableModel;
 
     public DlgCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         comprasTableModel = new CompraAbstractTableModel();
         tblCompras.setModel(comprasTableModel);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -467,14 +467,14 @@ public class DlgCompra extends javax.swing.JDialog {
         // INFORMAÇÕES DA COMPRA
         String dataCompra = txtDataCompra.getText();
         String valorCompra = txtValorCompra.getText();
-                
+
         try {
             // INSERIR NO BANCO            
-            
+
             double valor = Double.parseDouble(valorCompra);
-            Date data = FuncoesUteis.strToDate(dataCompra);            
-                     
-            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra( valor, data, pessoaSelecionado, veiculoSelecionado);
+            Date data = FuncoesUteis.strToDate(dataCompra);
+
+            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra(valor, data, pessoaSelecionado, veiculoSelecionado);
 
             JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
 
@@ -486,55 +486,64 @@ public class DlgCompra extends javax.swing.JDialog {
     }//GEN-LAST:event_jbRegistrarCompraActionPerformed
 
     private void btnBuscarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVeiculoActionPerformed
-       veiculoSelecionado = GerenciadorInterface.getInstance().abrirJanCadVeiculo();
-        try {
-            preencherCampos(veiculoSelecionado);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Buscar Veiculo", JOptionPane.ERROR_MESSAGE);
+        veiculoSelecionado = GerenciadorInterface.getInstance().abrirJanCadVeiculo();
+        
+        if (veiculoSelecionado != null) {
+            try {
+                preencherCampos(veiculoSelecionado);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Buscar Veiculo", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnBuscarVeiculoActionPerformed
 
     private void btnBuscarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPessoaActionPerformed
         pessoaSelecionado = GerenciadorInterface.getInstance().abrirJanCadPessoa();
-        try {
-            preencherCampos(pessoaSelecionado);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Buscar Pessoa", JOptionPane.ERROR_MESSAGE);
+
+        if (pessoaSelecionado != null) {
+            try {
+                preencherCampos(pessoaSelecionado);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Buscar Pessoa", JOptionPane.ERROR_MESSAGE);
+            }
         }
+
     }//GEN-LAST:event_btnBuscarPessoaActionPerformed
 
     private void btnPesqCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCompraActionPerformed
         String pesq = txtPesq.getText();
         int tipo = cmbTipo.getSelectedIndex();
         List<Compra> lista;
-        
+
         try {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarCompra(pesq, tipo);
-            if ( lista.isEmpty() ) {
-                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            }
             comprasTableModel.setLista(lista);
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPesqCompraActionPerformed
 
     private void preencherCampos(Object obj) throws ParseException {
 
         if (obj instanceof Pessoa) {
-            
+
             Pessoa pessoa = (Pessoa) obj;
             txtNome.setText(pessoa.getNome());
             txtCpf.setText(pessoa.getCpf());
             txtTelefone.setText(pessoa.getTelefone());
 
-        }else{
-            
+        } else if (obj instanceof Veiculo) {
+
             Veiculo veiculo = (Veiculo) obj;
             txtPlaca.setText(veiculo.getPlaca());
             txtMarca.setText(veiculo.getMarca());
             txtModelo.setText(veiculo.getModelo());
-   
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum dado selecionado.", "Pesquisar", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }

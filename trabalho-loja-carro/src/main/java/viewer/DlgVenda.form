@@ -728,8 +728,7 @@
                                   <Component id="txtPesqVenda" min="-2" pref="381" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnPesquisarVenda" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jbListarFiltroDespesas" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -742,12 +741,11 @@
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtPesqVenda" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbListarFiltroDespesas" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnPesquisarVenda" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbTipo2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jsTabelaVeiculosVendidos" pref="476" max="32767" attributes="0"/>
+                          <Component id="jsTabelaVeiculosVendidos" pref="477" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -816,20 +814,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarVendaActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jbListarFiltroDespesas">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Dialog" size="18" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Listar"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbTipo2">
                   <Properties>

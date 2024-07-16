@@ -19,7 +19,6 @@ import javax.persistence.OneToOne;
 public class Endereco implements Serializable {
     
     @Id
-    @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private int idEndereco;
     
     @Column ( length = 10)
@@ -30,8 +29,7 @@ public class Endereco implements Serializable {
     
     @Column ( length = 100)
     private String descricao;
-    
-    @Column
+
     private int numero;
     
     @Column ( length = 50)
@@ -44,7 +42,6 @@ public class Endereco implements Serializable {
     @MapsId
     @JoinColumn (name = "idPessoa")
     private Pessoa cliente;
-
 
     public Endereco() {
     }

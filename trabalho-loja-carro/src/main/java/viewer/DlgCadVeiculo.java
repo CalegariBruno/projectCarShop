@@ -8,7 +8,10 @@ import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import control.tables.VeiculoAbstractTableModel;
 import domain.Veiculo;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
@@ -63,6 +66,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         cmbTipo = new javax.swing.JComboBox<>();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de veiculo");
@@ -235,6 +239,13 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         cmbTipo.setForeground(new java.awt.Color(0, 0, 0));
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -253,12 +264,17 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCadCliente)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRenavam, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPlaca, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAno))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnCadastrar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCancelar))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                        .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtRenavam, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtPlaca, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtAno)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jpTipoVeiculoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -266,21 +282,19 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                             .addComponent(jlCorVeiculoCompra)
                             .addComponent(jlCorVeiculoCompra1))
                         .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCadastrar)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnCancelar))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmbCombustivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbCor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbCombustivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbCor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 2, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSelecionar)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnSelecionar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnExcluir))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -342,7 +356,9 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCadastrar)
                         .addComponent(btnCancelar))
-                    .addComponent(btnSelecionar))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSelecionar)
+                        .addComponent(btnExcluir)))
                 .addGap(26, 26, 26))
         );
 
@@ -423,11 +439,45 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        
+        int linha = tblVeiculo.getSelectedRow();
+        if ( linha >= 0 ) {
+            
+            if ( JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir veiculo", JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION ) {
+                
+                //Excluir do BANCO
+                linha = tblVeiculo.convertRowIndexToModel(linha);
+                Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
+                try {                
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(veiculo);
+                } catch (HibernateException ex) {
+                    JOptionPane.showMessageDialog(this,"Erro ao excluir veiculo. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) { 
+                    Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                // Remover da TABELA
+                veiculoTableModel.remover(linha);            
+            }
+            
+             
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this,"Selecione uma linha da tabela.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgTipo;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cmbCombustivel;

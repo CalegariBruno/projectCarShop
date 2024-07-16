@@ -87,7 +87,6 @@ public class DlgVenda extends javax.swing.JDialog {
         tblVenda = new javax.swing.JTable();
         txtPesqVenda = new javax.swing.JTextField();
         btnPesquisarVenda = new javax.swing.JButton();
-        jbListarFiltroDespesas = new javax.swing.JButton();
         cmbTipo2 = new javax.swing.JComboBox<>();
 
         btnEditar.setBackground(new java.awt.Color(153, 153, 153));
@@ -424,11 +423,6 @@ public class DlgVenda extends javax.swing.JDialog {
             }
         });
 
-        jbListarFiltroDespesas.setBackground(new java.awt.Color(51, 51, 51));
-        jbListarFiltroDespesas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbListarFiltroDespesas.setForeground(new java.awt.Color(255, 255, 255));
-        jbListarFiltroDespesas.setText("Listar");
-
         cmbTipo2.setBackground(new java.awt.Color(204, 204, 204));
         cmbTipo2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbTipo2.setForeground(new java.awt.Color(0, 0, 0));
@@ -449,8 +443,7 @@ public class DlgVenda extends javax.swing.JDialog {
                         .addComponent(txtPesqVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisarVenda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbListarFiltroDespesas)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpListaVendidosLayout.setVerticalGroup(
@@ -459,11 +452,10 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGap(16, 16, 16)
                 .addGroup(jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPesqVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbListarFiltroDespesas)
                     .addComponent(btnPesquisarVenda)
                     .addComponent(cmbTipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                 .addGap(49, 49, 49))
         );
 
@@ -601,7 +593,6 @@ public class DlgVenda extends javax.swing.JDialog {
     private javax.swing.JButton btnPesquisarVenda;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JComboBox<String> cmbTipo2;
-    private javax.swing.JButton jbListarFiltroDespesas;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JLabel jlCpf;

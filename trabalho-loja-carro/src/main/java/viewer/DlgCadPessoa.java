@@ -5,13 +5,19 @@
 package viewer;
 
 import control.BuscarCEP;
+import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import control.tables.PessoaAbstractTableModel;
 import domain.Endereco;
 import domain.Pessoa;
+import java.awt.Color;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
@@ -28,7 +34,6 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         // ASSOCIAR o TABLE PESSOA MODEL ABSTRACT
         pessoaTableModel = new PessoaAbstractTableModel();
         tblPessoa.setModel(pessoaTableModel);
-
     }
 
     public Pessoa getPessoaSelecionada() {
@@ -40,22 +45,22 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jlNomeComprador = new javax.swing.JLabel();
+        jlNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jlTelComprador = new javax.swing.JLabel();
-        jlCEPVendedor1 = new javax.swing.JLabel();
+        jlTel = new javax.swing.JLabel();
+        jlCpf = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
-        jlCEPVendedor = new javax.swing.JLabel();
+        jlCEP = new javax.swing.JLabel();
         txtCep = new javax.swing.JFormattedTextField();
-        jlEndVendedor = new javax.swing.JLabel();
+        jlEndDescricao = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
-        jlBairroVendedor = new javax.swing.JLabel();
+        jlBairro = new javax.swing.JLabel();
         txtBairro = new javax.swing.JTextField();
-        jlCidadeVendedor = new javax.swing.JLabel();
+        jlCidade = new javax.swing.JLabel();
         txtCidade = new javax.swing.JTextField();
-        jlEstadoVendedor = new javax.swing.JLabel();
+        jlEstado = new javax.swing.JLabel();
         txtEstado = new javax.swing.JTextField();
-        jlNumEndVendedor = new javax.swing.JLabel();
+        jlNumEnd = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         txtCadCliente = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
@@ -67,32 +72,39 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         jlNomePesq = new javax.swing.JLabel();
         txtNomePesq = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de pessoa");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jlNomeComprador.setBackground(new java.awt.Color(0, 0, 0));
-        jlNomeComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlNomeComprador.setForeground(new java.awt.Color(0, 0, 0));
-        jlNomeComprador.setText("Nome Completo:");
+        jlNome.setBackground(new java.awt.Color(0, 0, 0));
+        jlNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlNome.setForeground(new java.awt.Color(0, 0, 0));
+        jlNome.setText("Nome Completo:");
 
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNome.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        jlTelComprador.setBackground(new java.awt.Color(0, 0, 0));
-        jlTelComprador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlTelComprador.setForeground(new java.awt.Color(0, 0, 0));
-        jlTelComprador.setText("Telefone:");
+        jlTel.setBackground(new java.awt.Color(0, 0, 0));
+        jlTel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlTel.setForeground(new java.awt.Color(0, 0, 0));
+        jlTel.setText("Telefone:");
 
-        jlCEPVendedor1.setBackground(new java.awt.Color(0, 0, 0));
-        jlCEPVendedor1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlCEPVendedor1.setForeground(new java.awt.Color(0, 0, 0));
-        jlCEPVendedor1.setText("CPF:");
+        jlCpf.setBackground(new java.awt.Color(0, 0, 0));
+        jlCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlCpf.setForeground(new java.awt.Color(0, 0, 0));
+        jlCpf.setText("CPF:");
 
         txtCpf.setBackground(new java.awt.Color(255, 255, 255));
         txtCpf.setForeground(new java.awt.Color(0, 0, 0));
@@ -103,10 +115,10 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         }
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jlCEPVendedor.setBackground(new java.awt.Color(0, 0, 0));
-        jlCEPVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlCEPVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jlCEPVendedor.setText("CEP:");
+        jlCEP.setBackground(new java.awt.Color(0, 0, 0));
+        jlCEP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlCEP.setForeground(new java.awt.Color(0, 0, 0));
+        jlCEP.setText("CEP:");
 
         txtCep.setBackground(new java.awt.Color(255, 255, 255));
         txtCep.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,55 +134,50 @@ public class DlgCadPessoa extends javax.swing.JDialog {
             }
         });
 
-        jlEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
-        jlEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jlEndVendedor.setText("Endereço:");
+        jlEndDescricao.setBackground(new java.awt.Color(0, 0, 0));
+        jlEndDescricao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlEndDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        jlEndDescricao.setText("Endereço:");
 
         txtEndereco.setBackground(new java.awt.Color(255, 255, 255));
         txtEndereco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEndereco.setForeground(new java.awt.Color(0, 0, 0));
-        txtEndereco.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jlBairroVendedor.setBackground(new java.awt.Color(0, 0, 0));
-        jlBairroVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlBairroVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jlBairroVendedor.setText("Bairro:");
+        jlBairro.setBackground(new java.awt.Color(0, 0, 0));
+        jlBairro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlBairro.setForeground(new java.awt.Color(0, 0, 0));
+        jlBairro.setText("Bairro:");
 
         txtBairro.setBackground(new java.awt.Color(255, 255, 255));
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtBairro.setForeground(new java.awt.Color(0, 0, 0));
-        txtBairro.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jlCidadeVendedor.setBackground(new java.awt.Color(0, 0, 0));
-        jlCidadeVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlCidadeVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jlCidadeVendedor.setText("Cidade:");
+        jlCidade.setBackground(new java.awt.Color(0, 0, 0));
+        jlCidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlCidade.setForeground(new java.awt.Color(0, 0, 0));
+        jlCidade.setText("Cidade:");
 
         txtCidade.setBackground(new java.awt.Color(255, 255, 255));
         txtCidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCidade.setForeground(new java.awt.Color(0, 0, 0));
-        txtCidade.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jlEstadoVendedor.setBackground(new java.awt.Color(0, 0, 0));
-        jlEstadoVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlEstadoVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jlEstadoVendedor.setText("Estado:");
+        jlEstado.setBackground(new java.awt.Color(0, 0, 0));
+        jlEstado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlEstado.setForeground(new java.awt.Color(0, 0, 0));
+        jlEstado.setText("Estado:");
 
         txtEstado.setBackground(new java.awt.Color(255, 255, 255));
         txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(0, 0, 0));
-        txtEstado.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jlNumEndVendedor.setBackground(new java.awt.Color(0, 0, 0));
-        jlNumEndVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlNumEndVendedor.setForeground(new java.awt.Color(0, 0, 0));
-        jlNumEndVendedor.setText("Nº:");
+        jlNumEnd.setBackground(new java.awt.Color(0, 0, 0));
+        jlNumEnd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlNumEnd.setForeground(new java.awt.Color(0, 0, 0));
+        jlNumEnd.setText("Nº:");
 
         txtNumero.setBackground(new java.awt.Color(255, 255, 255));
         txtNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNumero.setForeground(new java.awt.Color(0, 0, 0));
-        txtNumero.setBorder(new javax.swing.border.MatteBorder(null));
 
         txtCadCliente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtCadCliente.setForeground(new java.awt.Color(0, 0, 0));
@@ -234,6 +241,20 @@ public class DlgCadPessoa extends javax.swing.JDialog {
             }
         });
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -245,52 +266,56 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlEndVendedor)
-                                    .addComponent(jlCEPVendedor)
-                                    .addComponent(jlBairroVendedor)
-                                    .addComponent(jlCidadeVendedor)
-                                    .addComponent(jlEstadoVendedor))
-                                .addGap(76, 76, 76)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                                    .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBairro, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEndereco, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlNomeComprador)
-                                    .addComponent(jlTelComprador)
-                                    .addComponent(jlCEPVendedor1))
+                                    .addComponent(jlNome)
+                                    .addComponent(jlTel)
+                                    .addComponent(jlCpf))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtCep)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jlNumEndVendedor)
+                                        .addComponent(jlNumEnd)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTelefone)
-                                    .addComponent(txtCpf)))))
+                                    .addComponent(txtCpf)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlEndDescricao)
+                                    .addComponent(jlCEP)
+                                    .addComponent(jlBairro)
+                                    .addComponent(jlCidade)
+                                    .addComponent(jlEstado))
+                                .addGap(76, 76, 76)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnCadastrar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCancelar))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                        .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtBairro, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtEndereco, javax.swing.GroupLayout.Alignment.LEADING))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(txtCadCliente))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(btnCadastrar)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnCancelar)))
+                        .addComponent(txtCadCliente)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jlNomePesq)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtNomePesq)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnPesquisar)))
-                    .addComponent(btnSelecionar))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jlNomePesq)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNomePesq)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesquisar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnSelecionar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAlterar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -308,48 +333,51 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlNomeComprador)
+                            .addComponent(jlNome)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jlTelComprador)
+                                .addComponent(jlTel)
                                 .addGap(9, 9, 9))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlCEPVendedor1))
+                            .addComponent(jlCpf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlNumEndVendedor)
+                            .addComponent(jlNumEnd)
                             .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlCEPVendedor)
+                            .addComponent(jlCEP)
                             .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlEndVendedor)
+                            .addComponent(jlEndDescricao)
                             .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlBairroVendedor)
+                            .addComponent(jlBairro)
                             .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlCidadeVendedor)
+                            .addComponent(jlCidade)
                             .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlEstadoVendedor)
+                            .addComponent(jlEstado)
                             .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastrar)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnSelecionar))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSelecionar)
+                        .addComponent(btnExcluir)
+                        .addComponent(btnCancelar)
+                        .addComponent(btnAlterar)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -380,21 +408,32 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         String estado = txtEstado.getText();
 
         try {
-            // INSERIR NO BANCO
-
+            
             int num = Integer.parseInt(tNumero);
+            
+            if (pessoaSelecionado == null) {
+                // INSERIR NO BANCO                
 
-            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
+                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
 
-            JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                // ALTERAR NO BANCO
+                GerenciadorInterface.getInstance().getGerenciadorDominio().alterarPesssoa(pessoaSelecionado.getIdPessoa(), nome, cpf, telefone, cep, bairro, descricao, num, cidade, cpf);
+                JOptionPane.showMessageDialog(this,"Cliente " + pessoaSelecionado.getNome() + " alterado com sucesso.", "Cadastro pessoa", JOptionPane.INFORMATION_MESSAGE  );
+               
+            }
 
         } catch (HibernateException ex) {
             JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
         }
+
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        pessoaSelecionado = null;
+        limparCampos();
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -428,22 +467,74 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCepFocusLost
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        
+
         String pesq = txtNomePesq.getText();
         List<Pessoa> lista;
-        
+
         try {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarPessoa(pesq);
-            if ( lista.isEmpty() ) {
-                JOptionPane.showMessageDialog(this,"Pessoa não encontrado.", "Pesquisar pessoa", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Pessoa não encontrada.", "Pesquisar pessoa", JOptionPane.INFORMATION_MESSAGE);
+            }
             pessoaTableModel.setLista(lista);
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
-        
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage(), "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
+
         }
-        
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+
+        int linha = tblPessoa.getSelectedRow();
+        if (linha >= 0) {
+
+            if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir pessoa", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+                //Excluir do BANCO
+                linha = tblPessoa.convertRowIndexToModel(linha);
+                Pessoa pessoa = pessoaTableModel.getCliente(linha);
+
+                try {
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(pessoa);
+                } catch (HibernateException ex) {
+                    JOptionPane.showMessageDialog(this, "Erro ao excluir pessoa. " + ex.getMessage(), "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                    Logger.getLogger(DlgCadPessoa.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DlgCadPessoa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // Remover da TABELA
+                pessoaTableModel.remover(linha);
+            }
+
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        limparCampos();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        int linha = tblPessoa.getSelectedRow();
+        if (linha >= 0) {
+            linha = tblPessoa.convertRowIndexToModel(linha);
+            pessoaSelecionado = pessoaTableModel.getCliente(linha);
+            try {
+                preencherCampos(pessoaSelecionado);
+            } catch (ParseException ex) {
+                Logger.getLogger(DlgCadPessoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void preencherCampos(Pessoa pessoa) throws ParseException {
 
@@ -459,23 +550,90 @@ public class DlgCadPessoa extends javax.swing.JDialog {
 
     }
 
+    private boolean validarCampos() {
+
+        String msgErro = "";
+
+        jlNome.setForeground(Color.black);
+        jlTel.setForeground(Color.black);
+        jlCpf.setForeground(Color.black);
+        jlCEP.setForeground(Color.black);
+        jlNumEnd.setForeground(Color.black);
+        jlCidade.setForeground(Color.black);
+        jlEstado.setForeground(Color.black);
+        jlBairro.setForeground(Color.black);
+        jlEndDescricao.setForeground(Color.black);
+
+        if (txtNome.getText().isEmpty()) {
+            msgErro = msgErro + "Digite o nome.\n";
+            jlNome.setForeground(Color.red);
+        }
+
+        if (txtCep.getText().replace("-", "").trim().isEmpty()) {
+            msgErro = msgErro + "Digite o CEP.\n";
+            jlCEP.setForeground(Color.red);
+        }
+
+        if (txtCpf.getText().isEmpty()) {
+            msgErro = msgErro + "Digite o CPF.\n";
+            jlCpf.setForeground(Color.red);
+        }
+
+        try {
+            int num = Integer.parseInt(txtNumero.getText());
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Número inválido.\n";
+            jlNumEnd.setForeground(Color.red);
+        } catch (Exception erro) {
+            msgErro = msgErro + erro.getMessage() + "\n";
+            jlNumEnd.setForeground(Color.red);
+        }
+
+        if (msgErro.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, msgErro, "ERRO pessoa", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
+
+    private void limparCampos() {
+
+        txtNome.setText("");
+        txtTelefone.setText("");
+        txtCpf.setText("");
+        txtCep.setText("");
+        txtNumero.setText("");
+        txtEndereco.setText("");
+        txtCidade.setText("");
+        txtBairro.setText("");
+        txtEstado.setText("");
+        txtNomePesq.setText("");
+        pessoaSelecionado = null;
+        // como limpar a tabela
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jlBairroVendedor;
-    private javax.swing.JLabel jlCEPVendedor;
-    private javax.swing.JLabel jlCEPVendedor1;
-    private javax.swing.JLabel jlCidadeVendedor;
-    private javax.swing.JLabel jlEndVendedor;
-    private javax.swing.JLabel jlEstadoVendedor;
-    private javax.swing.JLabel jlNomeComprador;
+    private javax.swing.JLabel jlBairro;
+    private javax.swing.JLabel jlCEP;
+    private javax.swing.JLabel jlCidade;
+    private javax.swing.JLabel jlCpf;
+    private javax.swing.JLabel jlEndDescricao;
+    private javax.swing.JLabel jlEstado;
+    private javax.swing.JLabel jlNome;
     private javax.swing.JLabel jlNomePesq;
-    private javax.swing.JLabel jlNumEndVendedor;
-    private javax.swing.JLabel jlTelComprador;
+    private javax.swing.JLabel jlNumEnd;
+    private javax.swing.JLabel jlTel;
     private javax.swing.JScrollPane jsTabelaVeiculos1;
     private javax.swing.JTable tblPessoa;
     private javax.swing.JTextField txtBairro;
