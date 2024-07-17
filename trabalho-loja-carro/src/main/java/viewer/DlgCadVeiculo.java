@@ -7,8 +7,10 @@ package viewer;
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import control.tables.VeiculoAbstractTableModel;
+import domain.Pessoa;
 import domain.Veiculo;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +26,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
     public DlgCadVeiculo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         // ASSOCIAR o TABLE VEICULO MODEL ABSTRACT
         veiculoTableModel = new VeiculoAbstractTableModel();
         tblVeiculo.setModel(veiculoTableModel);
@@ -67,6 +69,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
         cmbTipo = new javax.swing.JComboBox<>();
         btnExcluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de veiculo");
@@ -246,6 +249,13 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
             }
         });
 
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -293,6 +303,8 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                             .addComponent(jsTabelaVeiculos1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnSelecionar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAlterar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnExcluir))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -358,7 +370,8 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                         .addComponent(btnCancelar))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSelecionar)
-                        .addComponent(btnExcluir)))
+                        .addComponent(btnExcluir)
+                        .addComponent(btnAlterar)))
                 .addGap(26, 26, 26))
         );
 
@@ -390,7 +403,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
-        // INFORMAÇÕES DO VEICULO 
+        // INFORMAÇÕES DO VEICULO
         String placa = txtPlaca.getText();
         String tRenavam = txtRenavam.getText();
         String marca = txtMarca.getText();
@@ -402,14 +415,23 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         String tipoVeiculo = FuncoesUteis.getSelectedButtonText(bgTipo);
 
         try {
-            // INSERIR NO BANCO
 
             long renavam = Long.parseLong(tRenavam);
             int ano = Integer.parseInt(tAno);
+            
+            if (veiculoSelecionado == null) {
+                // INSERIR NO BANCO                
 
-            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVeiculo(placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVeiculo(placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
 
-            JOptionPane.showMessageDialog(this, "Veiculo inserido com sucesso.", "Cadastro Veiculo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Veiculo inserido com sucesso.", "Cadastro Veiculo", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                // ALTERAR NO BANCO
+                GerenciadorInterface.getInstance().getGerenciadorDominio().alterarVeiculo(veiculoSelecionado.getIdVeiculo(), placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+                JOptionPane.showMessageDialog(this,"Veiculo " + veiculoSelecionado.getModelo()+ " alterado com sucesso.", "Cadastro veiculo", JOptionPane.INFORMATION_MESSAGE  );
+               
+            }
 
         } catch (HibernateException ex) {
             JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro veiculo", JOptionPane.ERROR_MESSAGE);
@@ -422,59 +444,97 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        
+
         String pesq = txtPesq.getText();
         int tipo = cmbTipo.getSelectedIndex();
         List<Veiculo> lista;
-        
+
         try {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarVeiculo(pesq, tipo);
-            if ( lista.isEmpty() ) {
-                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            }
             veiculoTableModel.setLista(lista);
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        
+
         int linha = tblVeiculo.getSelectedRow();
-        if ( linha >= 0 ) {
-            
-            if ( JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir veiculo", JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION ) {
-                
+        if (linha >= 0) {
+
+            if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir veiculo", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
                 //Excluir do BANCO
                 linha = tblVeiculo.convertRowIndexToModel(linha);
                 Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
-                try {                
+                try {
                     GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(veiculo);
                 } catch (HibernateException ex) {
-                    JOptionPane.showMessageDialog(this,"Erro ao excluir veiculo. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
-                } catch (SQLException ex) { 
+                    JOptionPane.showMessageDialog(this, "Erro ao excluir veiculo. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
                     Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
                 // Remover da TABELA
-                veiculoTableModel.remover(linha);            
+                veiculoTableModel.remover(linha);
             }
-            
-             
+
         } else {
             // Mensagem de erro
-            JOptionPane.showMessageDialog(this,"Selecione uma linha da tabela.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+
         }
-        
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+
+        int linha = tblVeiculo.getSelectedRow();
+
+        if (linha >= 0) {
+            linha = tblVeiculo.convertRowIndexToModel(linha);
+            veiculoSelecionado = veiculoTableModel.getVeiculo(linha);
+            try {
+                preencherCampos(veiculoSelecionado);
+            } catch (ParseException ex) {
+                Logger.getLogger(DlgCadPessoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void preencherCampos(Veiculo veiculo) throws ParseException {
+
+        txtPlaca.setText(veiculo.getPlaca());
+        txtRenavam.setText(String.valueOf(veiculo.getRenavam()));
+        txtModelo.setText(veiculo.getModelo());
+        txtMarca.setText(veiculo.getMarca());
+        txtAno.setText(String.valueOf(veiculo.getAno()));
+
+        
+        // NAO ESTA FUNCIONANDNO
+        if (veiculo.getTipo().equals("Carro")) {
+            jrbCarro.setSelected(true);
+        } else {
+            jrbMoto.setSelected(true);
+        }
+        
+        cmbCombustivel.setSelectedItem(veiculo.getCombustivel());
+        cmbCor.setSelectedItem(veiculo.getCor());
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgTipo;
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;

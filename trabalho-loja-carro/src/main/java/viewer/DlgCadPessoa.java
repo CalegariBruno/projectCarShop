@@ -521,7 +521,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        
         int linha = tblPessoa.getSelectedRow();
+        
         if (linha >= 0) {
             linha = tblPessoa.convertRowIndexToModel(linha);
             pessoaSelecionado = pessoaTableModel.getCliente(linha);
@@ -534,6 +536,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
             // Mensagem de erro
             JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void preencherCampos(Pessoa pessoa) throws ParseException {

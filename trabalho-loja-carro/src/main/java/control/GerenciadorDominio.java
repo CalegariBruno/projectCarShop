@@ -85,6 +85,13 @@ public class GerenciadorDominio {
         
     }
     
+    public void alterarVeiculo( int idVeiculo, String placa, long renavam, String marca, String modelo, String cor, String tipo, String combustivel, int ano ){
+               
+        Veiculo veiculo = new Veiculo(idVeiculo, placa, renavam, marca, modelo, cor, tipo, combustivel, ano);
+        genDAO.alterar(veiculo);        
+        
+    }
+    
     public List<Pessoa> pesquisarPessoa(String pesq) throws HibernateException {
         return pesDAO.pesquisar(pesq);               
     }
