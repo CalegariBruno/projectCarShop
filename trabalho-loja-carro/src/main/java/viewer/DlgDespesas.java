@@ -9,29 +9,29 @@ import control.GerenciadorInterface;
 import control.tables.VeiculoAbstractTableModel;
 import domain.Despesa;
 import domain.Veiculo;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
 public class DlgDespesas extends javax.swing.JDialog {
-   
+
     private VeiculoAbstractTableModel veiculoTableModel;
     private DespesasAbstractTableModel despesaTableModel;
 
     public DlgDespesas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         // ASSOCIAR o TABLE MODEL ABSTRACT
         veiculoTableModel = new VeiculoAbstractTableModel();
         tblVeiculoDespesa.setModel(veiculoTableModel);
         tblVeiculoDespesa1.setModel(veiculoTableModel);
-        
+
         despesaTableModel = new DespesasAbstractTableModel();
         tblDespesas.setModel(despesaTableModel);
-        
+
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -493,54 +493,53 @@ public class DlgDespesas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAddDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddDespesaActionPerformed
-        
+
         int linha = tblVeiculoDespesa.getSelectedRow();
-        
-        if ( linha >= 0 ) {
-            
+
+        if (linha >= 0) {
+
             String descricao = txtDescricao.getText();
             String valor = txtValor.getText();
-            
-            
+
             //PEGAR O VEICULO SELECIONADO
             linha = tblVeiculoDespesa.convertRowIndexToModel(linha);
             Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
-            
-            try {
-                // INSERIR NO BANCO
 
-                double valorDespesa = Double.parseDouble(valor);
+            if (validarCampos()) {
+                try {
+                    // INSERIR NO BANCO
 
-                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirDespesa(descricao, valorDespesa , veiculo );
+                    double valorDespesa = Double.parseDouble(valor);
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().inserirDespesa(descricao, valorDespesa, veiculo);
+                    JOptionPane.showMessageDialog(this, "Despesa inserida com sucesso.", "Cadastro Despesa", JOptionPane.INFORMATION_MESSAGE);
+                    limparCampos();
+                    
+                } catch (HibernateException ex) {
+                    JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Despesa", JOptionPane.ERROR_MESSAGE);
 
-                JOptionPane.showMessageDialog(this, "Despesa inserida com sucesso.", "Cadastro Despesa", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
 
-            } catch (HibernateException ex) {
-                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Despesa", JOptionPane.ERROR_MESSAGE);
-        }
-            
-             
         } else {
             // Mensagem de erro
-            JOptionPane.showMessageDialog(this,"Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar Veiculo", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_jbAddDespesaActionPerformed
 
     private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
         String pesq = txtPesq.getText();
         int tipo = cmbTipo.getSelectedIndex();
         List<Veiculo> lista;
-                
+
         try {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarVeiculo(pesq, tipo);
-            if ( lista.isEmpty() ) {
-                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            }
             veiculoTableModel.setLista(lista);
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPesqActionPerformed
 
@@ -548,47 +547,88 @@ public class DlgDespesas extends javax.swing.JDialog {
         String pesq = txtPesq1.getText();
         int tipo = cmbTipo1.getSelectedIndex();
         List<Veiculo> lista;
-                
+
         try {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarVeiculo(pesq, tipo);
-            if ( lista.isEmpty() ) {
-                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            }
             veiculoTableModel.setLista(lista);
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPesq1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         int linha = tblVeiculoDespesa1.getSelectedRow();
         List<Despesa> lista;
-        
-        if ( linha >= 0 ) {                      
-            
+
+        if (linha >= 0) {
+
             //PEGAR O VEICULO SELECIONADO
             linha = tblVeiculoDespesa1.convertRowIndexToModel(linha);
-            Veiculo veiculo = veiculoTableModel.getVeiculo(linha);         
-            
+            Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
+
             double total = veiculo.getValorTotalDespesas();
             String totalDespesas = Double.toString(total);
-            
+
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarDespesa(veiculo.getPlaca());
-            
-            despesaTableModel.setLista(lista);           
-            
+
+            despesaTableModel.setLista(lista);
+
             txtValorTota.setText("Valor Total:");
             txtValorDespesas.setText("R$ " + totalDespesas);
-             
+
         } else {
             // Mensagem de erro
-            JOptionPane.showMessageDialog(this,"Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    private boolean validarCampos() {
+
+        String msgErro = "";
+
+        jlDescricao.setForeground(Color.black);
+        jlValorDespesa.setForeground(Color.black);
+
+        if (txtDescricao.getText().isEmpty()) {
+            msgErro = msgErro + "Insira a descrição.\n";
+            jlDescricao.setForeground(Color.red);
+        }
+
+        if (txtValor.getText().isEmpty()) {
+            msgErro = msgErro + "Insira o valor.\n";
+            jlValorDespesa.setForeground(Color.red);
+        }
+
+        try {
+            double num = Double.parseDouble(txtValor.getText());
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Valor inválido.\n";
+            jlValorDespesa.setForeground(Color.red);
+        } catch (Exception erro) {
+            msgErro = msgErro + erro.getMessage() + "\n";
+            jlValorDespesa.setForeground(Color.red);
+        }
+        
+        if (msgErro.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, msgErro, "ERRO PESSOA", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
+
+    public void limparCampos() {
+        txtDescricao.setText("");
+        txtValor.setText("");
+        jlDescricao.setForeground(Color.black);
+        jlValorDespesa.setForeground(Color.black);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPesq;

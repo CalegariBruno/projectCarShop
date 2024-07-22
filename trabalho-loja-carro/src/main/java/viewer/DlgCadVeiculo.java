@@ -7,8 +7,8 @@ package viewer;
 import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import control.tables.VeiculoAbstractTableModel;
-import domain.Pessoa;
 import domain.Veiculo;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
@@ -74,6 +74,11 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de veiculo");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -414,33 +419,42 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
 
         String tipoVeiculo = FuncoesUteis.getSelectedButtonText(bgTipo);
 
-        try {
+        if (validarCampos()) {
+            try {
 
-            long renavam = Long.parseLong(tRenavam);
-            int ano = Integer.parseInt(tAno);
-            
-            if (veiculoSelecionado == null) {
-                // INSERIR NO BANCO                
+                long renavam = Long.parseLong(tRenavam);
+                int ano = Integer.parseInt(tAno);
 
-                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVeiculo(placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+                if (veiculoSelecionado == null) {
 
-                JOptionPane.showMessageDialog(this, "Veiculo inserido com sucesso.", "Cadastro Veiculo", JOptionPane.INFORMATION_MESSAGE);
+                    // INSERIR NO BANCO                
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVeiculo(placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+                    JOptionPane.showMessageDialog(this, "Veiculo inserido com sucesso.", "Cadastro Veiculo", JOptionPane.INFORMATION_MESSAGE);
+                    limparCampos();
 
-            } else {
-                // ALTERAR NO BANCO
-                GerenciadorInterface.getInstance().getGerenciadorDominio().alterarVeiculo(veiculoSelecionado.getIdVeiculo(), placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
-                JOptionPane.showMessageDialog(this,"Veiculo " + veiculoSelecionado.getModelo()+ " alterado com sucesso.", "Cadastro veiculo", JOptionPane.INFORMATION_MESSAGE  );
-               
+                } else {
+
+                    // ALTERAR NO BANCO
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().alterarVeiculo(veiculoSelecionado.getIdVeiculo(), placa, renavam, marca, modelo, cor, tipoVeiculo, combustivel, ano);
+                    JOptionPane.showMessageDialog(this, "Veiculo " + veiculoSelecionado.getModelo() + " alterado com sucesso.", "Cadastro veiculo", JOptionPane.INFORMATION_MESSAGE);
+                    limparCampos();
+
+                }
+
+            } catch (HibernateException ex) {
+                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro veiculo", JOptionPane.ERROR_MESSAGE);
             }
-
-        } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro veiculo", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        veiculoSelecionado = null;
-        this.setVisible(false);
+        limparCampos();
+        jlPlacaVeiculoCompra.setForeground(Color.black);
+        jlRenavamVeiculoCompra.setForeground(Color.black);
+        jlMarcaVeiculoCompra.setForeground(Color.black);
+        jlModeloVeiculoCompra.setForeground(Color.black);
+        jlAnoVeiculoCompra.setForeground(Color.black);        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -511,6 +525,10 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        limparCampos();
+    }//GEN-LAST:event_formWindowClosed
+
     private void preencherCampos(Veiculo veiculo) throws ParseException {
 
         txtPlaca.setText(veiculo.getPlaca());
@@ -519,16 +537,87 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         txtMarca.setText(veiculo.getMarca());
         txtAno.setText(String.valueOf(veiculo.getAno()));
 
-        
-        // NAO ESTA FUNCIONANDNO
         if (veiculo.getTipo().equals("Carro")) {
             jrbCarro.setSelected(true);
         } else {
             jrbMoto.setSelected(true);
         }
-        
+
         cmbCombustivel.setSelectedItem(veiculo.getCombustivel());
         cmbCor.setSelectedItem(veiculo.getCor());
+
+    }
+
+    private void limparCampos() {
+
+        txtPlaca.setText("");
+        txtRenavam.setText("");
+        txtModelo.setText("");
+        txtMarca.setText("");
+        txtAno.setText("");
+        txtPesq.setText("");
+
+        bgTipo.clearSelection();
+
+        cmbCombustivel.setSelectedIndex(0);
+        cmbCor.setSelectedIndex(0);
+        bgTipo.clearSelection();
+
+        veiculoSelecionado = null;
+
+    }
+
+    private boolean validarCampos() {
+
+        String msgErro = "";
+
+        jlPlacaVeiculoCompra.setForeground(Color.black);
+        jlRenavamVeiculoCompra.setForeground(Color.black);
+        jlMarcaVeiculoCompra.setForeground(Color.black);
+        jlModeloVeiculoCompra.setForeground(Color.black);
+        jlAnoVeiculoCompra.setForeground(Color.black);
+
+        if (txtPlaca.getText().isEmpty()) {
+            msgErro = msgErro + "Digite a placa.\n";
+            jlPlacaVeiculoCompra.setForeground(Color.red);
+        }
+
+        if (txtMarca.getText().isEmpty()) {
+            msgErro = msgErro + "Digite a marca.\n";
+            jlMarcaVeiculoCompra.setForeground(Color.red);
+        }
+
+        if (txtModelo.getText().isEmpty()) {
+            msgErro = msgErro + "Digite o modelo.\n";
+            jlModeloVeiculoCompra.setForeground(Color.red);
+        }
+
+        try {
+            int ano = Integer.parseInt(txtAno.getText());
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Ano inválido.\n";
+            jlAnoVeiculoCompra.setForeground(Color.red);
+        } catch (Exception erro) {
+            msgErro = msgErro + erro.getMessage() + "\n";
+            jlAnoVeiculoCompra.setForeground(Color.red);
+        }
+
+        try {
+            int renavam = Integer.parseInt(txtRenavam.getText());
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Renavam inválido.\n";
+            jlRenavamVeiculoCompra.setForeground(Color.red);
+        } catch (Exception erro) {
+            msgErro = msgErro + erro.getMessage() + "\n";
+            jlRenavamVeiculoCompra.setForeground(Color.red);
+        }
+
+        if (msgErro.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, msgErro, "ERRO VEICULO", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
 
     }
 

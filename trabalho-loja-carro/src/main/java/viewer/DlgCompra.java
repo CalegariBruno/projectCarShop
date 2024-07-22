@@ -10,6 +10,7 @@ import control.tables.CompraAbstractTableModel;
 import domain.Compra;
 import domain.Pessoa;
 import domain.Veiculo;
+import java.awt.Color;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -468,26 +469,28 @@ public class DlgCompra extends javax.swing.JDialog {
         String dataCompra = txtDataCompra.getText();
         String valorCompra = txtValorCompra.getText();
 
-        try {
-            // INSERIR NO BANCO            
+        if ( validarCampos()) {
+            try {
+                // INSERIR NO BANCO            
 
-            double valor = Double.parseDouble(valorCompra);
-            Date data = FuncoesUteis.strToDate(dataCompra);
-
-            GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra(valor, data, pessoaSelecionado, veiculoSelecionado);
-
-            JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
-        } catch (ParseException ex) {
-            Logger.getLogger(DlgCompra.class.getName()).log(Level.SEVERE, null, ex);
+                double valor = Double.parseDouble(valorCompra);
+                Date data = FuncoesUteis.strToDate(dataCompra);
+                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra(valor, data, pessoaSelecionado, veiculoSelecionado);
+                JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
+                limparCampos();
+                
+            } catch (HibernateException ex) {
+                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
+            } catch (ParseException ex) {
+                Logger.getLogger(DlgCompra.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
     }//GEN-LAST:event_jbRegistrarCompraActionPerformed
 
     private void btnBuscarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVeiculoActionPerformed
         veiculoSelecionado = GerenciadorInterface.getInstance().abrirJanCadVeiculo();
-        
+
         if (veiculoSelecionado != null) {
             try {
                 preencherCampos(veiculoSelecionado);
@@ -543,11 +546,76 @@ public class DlgCompra extends javax.swing.JDialog {
             txtModelo.setText(veiculo.getModelo());
 
         } else {
-            JOptionPane.showMessageDialog(this, "Nenhum dado selecionado.", "Pesquisar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Nenhum dado selecionado.", "Buscar", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }
 
+    private boolean validarCampos() {
+
+        String msgErro = "";
+
+        jlValorCompra.setForeground(Color.black);
+        jlDataCompra.setForeground(Color.black);
+
+        if (txtDataCompra.getText().replace("/", "").trim().isEmpty()) {
+            msgErro = msgErro + "Digite a data.\n";
+            jlDataCompra.setForeground(Color.red);
+        }
+
+        if (pessoaSelecionado == null) {
+            msgErro = msgErro + "Selecione uma pessoa.\n";
+        }
+
+        if (veiculoSelecionado == null) {
+            msgErro = msgErro + "Selecione um veiculo.\n";
+        }
+
+        if (txtValorCompra.getText().isEmpty()) {
+            msgErro = msgErro + "Insira o valor.\n";
+            jlValorCompra.setForeground(Color.red);
+        }
+
+        try {
+            double num = Double.parseDouble(txtValorCompra.getText());
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Valor inválido.\n";
+            jlValorCompra.setForeground(Color.red);
+        } catch (Exception erro) {
+            msgErro = msgErro + erro.getMessage() + "\n";
+            jlValorCompra.setForeground(Color.red);
+        }
+
+        if (msgErro.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, msgErro, "ERRO PESSOA", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
+    
+    public void limparCampos(){
+        
+        // PESSOA
+        txtNome.setText("");
+        txtCpf.setText("");
+        txtTelefone.setText("");
+        pessoaSelecionado = null;
+        
+        // VEICULO
+        txtMarca.setText("");
+        txtPlaca.setText("");
+        txtModelo.setText("");
+        veiculoSelecionado = null;
+        
+        // COMPRA
+        txtDataCompra.setText("");
+        txtValorCompra.setText("");
+        jlDataCompra.setForeground(Color.black);
+        jlValorCompra.setForeground(Color.black);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgTipo;

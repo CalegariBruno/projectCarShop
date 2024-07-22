@@ -5,7 +5,6 @@
 package viewer;
 
 import control.BuscarCEP;
-import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import control.tables.PessoaAbstractTableModel;
 import domain.Endereco;
@@ -14,7 +13,6 @@ import java.awt.Color;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -407,34 +405,43 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         String cidade = txtCidade.getText();
         String estado = txtEstado.getText();
 
-        try {
-            
-            int num = Integer.parseInt(tNumero);
-            
-            if (pessoaSelecionado == null) {
-                // INSERIR NO BANCO                
+        if (validarCampos()) {
 
-                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
+            try {
 
-                JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
+                int num = Integer.parseInt(tNumero);
 
-            } else {
-                // ALTERAR NO BANCO
-                GerenciadorInterface.getInstance().getGerenciadorDominio().alterarPesssoa(pessoaSelecionado.getIdPessoa(), nome, cpf, telefone, cep, bairro, descricao, num, cidade, cpf);
-                JOptionPane.showMessageDialog(this,"Cliente " + pessoaSelecionado.getNome() + " alterado com sucesso.", "Cadastro pessoa", JOptionPane.INFORMATION_MESSAGE  );
-               
+                if (pessoaSelecionado == null) {
+
+                    // INSERIR NO BANCO               
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
+                    JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
+                    limparCampos();
+
+                } else {
+
+                    // ALTERAR NO BANCO
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().alterarPesssoa(pessoaSelecionado.getIdPessoa(), nome, cpf, telefone, cep, bairro, descricao, num, cidade, cpf);
+                    JOptionPane.showMessageDialog(this, "Cliente " + pessoaSelecionado.getNome() + " alterado com sucesso.", "Cadastro pessoa", JOptionPane.INFORMATION_MESSAGE);
+                    limparCampos();
+
+                }
+
+            } catch (HibernateException ex) {
+                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
             }
 
-        } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
         }
-
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         limparCampos();
-        this.setVisible(false);
+        jlNome.setForeground(Color.black);
+        jlTel.setForeground(Color.black);
+        jlCpf.setForeground(Color.black);
+        jlCEP.setForeground(Color.black);
+        jlNumEnd.setForeground(Color.black);        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
@@ -521,9 +528,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        
+
         int linha = tblPessoa.getSelectedRow();
-        
+
         if (linha >= 0) {
             linha = tblPessoa.convertRowIndexToModel(linha);
             pessoaSelecionado = pessoaTableModel.getCliente(linha);
@@ -536,7 +543,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
             // Mensagem de erro
             JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void preencherCampos(Pessoa pessoa) throws ParseException {
@@ -575,9 +582,15 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         if (txtCep.getText().replace("-", "").trim().isEmpty()) {
             msgErro = msgErro + "Digite o CEP.\n";
             jlCEP.setForeground(Color.red);
+        }        
+
+        String telefone = txtTelefone.getText().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").trim();
+        if (telefone.isEmpty()) {
+            msgErro = msgErro + "Digite o Telefone.\n";
+            jlTel.setForeground(Color.red);
         }
 
-        if (txtCpf.getText().isEmpty()) {
+        if (txtCpf.getText().replace(".", "").replace("-", "").trim().isEmpty()) {
             msgErro = msgErro + "Digite o CPF.\n";
             jlCpf.setForeground(Color.red);
         }
@@ -595,7 +608,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         if (msgErro.isEmpty()) {
             return true;
         } else {
-            JOptionPane.showMessageDialog(this, msgErro, "ERRO pessoa", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, msgErro, "ERRO PESSOA", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
@@ -614,8 +627,8 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         txtEstado.setText("");
         txtNomePesq.setText("");
         pessoaSelecionado = null;
-        // como limpar a tabela
 
+        // como limpar a tabela ??
     }
 
 
