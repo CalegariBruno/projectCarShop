@@ -11,6 +11,7 @@ import control.tables.VendaAbstractTableModel;
 import domain.Pessoa;
 import domain.Veiculo;
 import domain.Venda;
+import java.awt.Color;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,7 @@ public class DlgVenda extends javax.swing.JDialog {
     //TABELA VEICULO
     private Veiculo veiculoSelecionado = null;
     private VeiculoAbstractTableModel veiculoTableModel;
-    
+
     //TABELA VENDAS
     private VendaAbstractTableModel vendaTableModel;
 
@@ -38,7 +39,7 @@ public class DlgVenda extends javax.swing.JDialog {
         // ASSOCIAR o TABLE VEICULO MODEL ABSTRACT
         veiculoTableModel = new VeiculoAbstractTableModel();
         tblVeiculo.setModel(veiculoTableModel);
-        
+
         // ASSOCIAR o TABLE VENDA MODEL ABSTRACT
         vendaTableModel = new VendaAbstractTableModel();
         tblVenda.setModel(vendaTableModel);
@@ -501,33 +502,42 @@ public class DlgVenda extends javax.swing.JDialog {
         String financeira = txtFinanceira.getText();
         String retornoVenda = txtRetorno.getText();
 
-        if (pessoaSelecionado != null && linha >= 0) {
+        if (linha >= 0) {
 
             //PEGAR O VEICULO SELECIONADO
             linha = tblVeiculo.convertRowIndexToModel(linha);
             Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
 
-            try {
-                // INSERIR NO BANCO
+            if (validarCampos()) {
+                
+                try {
 
-                double valor = Double.parseDouble(valorVenda);
-                double retorno = Double.parseDouble(retornoVenda);
-                Date data = FuncoesUteis.strToDate(dataVenda);
-
-                GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, data, financeira, retorno, pessoaSelecionado, veiculo);
-
-                JOptionPane.showMessageDialog(this, "Venda inserida com sucesso.", "Cadastro Venda", JOptionPane.INFORMATION_MESSAGE);
-
-            } catch (HibernateException ex) {
-                JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Venda", JOptionPane.ERROR_MESSAGE);
-
-            } catch (ParseException ex) {
-                Logger.getLogger(DlgVenda.class.getName()).log(Level.SEVERE, null, ex);
+                    // INSERIR NO BANCO
+                    double valor = Double.parseDouble(valorVenda);
+                    double retorno = Double.parseDouble(retornoVenda);
+                    Date data = FuncoesUteis.strToDate(dataVenda);
+                    
+                    if ( retorno > 0 ){
+                        GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, data, financeira, retorno, pessoaSelecionado, veiculo);
+                    }else{
+                        GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, data, financeira, 0.0, pessoaSelecionado, veiculo);
+                    }                    
+                    
+                    JOptionPane.showMessageDialog(this, "Venda inserida com sucesso.", "Cadastro Venda", JOptionPane.INFORMATION_MESSAGE);
+                    limparCampos();
+                    
+                } catch (HibernateException ex) {
+                    JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Venda", JOptionPane.ERROR_MESSAGE);
+                } catch (ParseException ex) {
+                    Logger.getLogger(DlgVenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
-        }else{
+
+        } else {
             // Mensagem de erro
-            JOptionPane.showMessageDialog(this,"Selecione um veiculo.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Selecione um veiculo.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+
         }
 
     }//GEN-LAST:event_jbRegistrarActionPerformed
@@ -545,15 +555,15 @@ public class DlgVenda extends javax.swing.JDialog {
         String pesq = txtPesq.getText();
         int tipo = cmbTipo.getSelectedIndex();
         List<Veiculo> lista;
-                
+
         try {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarVeiculo(pesq, tipo);
-            if ( lista.isEmpty() ) {
-                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            }
             veiculoTableModel.setLista(lista);
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
@@ -561,16 +571,16 @@ public class DlgVenda extends javax.swing.JDialog {
         String pesq = txtPesqVenda.getText();
         int tipo = cmbTipo2.getSelectedIndex();
         List<Venda> lista;
-                
+
         try {
             //alterar o listar por pesquisar
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().listarVenda();
-            if ( lista.isEmpty() ) {
-                JOptionPane.showMessageDialog(this,"Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
-            } 
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veiculo não encontrado.", "Pesquisar veiculo", JOptionPane.INFORMATION_MESSAGE);
+            }
             vendaTableModel.setLista(lista);
         } catch (HibernateException ex) {
-            JOptionPane.showMessageDialog(this,"Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage(), "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPesquisarVendaActionPerformed
 
@@ -583,6 +593,60 @@ public class DlgVenda extends javax.swing.JDialog {
             txtTelefone.setText(pessoa.getTelefone());
 
         }
+
+    }
+
+    public boolean validarCampos() {
+
+        String msgErro = "";
+
+        jlDataVenda.setForeground(Color.black);
+        jlValorVenda.setForeground(Color.black);
+
+        if (txtData.getText().replace("/", "").trim().isEmpty()) {
+            msgErro = msgErro + "Digite a data.\n";
+            jlDataVenda.setForeground(Color.red);
+        }
+
+        if (txtValor.getText().isEmpty()) {
+            msgErro = msgErro + "Insira o valor.\n";
+            jlValorVenda.setForeground(Color.red);
+        }
+
+        try {
+            double num = Double.parseDouble(txtValor.getText());
+        } catch (NumberFormatException erro) {
+            msgErro = msgErro + "Valor inválido.\n";
+            jlValorVenda.setForeground(Color.red);
+        } catch (Exception erro) {
+            msgErro = msgErro + erro.getMessage() + "\n";
+            jlValorVenda.setForeground(Color.red);
+        }
+
+        if (pessoaSelecionado == null) {
+            msgErro = msgErro + "Selecione uma pessoa.\n";
+        }
+
+        if (msgErro.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, msgErro, "ERRO PESSOA", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
+    
+    public void limparCampos(){
+        
+        txtCpf.setText("");
+        txtNome.setText("");
+        txtTelefone.setText("");
+        txtData.setText("");
+        txtValor.setText("");
+        txtPesq.setText("");
+        pessoaSelecionado = null;
+        
+        // LIMPAR TABELA
         
     }
 
