@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package viewer;
 
 import control.FuncoesUteis;
@@ -488,7 +484,7 @@ public class DlgCompra extends javax.swing.JDialog {
         String dataCompra = txtDataCompra.getText();
         String valorCompra = txtValorCompra.getText();
 
-        if ( validarCampos()) {
+        if (validarCampos()) {
             try {
                 // INSERIR NO BANCO            
 
@@ -497,7 +493,7 @@ public class DlgCompra extends javax.swing.JDialog {
                 GerenciadorInterface.getInstance().getGerenciadorDominio().inserirCompra(valor, data, pessoaSelecionado, veiculoSelecionado);
                 JOptionPane.showMessageDialog(this, "Compra inserida com sucesso.", "Cadastro Compra", JOptionPane.INFORMATION_MESSAGE);
                 limparCampos();
-                
+
             } catch (HibernateException ex) {
                 JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Compra", JOptionPane.ERROR_MESSAGE);
             } catch (ParseException ex) {
@@ -512,7 +508,7 @@ public class DlgCompra extends javax.swing.JDialog {
 
         if (veiculoSelecionado != null) {
             try {
-                preencherCampos(veiculoSelecionado);
+                preencherCamposVeiculo(veiculoSelecionado);
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Buscar Veiculo", JOptionPane.ERROR_MESSAGE);
             }
@@ -524,7 +520,7 @@ public class DlgCompra extends javax.swing.JDialog {
 
         if (pessoaSelecionado != null) {
             try {
-                preencherCampos(pessoaSelecionado);
+                preencherCamposPessoa(pessoaSelecionado);
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Buscar Pessoa", JOptionPane.ERROR_MESSAGE);
             }
@@ -549,9 +545,9 @@ public class DlgCompra extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesqCompraActionPerformed
 
     private void btnExluirCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExluirCompraActionPerformed
-        
+
         int linha = tblCompras.getSelectedRow();
-        
+
         if (linha >= 0) {
 
             if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir compra", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -559,7 +555,7 @@ public class DlgCompra extends javax.swing.JDialog {
                 //Excluir do BANCO
                 linha = tblCompras.convertRowIndexToModel(linha);
                 Compra compra = comprasTableModel.getCompra(linha);
-                
+
                 try {
                     GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(compra);
                 } catch (HibernateException ex) {
@@ -578,32 +574,26 @@ public class DlgCompra extends javax.swing.JDialog {
             // Mensagem de erro
             JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar compra", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnExluirCompraActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         limparCampos();
     }//GEN-LAST:event_formWindowClosed
 
-    private void preencherCampos(Object obj) throws ParseException {
+    private void preencherCamposPessoa(Pessoa pessoa) throws ParseException {
 
-        if (obj instanceof Pessoa) {
+        txtNome.setText(pessoa.getNome());
+        txtCpf.setText(pessoa.getCpf());
+        txtTelefone.setText(pessoa.getTelefone());
 
-            Pessoa pessoa = (Pessoa) obj;
-            txtNome.setText(pessoa.getNome());
-            txtCpf.setText(pessoa.getCpf());
-            txtTelefone.setText(pessoa.getTelefone());
+    }
 
-        } else if (obj instanceof Veiculo) {
+    private void preencherCamposVeiculo(Veiculo veiculo) throws ParseException {
 
-            Veiculo veiculo = (Veiculo) obj;
-            txtPlaca.setText(veiculo.getPlaca());
-            txtMarca.setText(veiculo.getMarca());
-            txtModelo.setText(veiculo.getModelo());
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Nenhum dado selecionado.", "Buscar", JOptionPane.INFORMATION_MESSAGE);
-        }
+        txtPlaca.setText(veiculo.getPlaca());
+        txtMarca.setText(veiculo.getMarca());
+        txtModelo.setText(veiculo.getModelo());
 
     }
 
@@ -650,27 +640,29 @@ public class DlgCompra extends javax.swing.JDialog {
         }
 
     }
-    
-    public void limparCampos(){
-        
+
+    public void limparCampos() {
+
         // PESSOA
         txtNome.setText("");
         txtCpf.setText("");
         txtTelefone.setText("");
         pessoaSelecionado = null;
-        
+        System.out.println("limpando pessoa");
+
         // VEICULO
         txtMarca.setText("");
         txtPlaca.setText("");
         txtModelo.setText("");
         veiculoSelecionado = null;
-        
+        System.out.println("limpando veiculo");
+
         // COMPRA
         txtDataCompra.setText("");
         txtValorCompra.setText("");
         jlDataCompra.setForeground(Color.black);
         jlValorCompra.setForeground(Color.black);
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

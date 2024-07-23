@@ -7,6 +7,7 @@ package domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,8 +28,12 @@ public class Venda implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date data;
     
+    @Column ( nullable = true )
     private String financeira;
-    private double retorno;
+    
+    @Column ( nullable = true )
+    private String retorno;
+    
     private double valor;
     
     @ManyToOne(fetch = FetchType.EAGER)
@@ -43,7 +48,7 @@ public class Venda implements Serializable {
     public Venda() {
     }
     
-    public Venda(int idVenda, double valor, Date data, String financeira, Double retorno, Pessoa cliente, Veiculo veiculo) {
+    public Venda(int idVenda, double valor, Date data, String financeira, String retorno, Pessoa cliente, Veiculo veiculo) {
         this.idVenda = idVenda;
         this.valor = valor;
         this.data = data;
@@ -53,7 +58,7 @@ public class Venda implements Serializable {
         this.veiculo = veiculo;
     }
 
-    public Venda(double valor, Date data, String financeira, Double retorno, Pessoa cliente, Veiculo veiculo) {
+    public Venda(double valor, Date data, String financeira, String retorno, Pessoa cliente, Veiculo veiculo) {
         this.valor = valor;
         this.data = data;
         this.financeira = financeira;
@@ -92,15 +97,7 @@ public class Venda implements Serializable {
 
     public void setFinanceira(String financeira) {
         this.financeira = financeira;
-    }
-
-    public Double getRetorno() {
-        return retorno;
-    }
-
-    public void setRetorno(Double retorno) {
-        this.retorno = retorno;
-    }
+    }    
 
     public Pessoa getCliente() {
         return cliente;
@@ -116,6 +113,14 @@ public class Venda implements Serializable {
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
+    }
+    
+    public String getRetorno() {
+        return retorno;
+    }
+    
+    public void setRetorno(String retorno) {
+        this.retorno = retorno;
     }
     
     public Double getValorCompra() {

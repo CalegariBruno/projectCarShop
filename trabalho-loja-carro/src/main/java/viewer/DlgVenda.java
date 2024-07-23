@@ -500,7 +500,7 @@ public class DlgVenda extends javax.swing.JDialog {
         String dataVenda = txtData.getText();
         String valorVenda = txtValor.getText();
         String financeira = txtFinanceira.getText();
-        String retornoVenda = txtRetorno.getText();
+        String retorno = txtRetorno.getText();
 
         if (linha >= 0) {
 
@@ -513,15 +513,9 @@ public class DlgVenda extends javax.swing.JDialog {
                 try {
 
                     // INSERIR NO BANCO
-                    double valor = Double.parseDouble(valorVenda);
-                    double retorno = Double.parseDouble(retornoVenda);
-                    Date data = FuncoesUteis.strToDate(dataVenda);
-                    
-                    if ( retorno > 0 ){
-                        GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, data, financeira, retorno, pessoaSelecionado, veiculo);
-                    }else{
-                        GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, data, financeira, 0.0, pessoaSelecionado, veiculo);
-                    }                    
+                    double valor = Double.parseDouble(valorVenda);                                         
+                    Date data = FuncoesUteis.strToDate(dataVenda);                                        
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, data, financeira, retorno, pessoaSelecionado, veiculo);                    
                     
                     JOptionPane.showMessageDialog(this, "Venda inserida com sucesso.", "Cadastro Venda", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
@@ -648,6 +642,8 @@ public class DlgVenda extends javax.swing.JDialog {
         txtData.setText("");
         txtValor.setText("");
         txtPesq.setText("");
+        txtRetorno.setText("");
+        txtFinanceira.setText("");
         pessoaSelecionado = null;
         
         // LIMPAR TABELA

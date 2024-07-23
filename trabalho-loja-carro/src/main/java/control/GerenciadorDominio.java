@@ -71,7 +71,7 @@ public class GerenciadorDominio {
  
     }
     
-    public void inserirVenda( double valor, Date data, String financeira, Double retorno, Pessoa cliente, Veiculo veiculo ){
+    public void inserirVenda( double valor, Date data, String financeira, String retorno, Pessoa cliente, Veiculo veiculo ){
                       
         Venda venda = new Venda(valor, data, financeira, retorno, cliente, veiculo);
         genDAO.inserir(venda);

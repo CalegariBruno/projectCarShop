@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package viewer;
 
 import control.FuncoesUteis;
@@ -497,6 +493,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
 
                 // Remover da TABELA
                 veiculoTableModel.remover(linha);
+                veiculoSelecionado = null;
             }
 
         } else {
@@ -557,13 +554,12 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         txtAno.setText("");
         txtPesq.setText("");
 
-        bgTipo.clearSelection();
-
         cmbCombustivel.setSelectedIndex(0);
         cmbCor.setSelectedIndex(0);
         bgTipo.clearSelection();
 
         veiculoSelecionado = null;
+        System.out.println("limpando veiculo");
 
     }
 
