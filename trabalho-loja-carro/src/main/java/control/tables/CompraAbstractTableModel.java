@@ -1,19 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package control.tables;
 
 import domain.Compra;
-import domain.Veiculo;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author bruno
- */
 public class CompraAbstractTableModel extends AbstractTableModel{
     
     private List<Compra> listaItens = new ArrayList();
@@ -70,7 +62,7 @@ public class CompraAbstractTableModel extends AbstractTableModel{
         
     }
 
-    public Compra getVeiculo(int linha) {
+    public Compra getCompra(int linha) {
         return listaItens.get(linha);
     }
     

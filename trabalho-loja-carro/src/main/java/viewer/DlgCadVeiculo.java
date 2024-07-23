@@ -592,6 +592,10 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
             jlModeloVeiculoCompra.setForeground(Color.red);
         }
 
+        if (bgTipo.getSelection() == null) {
+            msgErro = msgErro + "Selecione um tipo.\n";
+        }
+        
         try {
             int ano = Integer.parseInt(txtAno.getText());
         } catch (NumberFormatException erro) {

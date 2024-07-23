@@ -11,6 +11,7 @@ import domain.Compra;
 import domain.Pessoa;
 import domain.Veiculo;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -72,11 +73,17 @@ public class DlgCompra extends javax.swing.JDialog {
         txtPesq = new javax.swing.JTextField();
         btnPesqCompra = new javax.swing.JButton();
         cmbTipo = new javax.swing.JComboBox<>();
+        btnExluirCompra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ficha de Entrada");
         setPreferredSize(new java.awt.Dimension(1020, 750));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jpPrincipalCompra.setBackground(new java.awt.Color(255, 255, 102));
         jpPrincipalCompra.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
@@ -402,6 +409,13 @@ public class DlgCompra extends javax.swing.JDialog {
         cmbTipo.setForeground(new java.awt.Color(0, 0, 0));
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
 
+        btnExluirCompra.setText("Excluir");
+        btnExluirCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExluirCompraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpListaVeiculosCompradosLayout = new javax.swing.GroupLayout(jpListaVeiculosComprados);
         jpListaVeiculosComprados.setLayout(jpListaVeiculosCompradosLayout);
         jpListaVeiculosCompradosLayout.setHorizontalGroup(
@@ -416,7 +430,10 @@ public class DlgCompra extends javax.swing.JDialog {
                         .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesqCompra)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaVeiculosCompradosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnExluirCompra)))
                 .addContainerGap())
         );
         jpListaVeiculosCompradosLayout.setVerticalGroup(
@@ -430,7 +447,9 @@ public class DlgCompra extends javax.swing.JDialog {
                         .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jsListaVeiculosComprados, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
-                .addGap(49, 49, 49))
+                .addGap(18, 18, 18)
+                .addComponent(btnExluirCompra)
+                .addGap(8, 8, 8))
         );
 
         jtPainelCompra.addTab("Comprados", jpListaVeiculosComprados);
@@ -529,6 +548,43 @@ public class DlgCompra extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnPesqCompraActionPerformed
 
+    private void btnExluirCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExluirCompraActionPerformed
+        
+        int linha = tblCompras.getSelectedRow();
+        
+        if (linha >= 0) {
+
+            if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir compra", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+                //Excluir do BANCO
+                linha = tblCompras.convertRowIndexToModel(linha);
+                Compra compra = comprasTableModel.getCompra(linha);
+                
+                try {
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(compra);
+                } catch (HibernateException ex) {
+                    JOptionPane.showMessageDialog(this, "Erro ao excluir compra. " + ex.getMessage(), "Pesquisar compra", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                    Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // Remover da TABELA
+                comprasTableModel.remover(linha);
+            }
+
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar compra", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnExluirCompraActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        limparCampos();
+    }//GEN-LAST:event_formWindowClosed
+
     private void preencherCampos(Object obj) throws ParseException {
 
         if (obj instanceof Pessoa) {
@@ -621,6 +677,7 @@ public class DlgCompra extends javax.swing.JDialog {
     private javax.swing.ButtonGroup bgTipo;
     private javax.swing.JButton btnBuscarPessoa;
     private javax.swing.JButton btnBuscarVeiculo;
+    private javax.swing.JButton btnExluirCompra;
     private javax.swing.JButton btnPesqCompra;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JButton jbRegistrarCompra;
