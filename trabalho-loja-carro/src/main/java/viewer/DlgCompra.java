@@ -344,7 +344,7 @@ public class DlgCompra extends javax.swing.JDialog {
                         .addGroup(jpNovaCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpNovaCompraLayout.createSequentialGroup()
                                 .addComponent(jpVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                                 .addComponent(jpVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpNovaCompraLayout.createSequentialGroup()
                                 .addGap(381, 381, 381)
@@ -390,7 +390,7 @@ public class DlgCompra extends javax.swing.JDialog {
         txtPesq.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPesq.setCaretColor(new java.awt.Color(0, 0, 0));
 
-        btnPesqCompra.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesqCompra.setBackground(new java.awt.Color(153, 153, 153));
         btnPesqCompra.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPesqCompra.setForeground(new java.awt.Color(255, 255, 255));
         btnPesqCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
@@ -405,7 +405,11 @@ public class DlgCompra extends javax.swing.JDialog {
         cmbTipo.setForeground(new java.awt.Color(0, 0, 0));
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
 
-        btnExluirCompra.setText("Excluir");
+        btnExluirCompra.setBackground(new java.awt.Color(51, 51, 51));
+        btnExluirCompra.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnExluirCompra.setForeground(new java.awt.Color(255, 255, 255));
+        btnExluirCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/remove.png"))); // NOI18N
+        btnExluirCompra.setText(" Excluir");
         btnExluirCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExluirCompraActionPerformed(evt);
@@ -419,13 +423,13 @@ public class DlgCompra extends javax.swing.JDialog {
             .addGroup(jpListaVeiculosCompradosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpListaVeiculosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jsListaVeiculosComprados, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                    .addComponent(jsListaVeiculosComprados, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
                     .addGroup(jpListaVeiculosCompradosLayout.createSequentialGroup()
                         .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPesqCompra)
+                        .addComponent(btnPesqCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaVeiculosCompradosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -437,12 +441,11 @@ public class DlgCompra extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaVeiculosCompradosLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jpListaVeiculosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPesqCompra, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jpListaVeiculosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnPesqCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jsListaVeiculosComprados, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                .addComponent(jsListaVeiculosComprados, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExluirCompra)
                 .addGap(8, 8, 8))
@@ -460,7 +463,7 @@ public class DlgCompra extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jpPrincipalCompraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtPainelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jtPainelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jpPrincipalCompraLayout.setVerticalGroup(

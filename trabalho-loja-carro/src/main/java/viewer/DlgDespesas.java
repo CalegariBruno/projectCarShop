@@ -99,7 +99,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         txtPesq.setForeground(new java.awt.Color(0, 0, 0));
         txtPesq.setCaretColor(new java.awt.Color(0, 0, 0));
 
-        btnPesq.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesq.setBackground(new java.awt.Color(153, 153, 153));
         btnPesq.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPesq.setForeground(new java.awt.Color(255, 255, 255));
         btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
@@ -158,7 +158,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPesq)
+                        .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -167,9 +167,9 @@ public class DlgDespesas extends javax.swing.JDialog {
             .addGroup(jpSelecionarVeiculoDespesaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpSelecionarVeiculoDespesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesq))
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jpVeiculosDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -281,7 +281,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         txtPesq1.setForeground(new java.awt.Color(0, 0, 0));
         txtPesq1.setCaretColor(new java.awt.Color(0, 0, 0));
 
-        btnPesq1.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesq1.setBackground(new java.awt.Color(153, 153, 153));
         btnPesq1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPesq1.setForeground(new java.awt.Color(255, 255, 255));
         btnPesq1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
@@ -326,7 +326,11 @@ public class DlgDespesas extends javax.swing.JDialog {
         cmbTipo1.setForeground(new java.awt.Color(0, 0, 0));
         cmbTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marca", "Modelo", "Placa" }));
 
-        jButton1.setText("Selecionar");
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/accept.png"))); // NOI18N
+        jButton1.setText("  Selecionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -349,7 +353,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(txtPesq1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPesq1)
+                        .addComponent(btnPesq1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(16, 16, 16))))
@@ -360,9 +364,9 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jpSelecionarVeiculoDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpSelecionarVeiculoDespesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cmbTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtPesq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPesq1))
+                        .addComponent(cmbTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPesq1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPesq1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(jpVeiculosDespesa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

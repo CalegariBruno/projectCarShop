@@ -148,7 +148,7 @@ public class DlgVenda extends javax.swing.JDialog {
 
         jlCpf.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jlCpf.setForeground(new java.awt.Color(0, 0, 0));
-        jlCpf.setText("Cpf: ");
+        jlCpf.setText("CPF: ");
 
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCpf.setForeground(new java.awt.Color(204, 0, 0));
@@ -166,7 +166,7 @@ public class DlgVenda extends javax.swing.JDialog {
                     .addGroup(jpCompradorLayout.createSequentialGroup()
                         .addComponent(jlTelefone)
                         .addGap(18, 18, 18)
-                        .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
+                        .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jpCompradorLayout.createSequentialGroup()
                         .addComponent(jlNome)
                         .addGap(18, 18, 18)
@@ -179,7 +179,7 @@ public class DlgVenda extends javax.swing.JDialog {
             .addGroup(jpCompradorLayout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(btnBuscarPessoa)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jpCompradorLayout.setVerticalGroup(
             jpCompradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +217,8 @@ public class DlgVenda extends javax.swing.JDialog {
 
         txtPesq.setBackground(new java.awt.Color(204, 204, 204));
         txtPesq.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtPesq.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jbPesquisar.setBackground(new java.awt.Color(51, 51, 51));
+        jbPesquisar.setBackground(new java.awt.Color(153, 153, 153));
         jbPesquisar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jbPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         jbPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
@@ -241,15 +240,15 @@ public class DlgVenda extends javax.swing.JDialog {
             .addGroup(jpVeiculosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
+                    .addGroup(jpVeiculosLayout.createSequentialGroup()
                         .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtPesq)
                         .addGap(18, 18, 18)
                         .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVeiculosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpVeiculosLayout.createSequentialGroup()
+                        .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpVeiculosLayout.setVerticalGroup(
@@ -259,10 +258,10 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbPesquisar, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addComponent(jsTabelaVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -367,16 +366,16 @@ public class DlgVenda extends javax.swing.JDialog {
                 .addGroup(jpVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpVendaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jpComprador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jpComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jpVeiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jpVendaLayout.createSequentialGroup()
                         .addGap(397, 397, 397)
                         .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpVendaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 265, Short.MAX_VALUE)
                 .addComponent(jpDataValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(203, 203, 203))
         );
@@ -412,9 +411,8 @@ public class DlgVenda extends javax.swing.JDialog {
 
         txtPesqVenda.setBackground(new java.awt.Color(204, 204, 204));
         txtPesqVenda.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtPesqVenda.setBorder(new javax.swing.border.MatteBorder(null));
 
-        btnPesquisarVenda.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesquisarVenda.setBackground(new java.awt.Color(153, 153, 153));
         btnPesquisarVenda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPesquisarVenda.setForeground(new java.awt.Color(255, 255, 255));
         btnPesquisarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/24x24/search.png"))); // NOI18N
@@ -436,14 +434,14 @@ public class DlgVenda extends javax.swing.JDialog {
             .addGroup(jpListaVendidosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                    .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
                     .addGroup(jpListaVendidosLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(cmbTipo2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtPesqVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPesquisarVenda)
+                        .addComponent(btnPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -451,12 +449,13 @@ public class DlgVenda extends javax.swing.JDialog {
             jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpListaVendidosLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPesqVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarVenda)
-                    .addComponent(cmbTipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpListaVendidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPesqVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbTipo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addComponent(jsTabelaVeiculosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
                 .addGap(49, 49, 49))
         );
 
