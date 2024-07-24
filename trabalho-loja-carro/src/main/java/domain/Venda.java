@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package domain;
 
 import java.io.Serializable;
@@ -134,7 +130,7 @@ public class Venda implements Serializable {
     
     public Double getLucro(){
                 
-        return lucro = getValor() - ( getValorCompra() + veiculo.getValorTotalDespesas() ) ;       
+        return getValor() - ( getValorCompra() + veiculo.getValorTotalDespesas() ) ;       
         
     }
     

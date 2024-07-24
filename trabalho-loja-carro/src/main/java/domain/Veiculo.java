@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package domain;
 
 import java.util.List;
@@ -13,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
 
 @Entity
 public class Veiculo {
@@ -167,16 +162,7 @@ public class Veiculo {
     }
 
     public Double getValorTotalDespesas() {
-
-        double total = 0;
-        int i = 0;
-        
-        while (i < despesas.size()) {
-            total += despesas.get(i).getValor();
-            i++;
-        }
-
-        return total;
+        return despesas.stream().mapToDouble(Despesa::getValor).sum();
     }
 
 }

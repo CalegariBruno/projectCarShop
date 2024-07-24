@@ -632,6 +632,8 @@ public class DlgDespesas extends javax.swing.JDialog {
         txtValor.setText("");
         jlDescricao.setForeground(Color.black);
         jlValorDespesa.setForeground(Color.black);
+        veiculoTableModel.limpar();
+        despesaTableModel.limpar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

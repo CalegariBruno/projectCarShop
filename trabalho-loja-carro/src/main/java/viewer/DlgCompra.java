@@ -651,21 +651,22 @@ public class DlgCompra extends javax.swing.JDialog {
         txtCpf.setText("");
         txtTelefone.setText("");
         pessoaSelecionado = null;
-        System.out.println("limpando pessoa");
+        
 
         // VEICULO
         txtMarca.setText("");
         txtPlaca.setText("");
         txtModelo.setText("");
         veiculoSelecionado = null;
-        System.out.println("limpando veiculo");
+        
 
         // COMPRA
         txtDataCompra.setText("");
         txtValorCompra.setText("");
         jlDataCompra.setForeground(Color.black);
         jlValorCompra.setForeground(Color.black);
-
+        
+        comprasTableModel.limpar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package control;
 
-import dao.ConexaoHibernate;
 import domain.Pessoa;
 import domain.Veiculo;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -20,10 +14,6 @@ import viewer.DlgDespesas;
 import viewer.DlgVenda;
 import viewer.FrmPrincipalLoja;
 
-/**
- *
- * @author 2022122760044
- */
 public class GerenciadorInterface {
 
     private FrmPrincipalLoja frmPrinc = null;
@@ -93,9 +83,7 @@ public class GerenciadorInterface {
         return pesqVeiculo.getVeiculoSelecionado();
     }
       
-     /**
-     * @param args the command line arguments
-     */
+     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         

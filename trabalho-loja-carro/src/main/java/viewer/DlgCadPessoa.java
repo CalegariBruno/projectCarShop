@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package viewer;
 
 import control.BuscarCEP;
@@ -427,14 +423,18 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                     GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
                     JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
-
+                    
+                    // Atualizar a tabela
+                    btnPesquisarActionPerformed(null);
                 } else {
 
                     // ALTERAR NO BANCO
                     GerenciadorInterface.getInstance().getGerenciadorDominio().alterarPesssoa(pessoaSelecionado.getIdPessoa(), nome, cpf, telefone, cep, bairro, descricao, num, cidade, cpf);
                     JOptionPane.showMessageDialog(this, "Cliente " + pessoaSelecionado.getNome() + " alterado com sucesso.", "Cadastro pessoa", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
-
+                    
+                    // Atualizar a tabela
+                    btnPesquisarActionPerformed(null);
                 }
 
             } catch (HibernateException ex) {
@@ -446,12 +446,13 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        pessoaSelecionado = null;
         limparCampos();
         jlNome.setForeground(Color.black);
         jlTel.setForeground(Color.black);
         jlCpf.setForeground(Color.black);
         jlCEP.setForeground(Color.black);
-        jlNumEnd.setForeground(Color.black);        
+        jlNumEnd.setForeground(Color.black);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
@@ -524,6 +525,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
 
                 // Remover da TABELA
                 pessoaTableModel.remover(linha);
+                
+                // Atualizar a tabela
+                btnPesquisarActionPerformed(null);
             }
 
         } else {
@@ -534,6 +538,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        pessoaSelecionado = null;
         limparCampos();
     }//GEN-LAST:event_formWindowClosed
 
@@ -592,7 +597,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         if (txtCep.getText().replace("-", "").trim().isEmpty()) {
             msgErro = msgErro + "Digite o CEP.\n";
             jlCEP.setForeground(Color.red);
-        }        
+        }
 
         String telefone = txtTelefone.getText().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").trim();
         if (telefone.isEmpty()) {
@@ -631,14 +636,15 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         txtCpf.setText("");
         txtCep.setText("");
         txtNumero.setText("");
+        
         txtEndereco.setText("");
         txtCidade.setText("");
         txtBairro.setText("");
         txtEstado.setText("");
+        
         txtNomePesq.setText("");
-        pessoaSelecionado = null;
-
-        // como limpar a tabela ??
+                
+        pessoaTableModel.limpar();       
     }
 
 

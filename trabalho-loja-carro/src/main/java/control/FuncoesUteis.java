@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package control;
 
 import java.text.DateFormat;
@@ -11,10 +7,6 @@ import java.util.Date;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 
-/**
- *
- * @author bruno
- */
 public class FuncoesUteis {
     
     public static Date strToDate( String strDt) throws ParseException {

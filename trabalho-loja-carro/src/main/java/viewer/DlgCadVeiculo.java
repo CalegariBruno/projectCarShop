@@ -572,7 +572,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         bgTipo.clearSelection();
 
         veiculoSelecionado = null;
-        System.out.println("limpando veiculo");
+        veiculoTableModel.limpar();
 
     }
 
