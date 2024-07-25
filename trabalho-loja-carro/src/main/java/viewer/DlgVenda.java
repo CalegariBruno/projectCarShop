@@ -4,6 +4,7 @@ import control.FuncoesUteis;
 import control.GerenciadorInterface;
 import control.tables.VeiculoAbstractTableModel;
 import control.tables.VendaAbstractTableModel;
+import domain.Compra;
 import domain.Pessoa;
 import domain.Veiculo;
 import domain.Venda;
@@ -11,6 +12,7 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -506,6 +508,16 @@ public class DlgVenda extends javax.swing.JDialog {
             //PEGAR O VEICULO SELECIONADO
             linha = tblVeiculo.convertRowIndexToModel(linha);
             Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
+            
+            // buscar o valor da compra
+            double valorCompra;            
+            Set<Compra> comprasSet = veiculo.getCompras();
+            if (!comprasSet.isEmpty()) {
+                Compra primeiraCompra = comprasSet.iterator().next();
+                valorCompra = primeiraCompra.getValor();
+            }else{
+                valorCompra = 0;
+            }
 
             if (validarCampos()) {
 
@@ -514,7 +526,10 @@ public class DlgVenda extends javax.swing.JDialog {
                     // INSERIR NO BANCO
                     double valor = Double.parseDouble(valorVenda);
                     Date data = FuncoesUteis.strToDate(dataVenda);
-                    GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, data, financeira, retorno, pessoaSelecionado, veiculo);
+                    
+                    System.out.println("\n\n" + valorCompra + "\n\n");
+                    
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().inserirVenda(valor, valorCompra, data, financeira, retorno, pessoaSelecionado, veiculo);
 
                     JOptionPane.showMessageDialog(this, "Venda inserida com sucesso.", "Cadastro Venda", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();

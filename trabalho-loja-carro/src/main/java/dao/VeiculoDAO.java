@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
@@ -25,8 +26,8 @@ public class VeiculoDAO extends GenericDAO{
             //OPERAÇÕES
             CriteriaBuilder builder = sessao.getCriteriaBuilder();
             CriteriaQuery consulta = builder.createQuery(Veiculo.class);
-            Root tabela = consulta.from(Veiculo.class);          
-            
+            Root tabela = consulta.from(Veiculo.class);     
+                        
             // Restrições
             Predicate restricoes = null;
             Expression mes = null;

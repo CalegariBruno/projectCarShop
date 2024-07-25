@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,14 +31,14 @@ public class Veiculo {
     private String combustivel;
     private int ano;
 
-    @OneToMany(mappedBy = "veiculo", fetch = FetchType.LAZY)
-    private List<Compra> compras;
+    @OneToMany(mappedBy = "veiculo", fetch = FetchType.EAGER)
+    private Set<Compra> compras;
 
     @OneToMany(mappedBy = "veiculo", fetch = FetchType.LAZY)
-    private List<Venda> vendas;
+    private Set<Venda> vendas;
 
-    @OneToMany(mappedBy = "veiculo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Despesa> despesas;
+    @OneToMany(mappedBy = "veiculo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Despesa> despesas;
 
     public Veiculo() {
     }
@@ -137,27 +138,27 @@ public class Veiculo {
         this.ano = ano;
     }
 
-    public List<Compra> getCompras() {
+    public Set<Compra> getCompras() {
         return compras;
     }
 
-    public void setCompras(List<Compra> compras) {
+    public void setCompras(Set<Compra> compras) {
         this.compras = compras;
     }
 
-    public List<Venda> getVendas() {
+    public Set<Venda> getVendas() {
         return vendas;
     }
 
-    public void setVendas(List<Venda> vendas) {
+    public void setVendas(Set<Venda> vendas) {
         this.vendas = vendas;
     }
 
-    public List<Despesa> getDespesas() {
+    public Set<Despesa> getDespesas() {
         return despesas;
     }
 
-    public void setDespesas(List<Despesa> despesas) {
+    public void setDespesas(Set<Despesa> despesas) {
         this.despesas = despesas;
     }
 

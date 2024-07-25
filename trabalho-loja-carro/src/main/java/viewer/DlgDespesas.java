@@ -63,8 +63,8 @@ public class DlgDespesas extends javax.swing.JDialog {
         jpListaDespesas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDespesas = new javax.swing.JTable();
-        txtValorTota = new javax.swing.JLabel();
-        txtValorDespesas = new javax.swing.JLabel();
+        labelValorTotal = new javax.swing.JLabel();
+        txtValorTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Despesas");
@@ -390,12 +390,13 @@ public class DlgDespesas extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(tblDespesas);
 
-        txtValorTota.setBackground(new java.awt.Color(0, 0, 0));
-        txtValorTota.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtValorTota.setForeground(new java.awt.Color(0, 0, 0));
+        labelValorTotal.setBackground(new java.awt.Color(0, 0, 0));
+        labelValorTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelValorTotal.setForeground(new java.awt.Color(0, 0, 0));
+        labelValorTotal.setText("Valor Total:");
 
-        txtValorDespesas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtValorDespesas.setForeground(new java.awt.Color(255, 0, 0));
+        txtValorTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtValorTotal.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jpListaDespesasLayout = new javax.swing.GroupLayout(jpListaDespesas);
         jpListaDespesas.setLayout(jpListaDespesasLayout);
@@ -406,9 +407,9 @@ public class DlgDespesas extends javax.swing.JDialog {
                 .addGroup(jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
                     .addGroup(jpListaDespesasLayout.createSequentialGroup()
-                        .addComponent(txtValorTota)
+                        .addComponent(labelValorTotal)
                         .addGap(18, 18, 18)
-                        .addComponent(txtValorDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -416,11 +417,11 @@ public class DlgDespesas extends javax.swing.JDialog {
             jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaDespesasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtValorTota)
-                    .addComponent(txtValorDespesas))
+                    .addComponent(labelValorTotal)
+                    .addComponent(txtValorTotal))
                 .addContainerGap())
         );
 
@@ -576,9 +577,8 @@ public class DlgDespesas extends javax.swing.JDialog {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarDespesa(veiculo.getPlaca());
 
             despesaTableModel.setLista(lista);
-
-            txtValorTota.setText("Valor Total:");
-            txtValorDespesas.setText("R$ " + totalDespesas);
+            
+            txtValorTotal.setText("R$ " + totalDespesas);
 
         } else {
             // Mensagem de erro
@@ -630,6 +630,9 @@ public class DlgDespesas extends javax.swing.JDialog {
     public void limparCampos() {
         txtDescricao.setText("");
         txtValor.setText("");
+        txtPesq.setText("");
+        txtPesq1.setText("");
+        txtValorTotal.setText("");
         jlDescricao.setForeground(Color.black);
         jlValorDespesa.setForeground(Color.black);
         veiculoTableModel.limpar();
@@ -660,6 +663,7 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jsVeiculoDespesa;
     private javax.swing.JScrollPane jsVeiculoDespesa1;
     private javax.swing.JTabbedPane jtPainelDespesas;
+    private javax.swing.JLabel labelValorTotal;
     private javax.swing.JTable tblDespesas;
     private javax.swing.JTable tblVeiculoDespesa;
     private javax.swing.JTable tblVeiculoDespesa1;
@@ -667,7 +671,6 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JTextField txtPesq;
     private javax.swing.JTextField txtPesq1;
     private javax.swing.JTextField txtValor;
-    private javax.swing.JLabel txtValorDespesas;
-    private javax.swing.JLabel txtValorTota;
+    private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables
 }

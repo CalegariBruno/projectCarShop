@@ -38,13 +38,15 @@ public class Venda implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Veiculo veiculo;
 
+    private double valorCompra;
+    
     @Transient
     private double lucro;
     
     public Venda() {
     }
     
-    public Venda(int idVenda, double valor, Date data, String financeira, String retorno, Pessoa cliente, Veiculo veiculo) {
+    public Venda(int idVenda, double valor, double valorCompra, Date data, String financeira, String retorno, Pessoa cliente, Veiculo veiculo) {
         this.idVenda = idVenda;
         this.valor = valor;
         this.data = data;
@@ -52,15 +54,17 @@ public class Venda implements Serializable {
         this.retorno = retorno;
         this.cliente = cliente;
         this.veiculo = veiculo;
+        this.valorCompra = valorCompra;
     }
 
-    public Venda(double valor, Date data, String financeira, String retorno, Pessoa cliente, Veiculo veiculo) {
+    public Venda(double valor, double valorCompra, Date data, String financeira, String retorno, Pessoa cliente, Veiculo veiculo) {
         this.valor = valor;
         this.data = data;
         this.financeira = financeira;
         this.retorno = retorno;
         this.cliente = cliente;
         this.veiculo = veiculo;
+        this.valorCompra = valorCompra;
     }
 
     public int getIdVenda() {
@@ -119,13 +123,12 @@ public class Venda implements Serializable {
         this.retorno = retorno;
     }
     
-    public Double getValorCompra() {
-        if (veiculo != null && veiculo.getCompras() != null && !veiculo.getCompras().isEmpty()) {
-            // Supondo que a compra mais recente é a última da lista
-            Compra compra = veiculo.getCompras().get(veiculo.getCompras().size() - 1);
-            return compra.getValor();
-        }
-        return null;
+    public double getValorCompra() {
+        return valorCompra; 
+    }
+    
+    public void setValorCompra(double valor){
+        this.valorCompra = valor;
     }
     
     public Double getLucro(){
