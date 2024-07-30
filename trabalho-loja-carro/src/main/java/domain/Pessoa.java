@@ -2,6 +2,7 @@ package domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,11 +35,11 @@ public class Pessoa implements Serializable {
     @OneToOne( mappedBy = "cliente" ,cascade = CascadeType.ALL)
     private Endereco endereco;
     
-    @OneToMany(mappedBy = "revendedor", fetch = FetchType.LAZY )
-    private List<Compra> compras;
+    @OneToMany(mappedBy = "revendedor", fetch = FetchType.EAGER )
+    private Set<Compra> compras;
     
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY )
-    private List<Venda> vendas;
+    private Set<Venda> vendas;
 
     public Pessoa() {
     }
@@ -99,19 +100,19 @@ public class Pessoa implements Serializable {
         this.endereco = endereco;
     }
 
-    public List<Compra> getCompras() {
+    public Set<Compra> getCompras() {
         return compras;
     }
 
-    public void setCompras(List<Compra> compras) {
+    public void setCompras(Set<Compra> compras) {
         this.compras = compras;
     }
 
-    public List<Venda> getVendas() {
+    public Set<Venda> getVendas() {
         return vendas;
     }
 
-    public void setVendas(List<Venda> vendas) {
+    public void setVendas(Set<Venda> vendas) {
         this.vendas = vendas;
     }     
     

@@ -27,7 +27,7 @@ public class Compra implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Pessoa revendedor;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Veiculo veiculo;
 
     public Compra() {

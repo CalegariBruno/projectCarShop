@@ -26,6 +26,9 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         // ASSOCIAR o TABLE VEICULO MODEL ABSTRACT
         veiculoTableModel = new VeiculoAbstractTableModel();
         tblVeiculo.setModel(veiculoTableModel);
+
+        // Adicionar o listener de seleção à tabela para saber se tem ou não algum veiculo selecionado
+        tblVeiculo.getSelectionModel().addListSelectionListener(e -> ativarBotoes());
     }
 
     public Veiculo getVeiculoSelecionado() {
@@ -71,8 +74,8 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         setTitle("Cadastro de veiculo");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -220,6 +223,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         btnSelecionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/accept.png"))); // NOI18N
         btnSelecionar.setText("  Selecionar");
+        btnSelecionar.setEnabled(false);
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
@@ -252,6 +256,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/remove.png"))); // NOI18N
         btnExcluir.setText("  Excluir");
+        btnExcluir.setEnabled(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -261,6 +266,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/repeat.png"))); // NOI18N
         btnAlterar.setText("  Alterar");
+        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -408,10 +414,11 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         if (linha >= 0) {
             linha = tblVeiculo.convertRowIndexToModel(linha);
             veiculoSelecionado = veiculoTableModel.getVeiculo(linha);
+            limparCampos();
             this.setVisible(false);
         } else {
             // Mensagem de erro
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar pessoa", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar veiculo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
@@ -449,6 +456,8 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                     limparCampos();
 
                 }
+                // Atualizar a tabela
+                btnPesquisarActionPerformed(null);
 
             } catch (HibernateException ex) {
                 JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro veiculo", JOptionPane.ERROR_MESSAGE);
@@ -458,12 +467,14 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        veiculoSelecionado = null;
         limparCampos();
         jlPlacaVeiculoCompra.setForeground(Color.black);
         jlRenavamVeiculoCompra.setForeground(Color.black);
         jlMarcaVeiculoCompra.setForeground(Color.black);
         jlModeloVeiculoCompra.setForeground(Color.black);
-        jlAnoVeiculoCompra.setForeground(Color.black);        
+        jlAnoVeiculoCompra.setForeground(Color.black);
+        btnCadastrar.setEnabled(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -507,6 +518,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
                 // Remover da TABELA
                 veiculoTableModel.remover(linha);
                 veiculoSelecionado = null;
+                limparCampos();
             }
 
         } else {
@@ -518,6 +530,8 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+
+        btnCadastrar.setEnabled(true);
 
         int linha = tblVeiculo.getSelectedRow();
 
@@ -535,9 +549,10 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        veiculoSelecionado = null;
         limparCampos();
-    }//GEN-LAST:event_formWindowClosed
+    }//GEN-LAST:event_formWindowClosing
 
     private void preencherCampos(Veiculo veiculo) throws ParseException {
 
@@ -571,9 +586,8 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         cmbCor.setSelectedIndex(0);
         bgTipo.clearSelection();
 
-        veiculoSelecionado = null;
         veiculoTableModel.limpar();
-
+        ativarBotoes();
     }
 
     private boolean validarCampos() {
@@ -604,7 +618,7 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
         if (bgTipo.getSelection() == null) {
             msgErro = msgErro + "Selecione um tipo.\n";
         }
-        
+
         try {
             int ano = Integer.parseInt(txtAno.getText());
         } catch (NumberFormatException erro) {
@@ -632,6 +646,21 @@ public class DlgCadVeiculo extends javax.swing.JDialog {
             return false;
         }
 
+    }
+
+    public void ativarBotoes() {
+        int linha = tblVeiculo.getSelectedRow();
+        if (linha != -1) {
+            veiculoSelecionado = veiculoTableModel.getVeiculo(linha);
+            btnAlterar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+            btnSelecionar.setEnabled(true);
+            btnCadastrar.setEnabled(false);
+        } else {
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            btnSelecionar.setEnabled(false);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,10 +3,14 @@ package viewer;
 import control.tables.DespesasAbstractTableModel;
 import control.GerenciadorInterface;
 import control.tables.VeiculoAbstractTableModel;
+import domain.Compra;
 import domain.Despesa;
 import domain.Veiculo;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
@@ -22,11 +26,10 @@ public class DlgDespesas extends javax.swing.JDialog {
         // ASSOCIAR o TABLE MODEL ABSTRACT
         veiculoTableModel = new VeiculoAbstractTableModel();
         tblVeiculoDespesa.setModel(veiculoTableModel);
-        tblVeiculoDespesa1.setModel(veiculoTableModel);
+        tblBuscarVeiculo.setModel(veiculoTableModel);
 
         despesaTableModel = new DespesasAbstractTableModel();
         tblDespesas.setModel(despesaTableModel);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -57,7 +60,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         btnPesq1 = new javax.swing.JButton();
         jpVeiculosDespesa1 = new javax.swing.JPanel();
         jsVeiculoDespesa1 = new javax.swing.JScrollPane();
-        tblVeiculoDespesa1 = new javax.swing.JTable();
+        tblBuscarVeiculo = new javax.swing.JTable();
         cmbTipo1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jpListaDespesas = new javax.swing.JPanel();
@@ -65,6 +68,7 @@ public class DlgDespesas extends javax.swing.JDialog {
         tblDespesas = new javax.swing.JTable();
         labelValorTotal = new javax.swing.JLabel();
         txtValorTotal = new javax.swing.JLabel();
+        btnExcluirDespesa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Despesas");
@@ -293,8 +297,8 @@ public class DlgDespesas extends javax.swing.JDialog {
 
         jpVeiculosDespesa1.setBackground(new java.awt.Color(255, 255, 102));
 
-        tblVeiculoDespesa1.setBackground(new java.awt.Color(204, 204, 204));
-        tblVeiculoDespesa1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBuscarVeiculo.setBackground(new java.awt.Color(204, 204, 204));
+        tblBuscarVeiculo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -302,7 +306,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                 "Placa", "Marca", "Modelo", "Cor"
             }
         ));
-        jsVeiculoDespesa1.setViewportView(tblVeiculoDespesa1);
+        jsVeiculoDespesa1.setViewportView(tblBuscarVeiculo);
 
         javax.swing.GroupLayout jpVeiculosDespesa1Layout = new javax.swing.GroupLayout(jpVeiculosDespesa1);
         jpVeiculosDespesa1.setLayout(jpVeiculosDespesa1Layout);
@@ -398,6 +402,17 @@ public class DlgDespesas extends javax.swing.JDialog {
         txtValorTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtValorTotal.setForeground(new java.awt.Color(255, 0, 0));
 
+        btnExcluirDespesa.setBackground(new java.awt.Color(51, 51, 51));
+        btnExcluirDespesa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnExcluirDespesa.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirDespesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/remove.png"))); // NOI18N
+        btnExcluirDespesa.setText("  Excluir");
+        btnExcluirDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirDespesaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpListaDespesasLayout = new javax.swing.GroupLayout(jpListaDespesas);
         jpListaDespesas.setLayout(jpListaDespesasLayout);
         jpListaDespesasLayout.setHorizontalGroup(
@@ -410,18 +425,20 @@ public class DlgDespesas extends javax.swing.JDialog {
                         .addComponent(labelValorTotal)
                         .addGap(18, 18, 18)
                         .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluirDespesa)))
                 .addContainerGap())
         );
         jpListaDespesasLayout.setVerticalGroup(
             jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaDespesasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpListaDespesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelValorTotal)
-                    .addComponent(txtValorTotal))
+                    .addComponent(txtValorTotal)
+                    .addComponent(btnExcluirDespesa))
                 .addContainerGap())
         );
 
@@ -514,7 +531,7 @@ public class DlgDespesas extends javax.swing.JDialog {
                     GerenciadorInterface.getInstance().getGerenciadorDominio().inserirDespesa(descricao, valorDespesa, veiculo);
                     JOptionPane.showMessageDialog(this, "Despesa inserida com sucesso.", "Cadastro Despesa", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
-                    
+
                 } catch (HibernateException ex) {
                     JOptionPane.showMessageDialog(this, "Erro nos dados. " + ex.getMessage(), "ERRO Cadastro Despesa", JOptionPane.ERROR_MESSAGE);
 
@@ -562,13 +579,13 @@ public class DlgDespesas extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        int linha = tblVeiculoDespesa1.getSelectedRow();
+        int linha = tblBuscarVeiculo.getSelectedRow();
         List<Despesa> lista;
 
         if (linha >= 0) {
 
             //PEGAR O VEICULO SELECIONADO
-            linha = tblVeiculoDespesa1.convertRowIndexToModel(linha);
+            linha = tblBuscarVeiculo.convertRowIndexToModel(linha);
             Veiculo veiculo = veiculoTableModel.getVeiculo(linha);
 
             double total = veiculo.getValorTotalDespesas();
@@ -577,7 +594,7 @@ public class DlgDespesas extends javax.swing.JDialog {
             lista = GerenciadorInterface.getInstance().getGerenciadorDominio().pesquisarDespesa(veiculo.getPlaca());
 
             despesaTableModel.setLista(lista);
-            
+
             txtValorTotal.setText("R$ " + totalDespesas);
 
         } else {
@@ -590,6 +607,40 @@ public class DlgDespesas extends javax.swing.JDialog {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         limparCampos();
     }//GEN-LAST:event_formWindowClosed
+
+    private void btnExcluirDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirDespesaActionPerformed
+
+        int linha = tblDespesas.getSelectedRow();
+        double total=0;
+        
+        if (linha >= 0) {
+
+            if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir Despesa", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                
+                //Excluir do BANCO
+                linha = tblDespesas.convertRowIndexToModel(linha);
+                Despesa despesa = despesaTableModel.getDespesa(linha);
+
+                try {
+                    GerenciadorInterface.getInstance().getGerenciadorDominio().excluir(despesa);
+                } catch (HibernateException ex) {
+                    JOptionPane.showMessageDialog(this, "Erro ao excluir Despesa. " + ex.getMessage(), "Pesquisar Despesa", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                    Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DlgCadVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // Remover da TABELA
+                despesaTableModel.remover(linha);
+                limparCampos();
+            }
+
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar Despesa", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExcluirDespesaActionPerformed
 
     private boolean validarCampos() {
 
@@ -617,7 +668,7 @@ public class DlgDespesas extends javax.swing.JDialog {
             msgErro = msgErro + erro.getMessage() + "\n";
             jlValorDespesa.setForeground(Color.red);
         }
-        
+
         if (msgErro.isEmpty()) {
             return true;
         } else {
@@ -638,8 +689,11 @@ public class DlgDespesas extends javax.swing.JDialog {
         veiculoTableModel.limpar();
         despesaTableModel.limpar();
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluirDespesa;
     private javax.swing.JButton btnPesq;
     private javax.swing.JButton btnPesq1;
     private javax.swing.JComboBox<String> cmbTipo;
@@ -664,9 +718,9 @@ public class DlgDespesas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jsVeiculoDespesa1;
     private javax.swing.JTabbedPane jtPainelDespesas;
     private javax.swing.JLabel labelValorTotal;
+    private javax.swing.JTable tblBuscarVeiculo;
     private javax.swing.JTable tblDespesas;
     private javax.swing.JTable tblVeiculoDespesa;
-    private javax.swing.JTable tblVeiculoDespesa1;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtPesq;
     private javax.swing.JTextField txtPesq1;

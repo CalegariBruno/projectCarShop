@@ -28,6 +28,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         // ASSOCIAR o TABLE PESSOA MODEL ABSTRACT
         pessoaTableModel = new PessoaAbstractTableModel();
         tblPessoa.setModel(pessoaTableModel);
+
+        // Adicionar o listener de seleção à tabela para saber se tem ou não algum veiculo selecionado
+        tblPessoa.getSelectionModel().addListSelectionListener(e -> ativarBotoes());
     }
 
     public Pessoa getPessoaSelecionada() {
@@ -74,8 +77,8 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -210,6 +213,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         btnSelecionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/accept.png"))); // NOI18N
         btnSelecionar.setText("  Selecionar");
+        btnSelecionar.setEnabled(false);
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
@@ -244,6 +248,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/remove.png"))); // NOI18N
         btnExcluir.setText("  Excluir");
+        btnExcluir.setEnabled(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -253,6 +258,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/png/16x16/repeat.png"))); // NOI18N
         btnAlterar.setText("  Alterar");
+        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -423,7 +429,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                     GerenciadorInterface.getInstance().getGerenciadorDominio().inserirPesssoa(nome, cpf, telefone, cep, bairro, descricao, num, cidade, estado);
                     JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso.", "Cadastro Pessoa", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
-                    
+
                     // Atualizar a tabela
                     btnPesquisarActionPerformed(null);
                 } else {
@@ -432,7 +438,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
                     GerenciadorInterface.getInstance().getGerenciadorDominio().alterarPesssoa(pessoaSelecionado.getIdPessoa(), nome, cpf, telefone, cep, bairro, descricao, num, cidade, cpf);
                     JOptionPane.showMessageDialog(this, "Cliente " + pessoaSelecionado.getNome() + " alterado com sucesso.", "Cadastro pessoa", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
-                    
+
                     // Atualizar a tabela
                     btnPesquisarActionPerformed(null);
                 }
@@ -453,6 +459,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         jlCpf.setForeground(Color.black);
         jlCEP.setForeground(Color.black);
         jlNumEnd.setForeground(Color.black);
+        btnCadastrar.setEnabled(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
@@ -460,6 +467,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         if (linha >= 0) {
             linha = tblPessoa.convertRowIndexToModel(linha);
             pessoaSelecionado = pessoaTableModel.getCliente(linha);
+            limparCampos();
             this.setVisible(false);
         } else {
             // Mensagem de erro
@@ -505,6 +513,7 @@ public class DlgCadPessoa extends javax.swing.JDialog {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
         int linha = tblPessoa.getSelectedRow();
+
         if (linha >= 0) {
 
             if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir pessoa", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -525,9 +534,8 @@ public class DlgCadPessoa extends javax.swing.JDialog {
 
                 // Remover da TABELA
                 pessoaTableModel.remover(linha);
-                
-                // Atualizar a tabela
-                btnPesquisarActionPerformed(null);
+                pessoaSelecionado = null;
+                limparCampos();
             }
 
         } else {
@@ -537,12 +545,9 @@ public class DlgCadPessoa extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        pessoaSelecionado = null;
-        limparCampos();
-    }//GEN-LAST:event_formWindowClosed
-
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+
+        btnCadastrar.setEnabled(true);
 
         int linha = tblPessoa.getSelectedRow();
 
@@ -560,6 +565,11 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        pessoaSelecionado = null;
+        limparCampos();
+    }//GEN-LAST:event_formWindowClosing
 
     private void preencherCampos(Pessoa pessoa) throws ParseException {
 
@@ -636,15 +646,31 @@ public class DlgCadPessoa extends javax.swing.JDialog {
         txtCpf.setText("");
         txtCep.setText("");
         txtNumero.setText("");
-        
+
         txtEndereco.setText("");
         txtCidade.setText("");
         txtBairro.setText("");
         txtEstado.setText("");
-        
+
         txtNomePesq.setText("");
-                
-        pessoaTableModel.limpar();       
+
+        pessoaTableModel.limpar();
+        ativarBotoes();
+    }
+
+    public void ativarBotoes() {
+        int linha = tblPessoa.getSelectedRow();
+        if (linha != -1) {
+            pessoaSelecionado = pessoaTableModel.getCliente(linha);
+            btnAlterar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+            btnSelecionar.setEnabled(true);
+            btnCadastrar.setEnabled(false);
+        } else {
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            btnSelecionar.setEnabled(false);
+        }
     }
 
 

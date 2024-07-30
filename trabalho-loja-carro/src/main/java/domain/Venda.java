@@ -35,7 +35,7 @@ public class Venda implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Pessoa cliente;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Veiculo veiculo;
 
     private double valorCompra;
